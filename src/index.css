@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import "tailwindcss/preflight.css" layer(base);
+
+/* use dark mode tailwind */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* use rtl mode */
+@custom-variant rtl (&:dir(rtl));
+
+/* Font family */
+@font-face {
+    font-family: 'danaBlack';
+    src: url('/fonts/Dana-Black.woff') format('woff');
+}
+@font-face {
+    font-family: 'danaBold';
+    src: url('/fonts/Dana-Bold.woff') format('woff');
+}
+@font-face {
+    font-family: 'danaRegular';
+    src: url('/fonts/Dana-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'interBlack';
+    src: url('/fonts/Inter_28pt-Black.ttf') format('ttf');
+}
+@font-face {
+    font-family: 'interBold';
+    src: url('/fonts/Inter_28pt-Bold.ttf') format('ttf');
+}
+@font-face {
+    font-family: 'interRegular';
+    src: url('/fonts/Inter_28pt-Regular.ttf') format('ttf');
+}
+
+
+/* theme */
+@theme {
+  --font-danaBlack: 'danaBlack';
+  --font-danaBold: 'danaBold';
+  --font-danaRegular: 'danaRegular';
+  --font-interBlack: 'interBlack';
+  --font-interBold: 'interBold';
+  --font-interRegular: 'interRegular';
+
+  /* base colors */
+  --color-bg: #f9f9f9;
+  --color-primary: #09090b;
+  --color-primary-100: #07070a;
+  --color-secondary: #2563eb;
+  --color-success: #15803d;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-gray-light: #f1f5f9;
+  --color-gray-medium: #64748b;
+  --color-gray-dark: #1a1a1a;
+  --color-gray-sidebar: #3f3f46;
+  --color-gray-border: #e5e7eb;
+  --color-border : #d6d9e9;
+  --color-muted:#6e7684;
+  --color-muted-hover: #e6e9f5;
+
+  /* gradients */
+  --back-gradient-primary: linear-gradient(135deg, #2563eb, #1d4ed8);
+  --color-gradient-secondary: linear-gradient(135deg, #15803d, #166534);
+  --color-gradient-hero: linear-gradient(135deg, #2563eb, #15803d);
+
+  /* shadows */
+  --shadow-banking: 0 4px 6px -1px rgba(37, 99, 235, 0.1), 0 2px 4px -1px rgba(37, 99, 235, 0.06);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  /* sidebar */
+  --color-sidebar-background: #fafafa;
+  --color-sidebar-foreground: #3f3f46;
+  --color-sidebar-primary: #1a1a1a;
+  --color-sidebar-primary-foreground: #fafafa;
+  --color-sidebar-accent: #f5f5f5;
+  --color-sidebar-accent-foreground: #1a1a1a;
+  --color-sidebar-border: #e5e7eb;
+  --color-sidebar-ring: #3b82f6;
+
+  /* dark sidebar */
+  --color-sidebar-dark-background: #1a1a1a;
+  --color-sidebar-dark-foreground: #f5f5f5;
+  --color-sidebar-dark-primary: #2563eb;
+  --color-sidebar-dark-primary-foreground: #ffffff;
+  --color-sidebar-dark-accent: #262626;
+  --color-sidebar-dark-accent-foreground: #f5f5f5;
+  --color-sidebar-dark-border: #262626;
+  --color-sidebar-dark-ring: #3b82f6;
+}
+
+@layer components{
+    .gradient_primary{
+        background: var(--back-gradient-primary);
+    }
+    .gradient_secondary{
+        background: var(--color-gradient-secondary);
+    }
+    .gradient_hero{
+        background: var(--color-gradient-hero);
+    }
+    .btn{
+        @apply flex items-center justify-center text-muted w-8 h-8 rounded-sm duration-300 hover:text-primary cursor-pointer dark:hover:text-white
+    }
+    .btn.primary{
+        @apply border border-border dark:border-muted hover:bg-success hover:border-none hover:text-white w-[120px] h-8
+    }
+    .btn.secondary{
+        @apply bg-secondary text-white hover:bg-secondary/80 w-[120px] h-8
+    }
+    .title{
+        @apply text-3xl font-interRegular rtl:font-danaBold text-primary dark:text-white;
+    }
+    .paraph{
+        @apply text-muted font-interRegular rtl:font-danaRegular rtl:mt-2
+    }
+
+    /* < Dialog radix-ui > */
+    .dialog_overlay{
+        @apply fixed inset-0 z-50 bg-primary/50 ; 
+    }
+    .dialog_content{
+        @apply fixed left-[50%] top-[10%] z-50 grid w-full  translate-x-[-50%] gap-4 border dark:border-muted bg-white dark:bg-primary-100 shadow-lg p-4 rounded-md
+    }
+    .dialog_header{
+        @apply flex flex-col space-y-1.5 text-center sm:text-left;
+    }
+    .dialog_title{
+        @apply text-lg font-danaRegular leading-none tracking-tight;
+    }
+    .dialog_close{
+        @apply  absolute top-0 right-0 cursor-pointer ;
+    }
+    [dir="rtl"] .dialog_close {
+     @apply left-0 right-auto;
+}
+    /* <Select radix-ui>  */
+    .select_trigger{
+        @apply flex h-10 w-full items-center justify-between rounded-md border border-muted bg-white px-3 py-2 placeholder:text-muted
+    }
+    .select_scrollUp{
+        @apply flex cursor-default items-center justify-center py-1
+    }
+    .select_scrollDown{
+        @apply flex cursor-default items-center justify-center py-1
+    }
+    .select_content{
+        @apply relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-white text-primary dark:text-white shadow-md
+    }
+    .select_viewPort{
+        @apply p-1
+    }
+    .select_label{
+        @apply py-1.5 pl-8 pr-2 font-interBold rtl:font-danaBold
+    }
+    .select_item{
+        @apply relative flex w-full cursor-default select-none items-center rounded-sm py-2 pl-8 pr-2 outline-none
+    }
+
+
+   .input_style{
+        @apply flex h-10 w-full rounded-md border border-border bg-white dark:bg-muted px-3 py-2 text-base ring-2 file:border-0  dark:placeholder:text-white placeholder:text-muted  disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+    }
+
+    .badge{
+        @apply inline-flex items-center rounded-full border px-2 py-2 text-xs font-interBold
+    }
+    .badge_default{
+        @apply border-transparent bg-secondary text-white hover:bg-secondary/80
+    }
+    .badge_secondary{
+        @apply border-transparent bg-border text-primary hover:bg-border/80
+    }
+    
+ }
+
+
