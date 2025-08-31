@@ -160,7 +160,7 @@
 
 
    .input_style{
-        @apply flex h-10 w-full rounded-md border border-border bg-white dark:bg-muted px-3 py-2 text-base ring-2 file:border-0  dark:placeholder:text-white placeholder:text-muted  disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+        @apply flex h-10 w-full rounded-md border border-border bg-white dark:bg-muted/10 px-3 py-2 text-base ring-2 file:border-0  dark:placeholder:text-white placeholder:text-muted focus:border-secondary  disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
     }
 
     .badge{
@@ -172,7 +172,34 @@
     .badge_secondary{
         @apply border-transparent bg-border text-primary hover:bg-border/80
     }
-    
+    /* table */
+    .container_table{
+        @apply relative w-full overflow-auto
+    }
+    .table{
+        @apply w-full caption-bottom text-base
+    }
+    .tableHeader{
+        @apply border-b  border-border dark:border-muted pb-1
+    }
+    .tableBody{
+        @apply last:border-0
+    }
+    .tableFooter{
+        @apply border-t bg-primary/50 font-interRegular rtl:font-danaRegular last:border-b-0
+    }
+    .tableRow{
+        @apply border-b dark:border-muted transition-colors hover:bg-primary/10
+    }
+    .tableHead{
+        @apply h-12 px-4 text-left align-bottom font-interRegular rtl:font-danaRegular text-muted    
+    }
+    .tableCall{
+        @apply p-4 align-middle  text-primary dark:text-white
+    }
+    .tableCaption{
+        @apply mt-4 text-sm text-white
+    }
  }
 
 
