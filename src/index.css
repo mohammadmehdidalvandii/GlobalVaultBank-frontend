@@ -109,6 +109,9 @@
     .btn.secondary{
         @apply bg-secondary text-white hover:bg-secondary/80 w-[120px] h-8
     }
+    .btn.danger{
+        @apply bg-danger text-white hover:bg-danger/70 w-[120px] h-8
+    }
     .title{
         @apply text-3xl font-interRegular rtl:font-danaBold text-primary dark:text-white;
     }
@@ -157,7 +160,17 @@
     .select_item{
         @apply relative flex w-full cursor-default select-none items-center rounded-sm py-2 pl-8 pr-2 outline-none
     }
+        /* <Tabs radix-ui>  */
+    .tabList{
+        @apply inline-flex h-16 items-center justify-center rounded-md bg-gray-light p-2 text-primary
+    }
+    .tabTrigger{
+        @apply  inline-flex items-center text-primary dark:text-white justify-center whitespace-nowrap rounded-sm px-2 py-1.5  font-interRegular rtl:font-danaRegular transition-all focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-bg  dark:data-[state=active]:bg-muted data-[state=active]:text-primary dark:data-[state=active]:text-white data-[state=active]:shadow-sm
+    }
+    .tabContent{
+        @apply  mt-2  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
 
+    }
 
    .input_style{
         @apply flex h-10 w-full rounded-md border border-border bg-white dark:bg-muted/10 px-3 py-2 text-base ring-2 file:border-0  dark:placeholder:text-white placeholder:text-muted focus:border-secondary  disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
@@ -199,6 +212,26 @@
     }
     .tableCaption{
         @apply mt-4 text-sm text-white
+    }
+
+    /* card */
+    .card{
+        @apply rounded-lg border bg-white dark:bg-primary-100 text-primary dark:text-white shadow-md
+    }
+    .cardHeader{
+        @apply text-2xl font-interBold rtl:font-danaBold leading-none tracking-tight
+    }
+    .cartTitle{
+        @apply text-base text-muted 
+    }
+    .cardDescription{
+        @apply text-base text-muted
+    }
+    .cardContent{
+        @apply p-6 pt-0
+    }
+    .cardFooter{
+        @apply flex items-center p-6 pt-0
     }
  }
 
