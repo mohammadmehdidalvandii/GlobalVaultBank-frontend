@@ -5,8 +5,10 @@ import * as Select from '@radix-ui/react-select'
 import * as Separator from '@radix-ui/react-separator';
 import * as Switch from '@radix-ui/react-switch'
 import { Bell, ChevronDown, Lock, Settings, Shield, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AccountSettingsModel: React.FC = () => {
+const {t} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [checked , setChecked] = useState<boolean>(false);
   const [notificationsEnabled , setNotificationsEnabled ] = useState<boolean>(true)
@@ -24,35 +26,35 @@ const AccountSettingsModel: React.FC = () => {
         <div className="dialog_header">
             <Dialog.Title className="flex items-center gap-2 text-2xl font-interBlack rtl:font-danaBlack text-primary dark:text-white">
                 <Shield className="h-5 w-5"/>
-                Account Setting - Your name
+                {t('Account Setting')} - Your name
             </Dialog.Title> 
             <Dialog.Description className="dialog_description">
-                Manage account setting , limits , and security controls
+                {t('Manage account setting , limits , and security controls')}
             </Dialog.Description>
         </div>
 
-        <Tabs.Root defaultValue="general" className="w-full">
+        <Tabs.Root defaultValue={t('general')} className="w-full">
             <Tabs.List className="tabList w-full flex items-center h-12 justify-evenly bg-gray-light dark:bg-gray-dark rounded-md">
-                <Tabs.Trigger value="general" className="tabTrigger cursor-pointer">General</Tabs.Trigger>
-                <Tabs.Trigger value="limits" className="tabTrigger cursor-pointer">Limits</Tabs.Trigger>
-                <Tabs.Trigger value="security" className="tabTrigger cursor-pointer">Security</Tabs.Trigger>
-                <Tabs.Trigger value="Notifications" className="tabTrigger cursor-pointer">Notification</Tabs.Trigger>
+                <Tabs.Trigger value={t('general')} className="tabTrigger cursor-pointer">{t('General')}</Tabs.Trigger>
+                <Tabs.Trigger value={t('limits')} className="tabTrigger cursor-pointer">{t('Limits')}</Tabs.Trigger>
+                <Tabs.Trigger value={t('security')} className="tabTrigger cursor-pointer">{t('Security')}</Tabs.Trigger>
+                <Tabs.Trigger value={t('Notifications')} className="tabTrigger cursor-pointer">{t('Notification')}</Tabs.Trigger>
             </Tabs.List>
             <Tabs.Content value="general" className="tabContent">
                 <div className="card p-2 mt-2">
                     <div className="cardHeader">
-                        <h3 className="cardTitle">Account Status</h3>
-                        <p className="cardDescription">Current account status and controls</p>
+                        <h3 className="cardTitle">{t('Account Status')}</h3>
+                        <p className="cardDescription">{t('Current account status and controls')}</p>
                     </div>
                     <div className="cardContent space-y-4">
                         <div className="flex items-center justify-between">
                             <div>
-                                <label htmlFor="">Account Status</label>
-                                <p className="text-muted">Account Number: **** **** *** 4353</p>
+                                <label htmlFor="">{t('Account Status')}</label>
+                                <p className="text-muted">{t('Account Number')}: **** **** *** 4353</p>
                             </div>
-                                      <Select.Root defaultValue='Active'>
+                                      <Select.Root defaultValue={t('Active')}>
                                     <Select.Trigger className='select_trigger mt-2 w-[200px]' >
-                                        <Select.Value placeholder="Account Status"/>
+                                        <Select.Value placeholder={t('Account Status')}/>
                                             <Select.Icon>
                                             <ChevronDown/>
                                             </Select.Icon>
@@ -60,17 +62,17 @@ const AccountSettingsModel: React.FC = () => {
                                     <Select.Portal>
                                         <Select.Content className='select_content'>
                                             <Select.Viewport className='select_viewPort'>
-                                                <Select.Item value='Active' className='select_item p-2'>
-                                                    <Select.ItemText>Active</Select.ItemText>
+                                                <Select.Item value={t('Active')} className='select_item p-2'>
+                                                    <Select.ItemText>{t('Active')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Suspended' className='select_item p-2'>
-                                                    <Select.ItemText>Suspended</Select.ItemText>
+                                                <Select.Item value={t('Suspended')} className='select_item p-2'>
+                                                    <Select.ItemText>{t('Suspended')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Frozen' className='select_item p-2'>
-                                                    <Select.ItemText>Frozen</Select.ItemText>
+                                                <Select.Item value={t('Frozen')} className='select_item p-2'>
+                                                    <Select.ItemText>{t('Frozen')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Closed' className='select_item p-2'>
-                                                    <Select.ItemText>Closed</Select.ItemText>
+                                                <Select.Item value={t('Closed')} className='select_item p-2'>
+                                                    <Select.ItemText>{t('Closed')}</Select.ItemText>
                                                 </Select.Item>
                                             </Select.Viewport>
                                         </Select.Content>
@@ -80,12 +82,12 @@ const AccountSettingsModel: React.FC = () => {
                         <Separator.Root className="separator h-[1px] w-full" />
                         <div className="flex justify-between items-center">
                            <div>
-                             <label htmlFor="">Interest Rate (%)</label>
+                             <label htmlFor="">{t('Interest Rate')} (%)</label>
                             <input type="number" className="input_style mt-1 w-[320px]" step="0.1" />
                            </div>
                             <div>
-                                   <label htmlFor="">Account Type</label>
-                                            <Select.Root defaultValue='Checking'>
+                                   <label htmlFor="">{t('Account Type')}</label>
+                                            <Select.Root defaultValue={t('Checking')}>
                                     <Select.Trigger className='select_trigger mt-2 w-[320px] h-10' >
                                         <Select.Value placeholder="Account Status"/>
                                             <Select.Icon>
@@ -95,17 +97,17 @@ const AccountSettingsModel: React.FC = () => {
                                     <Select.Portal>
                                         <Select.Content className='select_content'>
                                             <Select.Viewport className='select_viewPort'>
-                                                <Select.Item value='Checking' className='select_item p-2'>
-                                                    <Select.ItemText>Checking</Select.ItemText>
+                                                <Select.Item value={t('Checking')} className='select_item p-2'>
+                                                    <Select.ItemText>{t('Checking')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Savings' className='select_item p-2'>
-                                                    <Select.ItemText>Savings</Select.ItemText>
+                                                <Select.Item value={t('Savings')} className='select_item p-2'>
+                                                    <Select.ItemText>{t('Savings')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Business' className='select_item p-2'>
-                                                    <Select.ItemText>Business</Select.ItemText>
+                                                <Select.Item value={t('Business')} className='select_item p-2'>
+                                                    <Select.ItemText>{t('Business')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Investment' className='select_item p-2'>
-                                                    <Select.ItemText>Investment</Select.ItemText>
+                                                <Select.Item value={t('Investment')} className='select_item p-2'>
+                                                    <Select.ItemText>{t('Investment')}</Select.ItemText>
                                                 </Select.Item>
                                             </Select.Viewport>
                                         </Select.Content>
@@ -115,8 +117,8 @@ const AccountSettingsModel: React.FC = () => {
                         </div>
                         <div className="flex items-center justify-between">
                             <div>
-                                <label htmlFor="">Overdraft Protection</label>
-                                <p className="text-muted">Allow account to go negative</p>
+                                <label htmlFor="">{t('Overdraft Protection')}</label>
+                                <p className="text-muted">{t('Allow account to go negative')}</p>
                             </div>
                             <Switch.Root checked={checked} onCheckedChange={setChecked} className="switchRoot">
                                 <Switch.Thumb className="switchThumb"/>
@@ -128,28 +130,28 @@ const AccountSettingsModel: React.FC = () => {
             <Tabs.Content value="limits" className="tabContent">
                 <div className="card p-2 mt-2">
                     <div className="cardHeader">
-                        <h3 className="cardTitle">Transaction Limits</h3>
-                        <p className="cardDescription">Set daily monthly transaction limits</p>
+                        <h3 className="cardTitle">{t('Transaction Limits')}</h3>
+                        <p className="cardDescription">{t('Set daily monthly transaction limits')}</p>
                     </div>
                     <div className="cardContent">
                         <div className="flex justify-between items-center mb-3 mt-3">
                             <div>
-                             <label htmlFor="">Daily Limit</label>
+                             <label htmlFor="">{t('Daily Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]" value='5000'/>
                            </div>
                             <div>
-                             <label htmlFor="">monthly Limit</label>
+                             <label htmlFor="">{t('monthly Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]" value='5000'/>
                            </div>
                         </div>
                         <Separator.Root className="separator h-[1px] w-full" />
                         <div className="flex justify-between items-center">
                             <div>
-                             <label htmlFor="">ATM Limit</label>
+                             <label htmlFor="">{t('ATM Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]" defaultValue="1000"/>
                            </div>
                             <div>
-                             <label htmlFor="">per Transaction Limit</label>
+                             <label htmlFor="">{t('per Transaction Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]"  defaultValue="500"/>
                            </div>
                         </div>
@@ -159,39 +161,39 @@ const AccountSettingsModel: React.FC = () => {
             <Tabs.Content value="security" className="tabContent">
                 <div className="card p-2 mt-2">
                     <div className="cardHeader">
-                        <h3 className="cardTitle">Security Controls</h3>
-                        <p className="cardDescription font-interBold rtl:font-danaBold mt-1 text-lg">Manage account security and access controls</p>
+                        <h3 className="cardTitle">{t('Security Controls')}</h3>
+                        <p className="cardDescription font-interBold rtl:font-danaBold mt-1 text-lg">{t('Manage account security and access controls')}</p>
                     </div>
                     <div className="cardContent">
                         <div className="flex items-center justify-between p-4 border rounded-lg mt-4">
                             <div className="flex items-center gap-3">
                                 <Lock className="h-5 w-5 text-muted"/>
                                 <div>
-                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">Freeze Account</label>
-                                    <p className="text-muted font-interRegular rtl:font-danaRegular">Temporarily disable all transactions </p>
+                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Freeze Account')}</label>
+                                    <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Temporarily disable all transactions')} </p>
                                 </div>
                             </div>
-                            <button className="btn danger w-[150px]">Freeze Account</button>
+                            <button className="btn danger w-[150px]">{t('Freeze Account')}</button>
                         </div>
                         <div className="flex items-center justify-between p-4 border rounded-lg mt-4">
                             <div className="flex items-center gap-3">
                                 <Lock className="h-5 w-5 text-muted"/>
                                 <div>
-                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">Block Debit Cards</label>
-                                    <p className="text-muted font-interRegular rtl:font-danaRegular">Prevent card transactions </p>
+                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Block Debit Cards')}</label>
+                                    <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Prevent card transactions')}</p>
                                 </div>
                             </div>
-                            <button className="btn primary">Manage Cards</button>
+                            <button className="btn primary">{t('Manage Cards')}</button>
                         </div>
                         <div className="flex items-center justify-between p-4 border rounded-lg mt-4">
                             <div className="flex items-center gap-3">
                                 <Lock className="h-5 w-5 text-muted"/>
                                 <div>
-                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">Reset PIN</label>
-                                    <p className="text-muted font-interRegular rtl:font-danaRegular">Generate new PIN for customer</p>
+                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Reset PIN')}</label>
+                                    <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Generate new PIN for customer')}</p>
                                 </div>
                             </div>
-                            <button className="btn primary">Reset PIN</button>
+                            <button className="btn primary">{t('Reset PIN')}</button>
                         </div>
                     </div>
                 </div>
@@ -199,14 +201,14 @@ const AccountSettingsModel: React.FC = () => {
             <Tabs.Content value="Notifications" className="tabContent">
                 <div className="card p-2 mt-2">
                     <div className="cardHeader">
-                        <h3 className="cardTitle">Notification Settings</h3>
-                        <p className="cardDescription font-interBold rtl:font-danaBold mt-1 text-lg">Configure alert and notifications</p>
+                        <h3 className="cardTitle">{t('Notification Settings')}</h3>
+                        <p className="cardDescription font-interBold rtl:font-danaBold mt-1 text-lg">{t('Configure alert and notifications')}</p>
                     </div>
                     <div className="cardContent">
                         <div className="flex items-center justify-between my-2">
                             <div>
-                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">Transaction Alerts</label>
-                                <p className="text-muted font-interRegular rtl:font-danaRegular">Notify customer or transactions</p>
+                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Transaction Alerts')}</label>
+                                <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Notify customer or transactions')}</p>
                             </div>
                                 <Switch.Root checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} className="switchRoot">
                                 <Switch.Thumb className="switchThumb"/>
@@ -214,20 +216,20 @@ const AccountSettingsModel: React.FC = () => {
                         </div>
                         <Separator.Root className="separator h-[1px] w-full" />
                         <div className="space-y-3 my-2">
-                            <label htmlFor="" className="font-interRegular rtl:font-danaRegular">Alert Thresholds</label>
+                            <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Alert Thresholds')}</label>
                             <div className="flex items-center justify-between">
                                 <div>
-                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">Low Balance Alert</label>
+                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Low Balance Alert')}</label>
                                 <input type="number" className="input_style w-[340px] mt-2" defaultValue='100'/>
                                 </div>
                                 <div>
-                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">Large Transaction  Alert</label>
+                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Large Transaction  Alert')}</label>
                                 <input type="number" className="input_style w-[340px] mt-2" defaultValue='1000'/>
                                 </div>
                             </div>
                             <div className="flex items-center gap-2 p-4 text-muted rounded-lg">
                                 <Bell className="h-4 w-4 text-muted"/>
-                                Customer will receive notification vis SMS end email
+                                {t('Customer will receive notification vis SMS and email')}
                             </div>
                         </div>
                     </div>
@@ -239,8 +241,8 @@ const AccountSettingsModel: React.FC = () => {
                 <button className="btn primary w-[100px]"
                 type="button"
                 onClick={()=>setOpen(false)}
-                >Cancel</button>
-                <button className="btn secondary">Save Change</button>
+                >{t('Cancel')}</button>
+                <button className="btn secondary">{t('Save Change')}</button>
             </div>
 
         <Dialog.Close asChild>

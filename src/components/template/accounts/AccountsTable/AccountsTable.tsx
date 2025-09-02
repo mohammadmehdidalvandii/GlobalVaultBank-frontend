@@ -1,26 +1,28 @@
 import AccountDetailsModel from '@components/Models/AccountDetailsModel'
 import AccountSettingsModel from '@components/Models/AccountSettingsModel'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const AccountsTable:React.FC = () => {
+    const {t}=useTranslation()
   return (
     <div className="space-y-4">
         <div className="relative">
             <search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-muted h-4 w-4'/>
-            <input type="text" className="input_style" placeholder='Search customer , account numbers , types, or currency'/>
+            <input type="text" className="input_style" placeholder={t('Search customer , account numbers , types, or currency')}/>
         </div>
         {/* table */}
         <div className="rounded-md border border-border">
             <div className="container_table">
                 <table className="table">
                     <thead className='tableHeader'>
-                        <th className='tableHead'>Customer & Account</th>
-                        <th className='tableHead'>Type</th>
-                        <th className='tableHead'>Account Number</th>
-                        <th className='tableHead'>Balance</th>
-                        <th className='tableHead'>Change</th>
-                        <th className='tableHead'>Interest Rate</th>
-                        <th className='tableHead text-right'>Actions</th>
+                        <th className='tableHead'>{t('Customer & Account')}</th>
+                        <th className='tableHead'>{t('Type')}</th>
+                        <th className='tableHead'>{t('Account Number')}</th>
+                        <th className='tableHead'>{t('Balance')}</th>
+                        <th className='tableHead'>{t('Change')}</th>
+                        <th className='tableHead'>{t('Interest Rate')}</th>
+                        <th className='tableHead text-right'>{t('Actions')}</th>
                     </thead>
                     <tbody className="tableBody">
                         <tr className="tableRow">

@@ -6,25 +6,31 @@ import sidebarFA from './fa/sidebarFa.json'
 import dashboardEN from './en/dashboardEN.json'
 import dashboardESP from './esp/dashboardESP.json'
 import dashboardFA from './fa/dashboardFA.json'
+import accountEN from './en/AccountEN.json'
+import accountESP from './esp/AccountESP.json'
+import accountFA from './fa/AccountFA.json'
 
 
 const resources:Resource = {
     en:{
         translation:{
           ...sidebarEN,
-          ...dashboardEN
+          ...dashboardEN,
+          ...accountEN
         }
     },
     esp:{
         translation:{
         ...sidebarESP,
-        ...dashboardESP
+        ...dashboardESP,
+        ...accountESP,
         }
     },
     fa:{
         translation:{
             ...sidebarFA,
-            ...dashboardFA
+            ...dashboardFA,
+            ...accountFA
         }
     }
 }

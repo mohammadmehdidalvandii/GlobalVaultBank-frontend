@@ -3,16 +3,18 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from '@radix-ui/react-tabs'
 import * as Select from '@radix-ui/react-select'
 import { ChevronDown, CreditCard, Edit, Eye, History, Lock, Settings, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AccountDetailsModel: React.FC = () => {
+  const {t} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [isEditing , setIsEditing] = useState<boolean>(false)
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className="btn primary">
+        <button className="btn primary rtl:gap-2">
           <Eye className="h-4 w-4 mr-2" />
-          Details
+          {t('Details')}
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -22,68 +24,68 @@ const AccountDetailsModel: React.FC = () => {
                 <Dialog.Title className="flex items-center gap-2">
                     <div className="flex items-center gap-2 text-2xl font-interBlack rtl:font-danaBlack text-primary dark:text-white">
                         <Eye className="h-5 w-5"/>
-                        Account Details - your name
+                        {t('Account Details')} - your name
                     </div>
-                    <div className="badge badge_default">Active</div>
+                    <div className="badge badge_default">{t('Active')}</div>
                 </Dialog.Title>
             </div>
             <Tabs.Root defaultValue="overview" className="w-full">
                 <Tabs.List className="tabList w-full flex items-center h-12 justify-evenly bg-gray-light dark:bg-gray-dark rounded-md">
-                    <Tabs.Trigger value="overview" className="tabTrigger cursor-pointer">Overview</Tabs.Trigger>
-                    <Tabs.Trigger value="transactions" className="tabTrigger cursor-pointer">Transaction</Tabs.Trigger>
-                    <Tabs.Trigger value="settings" className="tabTrigger cursor-pointer">Settings</Tabs.Trigger>
-                    <Tabs.Trigger value="security" className="tabTrigger cursor-pointer">Security</Tabs.Trigger>
+                    <Tabs.Trigger value="overview" className="tabTrigger cursor-pointer">{t('Overview')}</Tabs.Trigger>
+                    <Tabs.Trigger value="transactions" className="tabTrigger cursor-pointer">{t('Transaction')}</Tabs.Trigger>
+                    <Tabs.Trigger value="settings" className="tabTrigger cursor-pointer">{t('Settings')}</Tabs.Trigger>
+                    <Tabs.Trigger value="security" className="tabTrigger cursor-pointer">{t('Security')}</Tabs.Trigger>
                 </Tabs.List>
                 <Tabs.Content value="overview" className="tabContent">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="card p-2">
                       <div className="cardHeader">
-                        <h3 className="cartTitle text-lg">Account Information</h3>
+                        <h3 className="cartTitle text-lg">{t('Account Information')}</h3>
                       </div>
                       <div className="cardContent space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-muted">Account Number</span>
+                          <span className="text-muted">{t('Account Number')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">123456789</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">Account Type</span>
+                          <span className="text-muted">{t('Account Type')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">Checking</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">Currency</span>
+                          <span className="text-muted">{t('Currency')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">USD</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">Interest Rate</span>
+                          <span className="text-muted">{t('Interest Rate')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">0.1% APY</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">Status</span>
+                          <span className="text-muted">{t("Status")}</span>
                           <span className="font-interRegular rtl:font-danaRegular">
-                            <p className="badge badge_default">Active</p>
+                            <p className="badge badge_default">{t('Active')}</p>
                           </span>
                         </div>
                       </div>
                     </div>
                     <div className="card p-2">
                       <div className="cardHeader">
-                        <h3 className="cartTitle text-lg">Balance Information</h3>
+                        <h3 className="cartTitle text-lg">{t('Balance Information')}</h3>
                       </div>
                       <div className="cardContent space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-muted">Current Balance</span>
+                          <span className="text-muted">{t('Current Balance')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">$25,425.0</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">Available Balance</span>
+                          <span className="text-muted">{t('Available Balance')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">$25,3205</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">Pending Transactions</span>
+                          <span className="text-muted">{t('Pending Transactions')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">2</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">Last Transaction</span>
+                          <span className="text-muted">{t('Last Transaction')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">Today , 2:30 PM</span>
                         </div>
                       </div>
@@ -95,7 +97,7 @@ const AccountDetailsModel: React.FC = () => {
                       <div className="cardHeader">
                         <h3 className="cardTitle flex  items-center gap-2">
                           <History className="h-5 w-5"/>
-                          Recent Transaction
+                          {t('Recent Transaction')}
                         </h3>
                       </div>
                       <div className="cardContent space-y-3">
@@ -136,23 +138,23 @@ const AccountDetailsModel: React.FC = () => {
                       <div className="flex items-center justify-between">
                           <h3 className="cardTitle flex items-center gap-2">
                               <Settings className="h-5 w-5"/>
-                              Account Settings
+                              {t('Account Settings')}
                           </h3>
-                          <button className="btn primary text-base w-[80px]"
+                          <button className="btn primary text-base w-[110px]"
                           onClick={()=>setIsEditing(!isEditing)}
                           >
                               <Edit className="h-4 w-4 mr-2"/>
-                              {isEditing ? 'Cancel' : 'Edit'}
+                              {isEditing ? `${t('Cancel')}` : `${t('Edit')}`}
                           </button>
                       </div>
                       </div>
                       <div className="cardHeader">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <label htmlFor="" className="text-primary-100 dark:text-white text-lg">Account Status *</label>
+                                <label htmlFor="" className="text-primary-100 dark:text-white text-lg">{t('Account Status')} *</label>
                                 <Select.Root defaultValue='account Status' disabled={!isEditing}>
                                     <Select.Trigger className='select_trigger mt-2'>
-                                        <Select.Value placeholder="Account Status"/>
+                                        <Select.Value placeholder={t('Account Status')}/>
                                             <Select.Icon>
                                             <ChevronDown/>
                                             </Select.Icon>
@@ -161,16 +163,16 @@ const AccountDetailsModel: React.FC = () => {
                                         <Select.Content className='select_content'>
                                             <Select.Viewport className='select_viewPort'>
                                                 <Select.Item value='Active' className='select_item p-2'>
-                                                    <Select.ItemText>Active</Select.ItemText>
+                                                    <Select.ItemText>{t('Active')}</Select.ItemText>
                                                 </Select.Item>
                                                 <Select.Item value='Suspended' className='select_item p-2'>
-                                                    <Select.ItemText>Suspended</Select.ItemText>
+                                                    <Select.ItemText>{t('Suspended')}</Select.ItemText>
                                                 </Select.Item>
                                                 <Select.Item value='Frozen' className='select_item p-2'>
-                                                    <Select.ItemText>Frozen</Select.ItemText>
+                                                    <Select.ItemText>{t('Frozen')}</Select.ItemText>
                                                 </Select.Item>
                                                 <Select.Item value='Closed' className='select_item p-2'>
-                                                    <Select.ItemText>Closed</Select.ItemText>
+                                                    <Select.ItemText>{t("Closed")}</Select.ItemText>
                                                 </Select.Item>
                                             </Select.Viewport>
                                         </Select.Content>
@@ -178,21 +180,21 @@ const AccountDetailsModel: React.FC = () => {
                                 </Select.Root>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>Interest Rate (%)</label>
+                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>{t('Interest Rate')} (%)</label>
                                 <input type="number" className='input_style mt-2' step='0.1'/>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>Daily Transaction Limit</label>
+                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>{t('Daily Transaction Limit')}</label>
                                 <input type="number" className='input_style mt-2' step='0.1'/>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>Monthly Transaction Limit</label>
+                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>{t('Monthly Transaction Limit')}</label>
                                 <input type="number" className='input_style mt-2' step='0.1'/>
                             </div>
                         </div>
                             {isEditing && (
-                              <button className="btn bg-secondary text w-full mt-5">
-                                Save Change
+                              <button className="btn secondary text w-full mt-5 ">
+                                {t('Save Change')}
                               </button>
                             ) }
                       </div>
@@ -203,36 +205,36 @@ const AccountDetailsModel: React.FC = () => {
                     <div className="cardHeader">
                         <h3 className="cardTitle flex items-center gap-2">
                           <Lock className="h-5 w-5" />
-                          Security Controls
+                          {t('Security Controls')}
                         </h3>
                     </div>
                     <div className="cardContent mt-5">
                         <div className="flex items-center justify-between p-3 border border-border dark:border-muted rounded-lg mb-3">
                           <div>
-                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">Account Lock</p>
-                            <p className="text-base text-muted">Temporarily lock this account</p>
+                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Account Lock')}</p>
+                            <p className="text-base text-muted">{t('Temporarily lock this account')}</p>
                           </div>
-                          <button className="btn primary w-[140px]">
+                          <button className="btn primary w-[150px]">
                             <Lock className="h-4 w-4 mr-2"/>
-                            Lock Account
+                            {t('Lock Account')}
                           </button>
                         </div>
                         <div className="flex items-center justify-between p-3 border border-border dark:border-muted rounded-lg mb-3">
                           <div>
-                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">Reset PIN</p>
-                            <p className="text-base text-muted">Generate new PIN for customer</p>
+                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Reset PIN')}</p>
+                            <p className="text-base text-muted">{t('Generate new PIN for customer')}</p>
                           </div>
-                          <button className="btn primary">
-                            Reset PIN
+                          <button className="btn primary w-[170px]">
+                            {t('Reset PIN')}
                           </button>
                         </div>
                         <div className="flex items-center justify-between p-3 border border-border dark:border-muted rounded-lg mb-3">
                           <div>
-                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">Block Cards</p>
-                            <p className="text-base text-muted">Block all cards linked to this account</p>
+                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Block Cards')}</p>
+                            <p className="text-base text-muted">{t('Block all cards linked to this account')}</p>
                           </div>
-                          <button className="btn danger">
-                            Block Cards
+                          <button className="btn danger w-[150px]">
+                            {t('Block Cards')}
                           </button>
                         </div>
                     </div>
@@ -240,7 +242,7 @@ const AccountDetailsModel: React.FC = () => {
                 </Tabs.Content>
             </Tabs.Root>
             <Dialog.Close asChild>
-            <button className="dialog_close btn cursor-pointer rtl:left-2 right-2 top-2 ">
+            <button className="dialog_close btn cursor-pointer rtl:left-2 rtl:top-2">
               <X />
             </button>
           </Dialog.Close>
