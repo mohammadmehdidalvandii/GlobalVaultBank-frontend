@@ -28,7 +28,7 @@ const AccountDetailsModel: React.FC = () => {
                 </Dialog.Title>
             </div>
             <Tabs.Root defaultValue="overview" className="w-full">
-                <Tabs.List className="tablist w-full flex items-center h-12 justify-evenly bg-gray-light dark:bg-gray-dark rounded-md">
+                <Tabs.List className="tabList w-full flex items-center h-12 justify-evenly bg-gray-light dark:bg-gray-dark rounded-md">
                     <Tabs.Trigger value="overview" className="tabTrigger cursor-pointer">Overview</Tabs.Trigger>
                     <Tabs.Trigger value="transactions" className="tabTrigger cursor-pointer">Transaction</Tabs.Trigger>
                     <Tabs.Trigger value="settings" className="tabTrigger cursor-pointer">Settings</Tabs.Trigger>

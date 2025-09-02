@@ -1,5 +1,5 @@
 import AccountDetailsModel from '@components/Models/AccountDetailsModel'
-import { Eye, Settings } from 'lucide-react'
+import AccountSettingsModel from '@components/Models/AccountSettingsModel'
 import React from 'react'
 
 const AccountsTable:React.FC = () => {
@@ -58,9 +58,7 @@ const AccountsTable:React.FC = () => {
                               <td className="tableCall">
                                 <div className='flex gap-2 justify-end'>
                                     <AccountDetailsModel/>
-                                    <button className="btn primary">
-                                        <Settings className='h-4 w-4'/>
-                                    </button>
+                                    <AccountSettingsModel/>
                                 </div>
                             </td>
                         </tr>
