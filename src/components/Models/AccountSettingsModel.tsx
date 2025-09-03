@@ -26,9 +26,9 @@ const {t} = useTranslation();
         <div className="dialog_header">
             <Dialog.Title className="flex items-center gap-2 text-2xl font-interBlack rtl:font-danaBlack text-primary dark:text-white">
                 <Shield className="h-5 w-5"/>
-                {t('Account Setting')} - Your name
+                {t('Account Settings')} - Your name
             </Dialog.Title> 
-            <Dialog.Description className="dialog_description">
+            <Dialog.Description className="dialog_description block rtl:text-right">
                 {t('Manage account setting , limits , and security controls')}
             </Dialog.Description>
         </div>
@@ -43,8 +43,8 @@ const {t} = useTranslation();
             <Tabs.Content value="general" className="tabContent">
                 <div className="card p-2 mt-2">
                     <div className="cardHeader">
-                        <h3 className="cardTitle">{t('Account Status')}</h3>
-                        <p className="cardDescription">{t('Current account status and controls')}</p>
+                        <h3 className="cardTitle rtl:text-right">{t('Account Status')}</h3>
+                        <p className="cardDescription rtl:text-right">{t('Current account status and controls')}</p>
                     </div>
                     <div className="cardContent space-y-4">
                         <div className="flex items-center justify-between">
@@ -140,7 +140,7 @@ const {t} = useTranslation();
                             <input type="number" className="input_style mt-1 w-[320px]" value='5000'/>
                            </div>
                             <div>
-                             <label htmlFor="">{t('monthly Limit')}</label>
+                             <label htmlFor="">{t('Monthly Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]" value='5000'/>
                            </div>
                         </div>
@@ -193,7 +193,7 @@ const {t} = useTranslation();
                                     <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Generate new PIN for customer')}</p>
                                 </div>
                             </div>
-                            <button className="btn primary">{t('Reset PIN')}</button>
+                            <button className="btn primary w-fit p-1">{t('Reset PIN')}</button>
                         </div>
                     </div>
                 </div>
@@ -202,13 +202,13 @@ const {t} = useTranslation();
                 <div className="card p-2 mt-2">
                     <div className="cardHeader">
                         <h3 className="cardTitle">{t('Notification Settings')}</h3>
-                        <p className="cardDescription font-interBold rtl:font-danaBold mt-1 text-lg">{t('Configure alert and notifications')}</p>
+                        <p className="cardDescription font-interBold rtl:font-danaBold mt-1 text-lg">{t('Configure alert and notification')}</p>
                     </div>
                     <div className="cardContent">
                         <div className="flex items-center justify-between my-2">
                             <div>
                                 <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Transaction Alerts')}</label>
-                                <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Notify customer or transactions')}</p>
+                                <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Notify customer or transaction')}</p>
                             </div>
                                 <Switch.Root checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} className="switchRoot">
                                 <Switch.Thumb className="switchThumb"/>
@@ -246,7 +246,7 @@ const {t} = useTranslation();
             </div>
 
         <Dialog.Close asChild>
-            <button className="dialog_close btn cursor-pointer rtl:left-2 right-2 top-2 ">
+            <button className="dialog_close btn cursor-pointer rtl:left-2  rtl:top-2 ">
                 <X/>
             </button>
         </Dialog.Close>

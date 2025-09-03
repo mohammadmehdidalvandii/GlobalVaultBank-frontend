@@ -130,7 +130,7 @@
         @apply flex flex-col space-y-1.5 text-center sm:text-left;
     }
     .dialog_title{
-        @apply text-lg font-danaRegular leading-none tracking-tight;
+        @apply text-lg font-interBold rtl:font-danaRegular leading-none tracking-tight;
     }
     .dialog_description{
         @apply text-muted font-interRegular rtl:font-danaRegular
@@ -169,6 +169,7 @@
     }
     .tabTrigger{
         @apply  inline-flex items-center text-primary dark:text-white justify-center whitespace-nowrap rounded-sm px-2 py-1.5  font-interRegular rtl:font-danaRegular transition-all focus-visible:outline-none focus-visible:ring-2  focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-bg  dark:data-[state=active]:bg-muted data-[state=active]:text-primary dark:data-[state=active]:text-white data-[state=active]:shadow-sm
+        font-interBold rtl:font-danaBold font-bold tracking-wider
     }
     .tabContent{
         @apply  mt-2  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
@@ -235,13 +236,16 @@
         @apply rounded-lg border bg-white dark:bg-primary-100 text-primary dark:text-white shadow-md
     }
     .cardHeader{
-        @apply text-2xl font-interBold rtl:font-danaBold leading-none tracking-tight
+        @apply block text-2xl font-interBold rtl:font-danaBold leading-none tracking-tight 
     }
+     [dir="rtl"] .cardHeader{
+        @apply text-right
+     }
     .cartTitle{
-        @apply text-base text-muted 
+        @apply text-2xl text-muted font-interBlack rtl:font-danaBlack
     }
     .cardDescription{
-        @apply text-base text-muted
+        @apply text-base text-muted font-interRegular rtl:font-danaRegular 
     }
     .cardContent{
         @apply p-6 pt-0

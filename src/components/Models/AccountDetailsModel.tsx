@@ -40,11 +40,11 @@ const AccountDetailsModel: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="card p-2">
                       <div className="cardHeader">
-                        <h3 className="cartTitle text-lg">{t('Account Information')}</h3>
+                        <h3 className="cartTitle text-2xl text-primary dark:text-white">{t('Account Information')}</h3>
                       </div>
-                      <div className="cardContent space-y-3">
+                      <div className="cardContent space-y-3 mt-4">
                         <div className="flex justify-between">
-                          <span className="text-muted">{t('Account Number')}</span>
+                          <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Account Number')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">123456789</span>
                         </div>
                         <div className="flex justify-between">
@@ -52,15 +52,15 @@ const AccountDetailsModel: React.FC = () => {
                           <span className="font-interRegular rtl:font-danaRegular">Checking</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">{t('Currency')}</span>
+                          <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Currency')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">USD</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">{t('Interest Rate')}</span>
+                          <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Interest Rate')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">0.1% APY</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">{t("Status")}</span>
+                          <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t("Status")}</span>
                           <span className="font-interRegular rtl:font-danaRegular">
                             <p className="badge badge_default">{t('Active')}</p>
                           </span>
@@ -69,23 +69,23 @@ const AccountDetailsModel: React.FC = () => {
                     </div>
                     <div className="card p-2">
                       <div className="cardHeader">
-                        <h3 className="cartTitle text-lg">{t('Balance Information')}</h3>
+                        <h3 className="cartTitle text-2xl text-primary dark:text-white">{t('Balance Information')}</h3>
                       </div>
-                      <div className="cardContent space-y-3">
+                      <div className="cardContent space-y-3 mt-4">
                         <div className="flex justify-between">
-                          <span className="text-muted">{t('Current Balance')}</span>
+                          <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Current Balance')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">$25,425.0</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">{t('Available Balance')}</span>
+                          <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Available Balance')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">$25,3205</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">{t('Pending Transactions')}</span>
+                          <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Pending Transactions')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">2</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted">{t('Last Transaction')}</span>
+                          <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Last Transaction')}</span>
                           <span className="font-interRegular rtl:font-danaRegular">Today , 2:30 PM</span>
                         </div>
                       </div>
@@ -100,7 +100,7 @@ const AccountDetailsModel: React.FC = () => {
                           {t('Recent Transaction')}
                         </h3>
                       </div>
-                      <div className="cardContent space-y-3">
+                      <div className="cardContent space-y-3 mt-4">
                         <div className="flex items-center justify-between py-2 border-b border-border dark:border-muted last:border-0">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
@@ -133,7 +133,7 @@ const AccountDetailsModel: React.FC = () => {
                   </div>
                 </Tabs.Content>
                 <Tabs.Content value="settings" className="tabContent">
-                  <div className="card p-2">
+                  <div className="card p-2 mt-4">
                     <div className="cardHeader">
                       <div className="flex items-center justify-between">
                           <h3 className="cardTitle flex items-center gap-2">
@@ -149,7 +149,7 @@ const AccountDetailsModel: React.FC = () => {
                       </div>
                       </div>
                       <div className="cardHeader">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div className="space-y-2">
                                 <label htmlFor="" className="text-primary-100 dark:text-white text-lg">{t('Account Status')} *</label>
                                 <Select.Root defaultValue='account Status' disabled={!isEditing}>
@@ -224,7 +224,7 @@ const AccountDetailsModel: React.FC = () => {
                             <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Reset PIN')}</p>
                             <p className="text-base text-muted">{t('Generate new PIN for customer')}</p>
                           </div>
-                          <button className="btn primary w-[170px]">
+                          <button className="btn primary w-fit p-1">
                             {t('Reset PIN')}
                           </button>
                         </div>
