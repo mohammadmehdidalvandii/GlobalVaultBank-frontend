@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from '@layouts/MainLayout/MainLayout';
 import Dashboard from '@page/Dashboard/Dashboard';
 import Accounts from '@page/Accounts/Accounts';
-
+import Transactions from '@page/Transactions/Transactions';
 
 
 const queryClient = new QueryClient()
@@ -16,6 +16,7 @@ function App() {
           <Route path='/' element={<MainLayout/>}>
             <Route index element={<Dashboard/>}/>
             <Route path='Accounts' element={<Accounts/>}/>
+            <Route path='Transactions' element={<Transactions/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
