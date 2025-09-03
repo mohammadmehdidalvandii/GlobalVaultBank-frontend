@@ -9,6 +9,9 @@ import dashboardFA from './fa/dashboardFA.json'
 import accountEN from './en/AccountEN.json'
 import accountESP from './esp/AccountESP.json'
 import accountFA from './fa/AccountFA.json'
+import transactionEN from './en/transactionEN.json'
+import transactionESP from './esp/transactionESP.json'
+import transactionFA from './fa/transactionFA.json'
 
 
 const resources:Resource = {
@@ -16,7 +19,8 @@ const resources:Resource = {
         translation:{
           ...sidebarEN,
           ...dashboardEN,
-          ...accountEN
+          ...accountEN,
+          ...transactionEN
         }
     },
     esp:{
@@ -24,13 +28,15 @@ const resources:Resource = {
         ...sidebarESP,
         ...dashboardESP,
         ...accountESP,
+        ...transactionESP
         }
     },
     fa:{
         translation:{
             ...sidebarFA,
             ...dashboardFA,
-            ...accountFA
+            ...accountFA,
+            ...transactionFA
         }
     }
 }
