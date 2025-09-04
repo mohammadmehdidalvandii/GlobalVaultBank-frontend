@@ -1,5 +1,6 @@
 import TransferForm from '@components/template/transfer/TransferForm/TransferForm';
 import TransferHeader from '@components/template/transfer/TransferHeader/TransferHeader';
+import TransferSummary from '@components/template/transfer/TransferSummary/TransferSummary';
 import { Send } from 'lucide-react';
 import React from 'react';
 
@@ -13,7 +14,7 @@ const Transfer:React.FC =   ()=>{
             <TransferForm/>
         </div>
         <div>
-            container
+            <TransferSummary/>
         </div>
     </div>
     </>
