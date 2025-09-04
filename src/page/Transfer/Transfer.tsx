@@ -1,3 +1,4 @@
+import TransferFeatures from '@components/template/transfer/TransferFeatures/TransferFeatures';
 import TransferForm from '@components/template/transfer/TransferForm/TransferForm';
 import TransferHeader from '@components/template/transfer/TransferHeader/TransferHeader';
 import TransferSummary from '@components/template/transfer/TransferSummary/TransferSummary';
@@ -15,6 +16,7 @@ const Transfer:React.FC =   ()=>{
         </div>
         <div>
             <TransferSummary/>
+            <TransferFeatures/>
         </div>
     </div>
     </>
