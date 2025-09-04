@@ -1,8 +1,10 @@
 import { ArrowUpDown, ChevronDown, RefreshCcw, TrendingUp } from 'lucide-react';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
+import { useTranslation } from 'react-i18next';
 
 const ExchangeConversion:React.FC =  () => {
+    const {t} = useTranslation()
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
         <div className="lg:col-span-2">
@@ -10,12 +12,12 @@ const ExchangeConversion:React.FC =  () => {
                 <div className="cardHeader">
                     <h3 className="cardTitle flex items-center gap-2">
                         <ArrowUpDown className='h-5 w-5'/>
-                        Currency Exchange
+                        {t('Currency Exchange')}
                     </h3>
                 </div>
                 <div className="cardContent">
                     <div className="mt-4">
-                        <label htmlFor="">From</label>
+                        <label htmlFor="">{t('From')}</label>
                         <div className="flex gap-4">
                                     <Select.Root defaultValue=''>
                             <Select.Trigger className='select_trigger'>
@@ -56,7 +58,7 @@ const ExchangeConversion:React.FC =  () => {
                         <button className="btn primary rounded-full w-10 text-3xl"><RefreshCcw className='h-4 w-4'/></button>
                     </div>
                     <div className="mt-4">
-                        <label htmlFor="">TO</label>
+                        <label htmlFor="">{t('TO')}</label>
                         <div className="flex gap-4">
                                     <Select.Root defaultValue=''>
                             <Select.Trigger className='select_trigger'>
@@ -96,14 +98,14 @@ const ExchangeConversion:React.FC =  () => {
                     <div className="mt-4">
                         <div className="bg-muted/20 p-4 rounded-lg">
                             <div className="flex items-center justify-between">
-                                <span className="font-interRegular rtl:font-danaRegular">Exchange Rate</span>
+                                <span className="font-interRegular rtl:font-danaRegular">{t('Exchange Rate')}</span>
                                 <span className="">fromCurrency = toCurrency</span>
                             </div>
                         </div>
                     </div>
                     <button className="btn w-full mt-4 bg-green-900 hover:bg-success text-white">
-                        <ArrowUpDown className='h-4 w-4 mr-2'/>
-                        Exchange Now
+                        <ArrowUpDown className='h-4 w-4 mr-2 gap-2'/>
+                        {t('Exchange Now')}
                     </button>
                 </div>
             </div>
@@ -111,23 +113,23 @@ const ExchangeConversion:React.FC =  () => {
         <div className='space-y-4'>
              <div className="card p-2">
                 <div className="cardHeader">
-                    <h3 className="cardTitle">Transaction Summary</h3>
+                    <h3 className="cardTitle">{t('Transaction Summary')}</h3>
                 </div>
                 <div className="cardContent">
                     <div className="flex justify-between mt-4">
-                        <span className='text-muted font-interRegular rtl:font-danaRegular text-lg'>Amount</span>
+                        <span className='text-muted font-interRegular rtl:font-danaRegular text-lg'>{t('Amount')}</span>
                         <span className='text-primary dark:text-white'>0</span>
                     </div>
                     <div className="flex justify-between mt-4">
-                        <span className='text-muted font-interRegular rtl:font-danaRegular text-lg'>Exchange Rate</span>
+                        <span className='text-muted font-interRegular rtl:font-danaRegular text-lg'>{t('Exchange Rate')}</span>
                         <span className='text-primary dark:text-white'>0</span>
                     </div>
                     <div className="flex justify-between mt-4">
-                        <span className='text-muted font-interRegular rtl:font-danaRegular text-lg'>Exchange Fee</span>
+                        <span className='text-muted font-interRegular rtl:font-danaRegular text-lg'>{t('Exchange Fee')}</span>
                         <span className='text-primary dark:text-white'>0</span>
                     </div>
                     <div className="flex justify-between mt-4">
-                        <span className='text-pretty dark:text-white font-interBold rtl:font-danaBold font-black text-lg'>You'll Receive</span>
+                        <span className='text-pretty dark:text-white font-interBold rtl:font-danaBold font-black text-lg'>{t('You `ll Receive')}</span>
                         <span className='text-primary dark:text-white'>0</span>
                     </div>
                 </div>
@@ -136,7 +138,7 @@ const ExchangeConversion:React.FC =  () => {
                 <div className="cardHeader">
                     <h3 className="cardTitle flex items-center gap-2">
                         <TrendingUp className='h-5 w-5'/>
-                        Live Exchange Rates
+                        {t('Live Exchange Rates')}
                     </h3>
                 </div>
                 <div className="cardContent mt-4">
@@ -179,19 +181,19 @@ const ExchangeConversion:React.FC =  () => {
              </div>
              <div className="card p-2 mt-4">
                 <div className="cardHeader">
-                    <h3 className="cardTitle">Market Information</h3>
+                    <h3 className="cardTitle">{t('Market Information')}</h3>
                 </div>
                 <div className="cardContent mt-4">
                     <div className="flex justify-between mb-2">
-                        <span className="text-muted">Market Status</span>
+                        <span className="text-muted">{t('Market Status')}</span>
                         <span className="text-success">open</span>
                     </div>
                     <div className="flex justify-between mb-2">
-                        <span className="text-muted">Last Updated</span>
+                        <span className="text-muted">{t('Last Updated')}</span>
                         <span className="">2 min ago</span>
                     </div>
                     <div className="flex justify-between mb-2">
-                        <span className="text-muted">Exchange Fee</span>
+                        <span className="text-muted">{t('Exchange Fee')}</span>
                         <span className="">0.5%</span>
                     </div>
                 </div>

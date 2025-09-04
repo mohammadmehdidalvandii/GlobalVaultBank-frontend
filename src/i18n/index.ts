@@ -15,6 +15,9 @@ import transactionFA from './fa/transactionFA.json'
 import transferEN from './en/transferEN.json'
 import transferESP from './esp/transferESP.json'
 import transferFA from './fa/transferFA.json'
+import exchangeEN from './en/exchangeEN.json'
+import exchangeESP from './esp/exchangeESP.json'
+import exchangeFA from './fa/exchangeFA.json'
 
 
 const resources:Resource = {
@@ -24,7 +27,8 @@ const resources:Resource = {
           ...dashboardEN,
           ...accountEN,
           ...transactionEN,
-          ...transferEN
+          ...transferEN,
+          ...exchangeEN,
         }
     },
     esp:{
@@ -33,7 +37,8 @@ const resources:Resource = {
         ...dashboardESP,
         ...accountESP,
         ...transactionESP,
-        ...transferESP
+        ...transferESP,
+        ...exchangeESP
         }
     },
     fa:{
@@ -42,7 +47,8 @@ const resources:Resource = {
             ...dashboardFA,
             ...accountFA,
             ...transactionFA,
-            ...transferFA
+            ...transferFA,
+            ...exchangeFA
         }
     }
 }
