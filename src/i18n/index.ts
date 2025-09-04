@@ -12,6 +12,9 @@ import accountFA from './fa/AccountFA.json'
 import transactionEN from './en/transactionEN.json'
 import transactionESP from './esp/transactionESP.json'
 import transactionFA from './fa/transactionFA.json'
+import transferEN from './en/transferEN.json'
+import transferESP from './esp/transferESP.json'
+import transferFA from './fa/transferFA.json'
 
 
 const resources:Resource = {
@@ -20,7 +23,8 @@ const resources:Resource = {
           ...sidebarEN,
           ...dashboardEN,
           ...accountEN,
-          ...transactionEN
+          ...transactionEN,
+          ...transferEN
         }
     },
     esp:{
@@ -28,7 +32,8 @@ const resources:Resource = {
         ...sidebarESP,
         ...dashboardESP,
         ...accountESP,
-        ...transactionESP
+        ...transactionESP,
+        ...transferESP
         }
     },
     fa:{
@@ -36,7 +41,8 @@ const resources:Resource = {
             ...sidebarFA,
             ...dashboardFA,
             ...accountFA,
-            ...transactionFA
+            ...transactionFA,
+            ...transferFA
         }
     }
 }
