@@ -4,6 +4,7 @@ import MainLayout from '@layouts/MainLayout/MainLayout';
 import Dashboard from '@page/Dashboard/Dashboard';
 import Accounts from '@page/Accounts/Accounts';
 import Transactions from '@page/Transactions/Transactions';
+import Transfer from '@page/Transfer/Transfer';
 
 
 const queryClient = new QueryClient()
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<Dashboard/>}/>
             <Route path='Accounts' element={<Accounts/>}/>
             <Route path='Transactions' element={<Transactions/>}/>
+            <Route path='Transfer' element={<Transfer/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
