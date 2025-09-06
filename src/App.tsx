@@ -6,6 +6,7 @@ import Accounts from '@page/Accounts/Accounts';
 import Transactions from '@page/Transactions/Transactions';
 import Transfer from '@page/Transfer/Transfer';
 import Exchange from '@page/Exchange/Exchange';
+import Settings from '@page/Settings/Settings';
 
 
 const queryClient = new QueryClient()
@@ -21,6 +22,7 @@ function App() {
             <Route path='Transactions' element={<Transactions/>}/>
             <Route path='Transfer' element={<Transfer/>}/>
             <Route path='Exchange' element={<Exchange/>}/>
+            <Route path='Settings' element={<Settings/>} />
           </Route>
         </Routes>
       </BrowserRouter>
