@@ -125,8 +125,8 @@ const TransferForm:React.FC = ()=>{
                 <textarea name="" id=""  className='input_style h-28' placeholder={t('Add a note for this transfer...')}/>
             </div>
             <button className="btn secondary w-full mt-4">
-                <Send className='h-4 w-4 mr-2'/>
-                Transfer Now
+                <Send className='h-4 w-4 mr-2 rtl:ml-2'/>
+                {t('Transfer Now')}
             </button>
         </div>
     </div>

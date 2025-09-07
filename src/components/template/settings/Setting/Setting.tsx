@@ -87,7 +87,7 @@ const Setting: React.FC = () => {
               disabled
             />
           </div>
-          <button className="btn secondary w-full h-12">Update Profile</button>
+          <button className="btn secondary w-full h-12">{t('Update Profile')}</button>
         </div>
       </div>
       {/* System access Security */}
@@ -102,10 +102,10 @@ const Setting: React.FC = () => {
           <div className="flex items-center justify-between mt-6">
             <div>
               <label htmlFor="#" className="label_style">
-                {t('Access Level')}
+                {t('Access level')}
               </label>
               <p className="text-muted">
-                {t("Level 3 - Customer Services Representative")}
+                {t("Level 3 - Customer Service Representative")}
               </p>
             </div>
             <button className="btn primary w-[170px]">{t('View Permissions')}</button>
@@ -124,9 +124,9 @@ const Setting: React.FC = () => {
           <div className="flex items-center justify-between mt-6">
             <div>
               <label htmlFor="#" className="label_style">
-                Session Timeout
+                {t('Session Timeout')}
               </label>
-              <p className="text-muted">Auto-logout after inactivity</p>
+              <p className="text-muted">{t('Auto-logout after inactivity')}</p>
             </div>
             <Select.Root defaultValue="">
               <Select.Trigger className="select_trigger mt-2 w-[200px]">
@@ -154,9 +154,9 @@ const Setting: React.FC = () => {
           </div>
             <Separator.Root className="separator h-[1px] w-full mt-2" />
           <div className="flex  justify-between flex-col gap-2 mt-6">
-            <label htmlFor="" className="label_style">{t('change password')}</label>
-            <input type="password" className="input_style"  placeholder={t('Current Password')}/>
-            <input type="password" className="input_style"  placeholder={t('New Password')}/>
+            <label htmlFor="" className="label_style">{t('Change password')}</label>
+            <input type="password" className="input_style"  placeholder={t('Current password')}/>
+            <input type="password" className="input_style"  placeholder={t('New password')}/>
           </div>
             <button className="btn secondary w-full mt-4 h-12">{t('Update Security')}</button>
         </div>
@@ -172,7 +172,7 @@ const Setting: React.FC = () => {
         <div className="cardContent mt-5">
             <div className="flex items-center justify-between mt-3">
                 <div>
-                <label htmlFor="" className="label_style">{t("Fraud Alert")}</label>
+                <label htmlFor="" className="label_style">{t("Fraud Alerts")}</label>
                 <p className="text-muted">{t('High-priority security notifications')}</p>
                 </div>
                 <Switch.Root className="switchRoot">
