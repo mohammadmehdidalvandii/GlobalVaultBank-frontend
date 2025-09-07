@@ -110,7 +110,7 @@ const NewAccountModel:React.FC = ()=>{
                             </div>
                               <div className="space-y-2">
                                 <label htmlFor="" className='text-primary-100 dark:text-white'>{t('Note')}</label>
-                                <textarea rows={3} className='input_style mt-2 h-20 w-[565px]'  placeholder='Additional notes about the account'/>
+                                <textarea rows={3} className='input_style mt-2 h-20 w-[565px]'  placeholder={t('Additional notes about the account')}/>
                             </div>
                         </div>
                         <div className="flex gap-3 pt-4">
