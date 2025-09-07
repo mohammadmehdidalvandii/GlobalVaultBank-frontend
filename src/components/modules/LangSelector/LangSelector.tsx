@@ -21,23 +21,23 @@ const LangSelector: React.FC = () => {
 
   return (
     <Select.Root defaultValue="en" onValueChange={handlerLanguageChange}>
-      <Select.Trigger className="inline-flex items-center justify-between text-primary dark:text-white px-3 py-2 border border-border dark:border-muted rounded-md w-16 bg-white dark:bg-primary-100">
+      <Select.Trigger  className="select_trigger ">
         <Select.Value />
-        <Select.Icon>
+        <Select.Icon asChild>
           <ChevronDown className="w-4 h-4" />
         </Select.Icon>
       </Select.Trigger>
 
       <Select.Portal>
-        <Select.Content className="bg-white dark:bg-primary-100 border border-border dark:border-muted rounded-md shadow-md">
-          <Select.ScrollUpButton className="flex items-center justify-center h-6">
+        <Select.Content className="select_content ">
+          {/* <Select.ScrollUpButton className="select_scrollUpBtn">
             <ChevronUp className="w-4 h-4" />
-          </Select.ScrollUpButton>
+          </Select.ScrollUpButton> */}
 
-          <Select.Viewport className="p-1">
+          <Select.Viewport className="select_viewPort">
             <Select.Item
               value="en"
-              className="flex items-center text-primary dark:text-white px-2 py-1 border-none rounded-sm outline-none cursor-pointer hover:bg-gray-sidebar hover:text-white dark:hover:bg-muted"
+              className="select_item"
             >
               <Select.ItemText>EN</Select.ItemText>
               <Select.ItemIndicator className="ml-auto">
@@ -47,7 +47,7 @@ const LangSelector: React.FC = () => {
 
             <Select.Item
               value="esp"
-              className="flex items-center text-primary dark:text-white px-2 py-1 border-none rounded-sm outline-none cursor-pointer hover:bg-gray-sidebar hover:text-white dark:hover:bg-muted"
+              className="select_item"
             >
               <Select.ItemText>ESP</Select.ItemText>
               <Select.ItemIndicator className="ml-auto">
@@ -57,7 +57,7 @@ const LangSelector: React.FC = () => {
 
             <Select.Item
               value="fa"
-              className="flex items-center text-primary dark:text-white px-2 py-1 border-none rounded-sm outline-none cursor-pointer hover:bg-gray-sidebar hover:text-white dark:hover:bg-muted"
+              className="select_item"
             >
               <Select.ItemText>فا</Select.ItemText>
               <Select.ItemIndicator className="ml-auto">
@@ -66,9 +66,9 @@ const LangSelector: React.FC = () => {
             </Select.Item>
           </Select.Viewport>
 
-          <Select.ScrollDownButton className="flex items-center justify-center h-6">
+          {/* <Select.ScrollDownButton className="select_scrollDownBtn">
             <ChevronDown className="w-4 h-4" />
-          </Select.ScrollDownButton>
+          </Select.ScrollDownButton> */}
         </Select.Content>
       </Select.Portal>
     </Select.Root>

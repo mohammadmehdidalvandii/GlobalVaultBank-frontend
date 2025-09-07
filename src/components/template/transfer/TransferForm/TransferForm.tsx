@@ -16,7 +16,7 @@ const TransferForm:React.FC = ()=>{
         <div className="cardContent mt-4">
                         <div className="space-y-2 mt-4">
                 <label htmlFor="text-primary-100 dark:text-white text-lg">{t('Transfer Type')}</label>
-                <Select.Root defaultValue='transfer type'>
+                <Select.Root >
                     <Select.Trigger className='select_trigger mt-2'>
                         <Select.Value placeholder='Select transfer type'/>
                         <Select.Icon>
@@ -42,7 +42,7 @@ const TransferForm:React.FC = ()=>{
             </div>
             <div className="space-y-2 mt-4">
                 <label htmlFor="text-primary-100 dark:text-white text-lg">{t('Form Account')}</label>
-                <Select.Root defaultValue='from-account'>
+                <Select.Root >
                     <Select.Trigger className='select_trigger mt-2'>
                         <Select.Value placeholder='Select source account'/>
                         <Select.Icon>
@@ -68,7 +68,7 @@ const TransferForm:React.FC = ()=>{
             </div>
             <div className="space-y-2 mt-4">
                 <label htmlFor="text-primary-100 dark:text-white text-lg">{t('To Account')} </label>
-                <Select.Root defaultValue='transfer type'>
+                <Select.Root >
                     <Select.Trigger className='select_trigger mt-2'>
                         <Select.Value placeholder='Select transfer type'/>
                         <Select.Icon>

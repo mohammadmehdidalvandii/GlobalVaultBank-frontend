@@ -39,9 +39,9 @@ const NewAccountModel:React.FC = ()=>{
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="" className="text-primary-100 dark:text-white">{t("Account Type")} *</label>
-                                <Select.Root defaultValue=''>
+                                <Select.Root defaultValue="">
                                     <Select.Trigger className='select_trigger mt-2'>
-                                        <Select.Value placeholder={t('Select Account Type')}/>
+                                        <Select.Value  placeholder={t('Select Account Type')}/>
                                             <Select.Icon>
                                             <ChevronDown/>
                                             </Select.Icon>

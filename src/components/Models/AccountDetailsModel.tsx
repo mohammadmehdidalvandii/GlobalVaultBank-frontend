@@ -152,7 +152,7 @@ const AccountDetailsModel: React.FC = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div className="space-y-2">
                                 <label htmlFor="" className="text-primary-100 dark:text-white text-lg">{t('Account Status')} *</label>
-                                <Select.Root defaultValue='account Status' disabled={!isEditing}>
+                                <Select.Root  disabled={!isEditing}>
                                     <Select.Trigger className='select_trigger mt-2'>
                                         <Select.Value placeholder={t('Account Status')}/>
                                             <Select.Icon>

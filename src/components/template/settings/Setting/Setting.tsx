@@ -43,7 +43,7 @@ const Setting: React.FC = () => {
             <label htmlFor="" className="label_style">
               {t('Department')}
             </label>
-            <Select.Root defaultValue="account Status" disabled>
+            <Select.Root defaultValue="" disabled>
               <Select.Trigger className="select_trigger mt-2">
                 <Select.Value placeholder="customer-service" />
                 <Select.Icon>
@@ -128,8 +128,8 @@ const Setting: React.FC = () => {
               </label>
               <p className="text-muted">Auto-logout after inactivity</p>
             </div>
-            <Select.Root defaultValue="account Status">
-              <Select.Trigger className="select_trigger mt-2 w-[120px]">
+            <Select.Root defaultValue="">
+              <Select.Trigger className="select_trigger mt-2 w-[200px]">
                 <Select.Value placeholder="customer-service" />
                 <Select.Icon>
                   <ChevronDown />
@@ -210,7 +210,7 @@ const Setting: React.FC = () => {
                 <div>
                 <label htmlFor="" className="label_style">{t('Alert Threshold')}</label>
                 </div>
-                            <Select.Root defaultValue="account Status" >
+                            <Select.Root defaultValue="" >
               <Select.Trigger className="select_trigger mt-2">
                 <Select.Value placeholder="customer-service" />
                 <Select.Icon>
@@ -250,7 +250,7 @@ const Setting: React.FC = () => {
         <div className="cardContent">
             <div className="mt-5"> 
                 <label htmlFor="#" className="label_style">{t('Current Shift')}</label>
-                <Select.Root defaultValue="morning" >
+                <Select.Root defaultValue="" >
               <Select.Trigger className="select_trigger mt-2">
                 <Select.Value placeholder="customer-service" />
                 <Select.Icon>
@@ -288,7 +288,7 @@ const Setting: React.FC = () => {
             </div>
                         <div className="mt-5"> 
                 <label htmlFor="#" className="label_style">{t('Time Zone')}</label>
-                <Select.Root defaultValue="utc-5" >
+                <Select.Root defaultValue="" >
               <Select.Trigger className="select_trigger mt-2">
                 <Select.Value placeholder="utc-5" />
                 <Select.Icon>
