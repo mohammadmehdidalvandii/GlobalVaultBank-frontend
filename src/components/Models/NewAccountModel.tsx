@@ -26,19 +26,19 @@ const NewAccountModel:React.FC = ()=>{
                     <form action="#" className="space-y-4 mt-4">
                         <div className="grid grid-cols-2 sm:grid-col-2 gap-4">
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white'>{t('Customer Name')}*</label>
+                                <label htmlFor="" className='label_style'>{t('Customer Name')}*</label>
                                 <input type="text" className='input_style mt-2' />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white'>{t('Email Address')}</label>
+                                <label htmlFor="" className='label_style'>{t('Email Address')}</label>
                                 <input type="text" className='input_style mt-2' />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white'>{t("Phone Number")}</label>
+                                <label htmlFor="" className='label_style'>{t("Phone Number")}</label>
                                 <input type="text" className='input_style mt-2' />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className="text-primary-100 dark:text-white">{t("Account Type")} *</label>
+                                <label htmlFor="" className="label_style">{t("Account Type")} *</label>
                                 <Select.Root defaultValue="">
                                     <Select.Trigger className='select_trigger mt-2'>
                                         <Select.Value  placeholder={t('Select Account Type')}/>
@@ -70,7 +70,7 @@ const NewAccountModel:React.FC = ()=>{
                                 </Select.Root>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className="text-primary-100 dark:text-white">{t("Base Currency")} *</label>
+                                <label htmlFor="" className="label_style">{t("Base Currency")} *</label>
                                 <Select.Root defaultValue=''>
                                     <Select.Trigger className='select_trigger mt-2'>
                                         <Select.Value placeholder={t('Select Currency')}/>
@@ -105,11 +105,11 @@ const NewAccountModel:React.FC = ()=>{
                                 </Select.Root>
                             </div>
                               <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white'>{t("Initial Deposit")}</label>
+                                <label htmlFor="" className='label_style'>{t("Initial Deposit")}</label>
                                 <input type="number" className='input_style mt-2' />
                             </div>
                               <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white'>{t('Note')}</label>
+                                <label htmlFor="" className='label_style'>{t('Note')}</label>
                                 <textarea rows={3} className='input_style mt-2 h-20 w-[565px]'  placeholder={t('Additional notes about the account')}/>
                             </div>
                         </div>

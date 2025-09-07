@@ -151,7 +151,7 @@ const AccountDetailsModel: React.FC = () => {
                       <div className="cardHeader">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div className="space-y-2">
-                                <label htmlFor="" className="text-primary-100 dark:text-white text-lg">{t('Account Status')} *</label>
+                                <label htmlFor="" className="label_style text-lg">{t('Account Status')} *</label>
                                 <Select.Root  disabled={!isEditing}>
                                     <Select.Trigger className='select_trigger mt-2'>
                                         <Select.Value placeholder={t('Account Status')}/>
@@ -180,15 +180,15 @@ const AccountDetailsModel: React.FC = () => {
                                 </Select.Root>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>{t('Interest Rate')} (%)</label>
+                                <label htmlFor="" className='label_style text-lg'>{t('Interest Rate')} (%)</label>
                                 <input type="number" className='input_style mt-2' step='0.1'/>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>{t('Daily Transaction Limit')}</label>
+                                <label htmlFor="" className='label_style text-lg'>{t('Daily Transaction Limit')}</label>
                                 <input type="number" className='input_style mt-2' step='0.1'/>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="" className='text-primary-100 dark:text-white text-lg'>{t('Monthly Transaction Limit')}</label>
+                                <label htmlFor="" className='label_style text-lg'>{t('Monthly Transaction Limit')}</label>
                                 <input type="number" className='input_style mt-2' step='0.1'/>
                             </div>
                         </div>

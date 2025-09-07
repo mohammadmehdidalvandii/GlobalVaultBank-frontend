@@ -180,14 +180,16 @@
     }
     .tabContent{
         @apply  mt-2  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
-
     }
+     [dir="rtl"] .tabContent{
+        @apply text-right
+     }
 
    .input_style{
         @apply flex h-10 w-full rounded-md border border-border bg-white dark:bg-muted/10 px-3 py-2 text-base ring-2 file:border-0  dark:placeholder:text-white placeholder:text-muted focus:border-secondary  disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
     }
     .label_style{
-        @apply font-interRegular rtl:font-danaRegular leading-none peer-disabled:cursor-not-allowed text-lg block mb-2
+        @apply font-interRegular rtl:font-danaRegular leading-none peer-disabled:cursor-not-allowed text-lg block mb-2 rtl:text-right
     }
     .badge{
         @apply inline-flex items-center rounded-full border px-2 py-2 text-xs font-interBold

@@ -8,7 +8,7 @@ import { Bell, ChevronDown, Lock, Settings, Shield, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const AccountSettingsModel: React.FC = () => {
-const {t} = useTranslation();
+const {t ,i18n} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [checked , setChecked] = useState<boolean>(false);
   const [notificationsEnabled , setNotificationsEnabled ] = useState<boolean>(true)
@@ -49,7 +49,7 @@ const {t} = useTranslation();
                     <div className="cardContent space-y-4">
                         <div className="flex items-center justify-between">
                             <div>
-                                <label htmlFor="">{t('Account Status')}</label>
+                                <label htmlFor="" className="label_style">{t('Account Status')}</label>
                                 <p className="text-muted">{t('Account Number')}: **** **** *** 4353</p>
                             </div>
                                       <Select.Root defaultValue={t('Active')}>
@@ -82,7 +82,7 @@ const {t} = useTranslation();
                         <Separator.Root className="separator h-[1px] w-full" />
                         <div className="flex justify-between items-center">
                            <div>
-                             <label htmlFor="">{t('Interest Rate')} (%)</label>
+                             <label htmlFor="" className="label_style">{t('Interest Rate')} (%)</label>
                             <input type="number" className="input_style mt-1 w-[320px]" step="0.1" />
                            </div>
                             <div>
@@ -117,7 +117,7 @@ const {t} = useTranslation();
                         </div>
                         <div className="flex items-center justify-between">
                             <div>
-                                <label htmlFor="">{t('Overdraft Protection')}</label>
+                                <label htmlFor="" className="label_style">{t('Overdraft Protection')}</label>
                                 <p className="text-muted">{t('Allow account to go negative')}</p>
                             </div>
                             <Switch.Root checked={checked} onCheckedChange={setChecked} className="switchRoot">
@@ -136,22 +136,22 @@ const {t} = useTranslation();
                     <div className="cardContent">
                         <div className="flex justify-between items-center mb-3 mt-3">
                             <div>
-                             <label htmlFor="">{t('Daily Limit')}</label>
+                             <label htmlFor="" className="label_style">{t('Daily Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]" value='5000'/>
                            </div>
                             <div>
-                             <label htmlFor="">{t('Monthly Limit')}</label>
+                             <label htmlFor="" className="label_style">{t('Monthly Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]" value='5000'/>
                            </div>
                         </div>
                         <Separator.Root className="separator h-[1px] w-full" />
-                        <div className="flex justify-between items-center">
+                        <div className="flex justify-between items-center mt-4">
                             <div>
-                             <label htmlFor="">{t('ATM Limit')}</label>
+                             <label htmlFor="" className="label_style">{t('ATM Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]" defaultValue="1000"/>
                            </div>
                             <div>
-                             <label htmlFor="">{t('per Transaction Limit')}</label>
+                             <label htmlFor="" className="label_style">{t('per Transaction Limit')}</label>
                             <input type="number" className="input_style mt-1 w-[320px]"  defaultValue="500"/>
                            </div>
                         </div>
@@ -165,31 +165,31 @@ const {t} = useTranslation();
                         <p className="cardDescription font-interBold rtl:font-danaBold mt-1 text-lg">{t('Manage account security and access controls')}</p>
                     </div>
                     <div className="cardContent">
-                        <div className="flex items-center justify-between p-4 border rounded-lg mt-4">
-                            <div className="flex items-center gap-3">
+                        <div className={`flex items-center justify-between p-4 border rounded-lg mt-4 ${i18n.language === 'fa' ? "flex-row-reverse":""}`}>
+                            <div className={`flex items-center gap-3  ${i18n.language === 'fa' ?'flex-row-reverse' :""}`}>
                                 <Lock className="h-5 w-5 text-muted"/>
                                 <div>
-                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Freeze Account')}</label>
+                                    <label htmlFor="" className="label_style">{t('Freeze Account')}</label>
                                     <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Temporarily disable all transactions')} </p>
                                 </div>
                             </div>
                             <button className="btn danger w-[150px]">{t('Freeze Account')}</button>
                         </div>
-                        <div className="flex items-center justify-between p-4 border rounded-lg mt-4">
-                            <div className="flex items-center gap-3">
+                        <div className={`flex items-center justify-between p-4 border rounded-lg mt-4 ${i18n.language === 'fa' ? "flex-row-reverse":""}`}>
+                            <div className={`flex items-center gap-3  ${i18n.language === 'fa' ?'flex-row-reverse' :""}`}>
                                 <Lock className="h-5 w-5 text-muted"/>
                                 <div>
-                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Block Debit Cards')}</label>
+                                    <label htmlFor="" className="label_style">{t('Block Debit Cards')}</label>
                                     <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Prevent card transactions')}</p>
                                 </div>
                             </div>
                             <button className="btn primary">{t('Manage Cards')}</button>
                         </div>
-                        <div className="flex items-center justify-between p-4 border rounded-lg mt-4">
-                            <div className="flex items-center gap-3">
+                        <div className={`flex items-center justify-between p-4 border rounded-lg mt-4 ${i18n.language === 'fa' ? "flex-row-reverse":""}`}>
+                            <div className={`flex items-center gap-3  ${i18n.language === 'fa' ?'flex-row-reverse' :""}`}>
                                 <Lock className="h-5 w-5 text-muted"/>
                                 <div>
-                                    <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Reset PIN')}</label>
+                                    <label htmlFor="" className="label_style">{t('Reset PIN')}</label>
                                     <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Generate new PIN for customer')}</p>
                                 </div>
                             </div>
@@ -207,7 +207,7 @@ const {t} = useTranslation();
                     <div className="cardContent">
                         <div className="flex items-center justify-between my-2">
                             <div>
-                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Transaction Alerts')}</label>
+                                <label htmlFor="" className="label_style">{t('Transaction Alerts')}</label>
                                 <p className="text-muted font-interRegular rtl:font-danaRegular">{t('Notify customer or transaction')}</p>
                             </div>
                                 <Switch.Root checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} className="switchRoot">
@@ -216,14 +216,14 @@ const {t} = useTranslation();
                         </div>
                         <Separator.Root className="separator h-[1px] w-full" />
                         <div className="space-y-3 my-2">
-                            <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Alert Thresholds')}</label>
+                            <label htmlFor="" className="label_style ">{t('Alert Thresholds')}</label>
                             <div className="flex items-center justify-between">
                                 <div>
-                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Low Balance Alert')}</label>
+                                <label htmlFor="" className="label_style  ">{t('Low Balance Alert')}</label>
                                 <input type="number" className="input_style w-[340px] mt-2" defaultValue='100'/>
                                 </div>
                                 <div>
-                                <label htmlFor="" className="font-interRegular rtl:font-danaRegular">{t('Large Transaction  Alert')}</label>
+                                <label htmlFor="" className="label_style  ">{t('Large Transaction  Alert')}</label>
                                 <input type="number" className="input_style w-[340px] mt-2" defaultValue='1000'/>
                                 </div>
                             </div>

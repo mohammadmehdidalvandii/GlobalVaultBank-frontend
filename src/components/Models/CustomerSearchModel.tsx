@@ -64,7 +64,7 @@ const CustomerSearchModel: React.FC = () => {
             <div className="space-y-2">
               <label
                 htmlFor="search"
-                className="text-primary-100 dark:text-white"
+                className="label_style"
               >
                 {t('Search bg name , email , or phone')}
               </label>
