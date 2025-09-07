@@ -222,6 +222,9 @@
     .tableHead{
         @apply h-12 px-4 text-left align-bottom font-interRegular rtl:font-danaRegular text-muted    
     }
+    [dir="rtl"] .tableHead{
+        @apply text-right
+    }
     .tableCall{
         @apply p-4 align-middle  text-primary dark:text-white
     }
