@@ -1,8 +1,10 @@
 import { Building2, Eye, EyeOff, Lock, Pencil } from "lucide-react"
 import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 
 
 const Signin:React.FC = ()=>{
+    const {t} = useTranslation()
     const [showPassword , setShowPassword] = useState<boolean>(false)
   return (
     <div className="min-h-screen flex items-center justify-center gradient_hero p-4">
@@ -12,20 +14,20 @@ const Signin:React.FC = ()=>{
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-bg rounded-full mb-4 shadow-shadow-banking">
                     <Building2 className="w-8 h-8 text-secondary"/>
                 </div>
-                <h1 className="text-2xl font-interBold rtl:font-danaBold text-white">Management bank</h1>
-                <p className="text-white">Banking management system</p>
+                <h1 className="text-2xl font-interBold rtl:font-danaBold text-white">{t('Management bank')}</h1>
+                <p className="text-white">{t('Banking management system')}</p>
             </div>
             {/* Login card */}
             <div className="card p-x-4 py-8">
                 <div className="cardHeader text-center">
-                    <h3 className="cardTitle">Login to the system</h3>
-                    <p className="cardDescription">Log in to access your account.</p>
+                    <h3 className="cardTitle">{t('Login to the system')}</h3>
+                    <p className="cardDescription">{t('Log in to access your account.')}</p>
                 </div>
                 <div className="cardContent mt-4">
                     <form action="#" className="space-y-6">
                     {/* Email Field */}
                     <div className="space-y-2">
-                        <label htmlFor="" className="label_style">Employee Code</label>
+                        <label htmlFor="" className="label_style">{t('Employee Code')}</label>
                         <div className="relative mt-3">
                             <Pencil className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted w-4 h-4"/>
                             <input id="email"  type="text" placeholder="12345678" className="input_style pl-10"  required/>
@@ -33,7 +35,7 @@ const Signin:React.FC = ()=>{
                     </div>
                     {/* Password Field */}
                     <div className="space-y-2">
-                        <label htmlFor="" className="label_style">Employee Code</label>
+                        <label htmlFor="" className="label_style">{t('Password')}</label>
                         <div className="relative mt-3">
                             <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted w-4 h-4"/>
                             <input id="email"  type={showPassword ? "text" :" password"} placeholder="12345678" className="input_style pl-10 pr-10"  required/>
@@ -45,7 +47,7 @@ const Signin:React.FC = ()=>{
                         </div>
                     </div>
                     {/* Login Button */}
-                    <button className="btn  secondary w-full h-12">Login to the system</button>
+                    <button className="btn  secondary w-full h-12">{t('Login to the system')}</button>
                     </form>
                 </div>
             </div>
