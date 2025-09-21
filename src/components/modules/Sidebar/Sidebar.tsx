@@ -7,6 +7,7 @@ import {
   CreditCard,
   TrendingUp,
   Settings,
+  LogOut,
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -56,7 +57,10 @@ const Sidebar: React.FC = () => {
           })}
         </ul>
       </nav>
-
+      <button className="btn danger w-full bg-red mb-2">
+        <LogOut className="h-5 w-5"/>
+        Exit
+      </button>
       <div className="p-4 border-t border-border dark:border-muted">
         <div className="text-xs text-muted text-center">
              © 2025 {t('Global Vault Bank')}
