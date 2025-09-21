@@ -8,7 +8,7 @@ const LangSelector: React.FC = () => {
 
   useEffect(()=>{
     document.documentElement.classList.toggle('rtl', i18n.language === 'fa');
-  },[]);
+  },[i18n.language]);
 
   const handlerLanguageChange = (value:string)=>{
     const newLanguage = value;
@@ -21,7 +21,7 @@ const LangSelector: React.FC = () => {
 
   return (
     <Select.Root defaultValue="en" onValueChange={handlerLanguageChange}>
-      <Select.Trigger  className="select_trigger ">
+      <Select.Trigger  className="select_trigger dark:text-white ">
         <Select.Value />
         <Select.Icon asChild>
           <ChevronDown className="w-4 h-4" />
@@ -37,7 +37,7 @@ const LangSelector: React.FC = () => {
           <Select.Viewport className="select_viewPort">
             <Select.Item
               value="en"
-              className="select_item"
+              className="select_item text-black dark:text-white"
             >
               <Select.ItemText>EN</Select.ItemText>
               <Select.ItemIndicator className="ml-auto">
@@ -47,7 +47,7 @@ const LangSelector: React.FC = () => {
 
             <Select.Item
               value="esp"
-              className="select_item"
+              className="select_item text-black dark:text-white"
             >
               <Select.ItemText>ESP</Select.ItemText>
               <Select.ItemIndicator className="ml-auto">
@@ -57,7 +57,7 @@ const LangSelector: React.FC = () => {
 
             <Select.Item
               value="fa"
-              className="select_item"
+              className="select_item text-black dark:text-white"
             >
               <Select.ItemText>فا</Select.ItemText>
               <Select.ItemIndicator className="ml-auto">
