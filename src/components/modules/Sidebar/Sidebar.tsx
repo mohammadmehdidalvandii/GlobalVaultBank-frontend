@@ -57,9 +57,9 @@ const Sidebar: React.FC = () => {
           })}
         </ul>
       </nav>
-      <button className="btn danger w-full bg-red mb-2">
+      <button className="btn danger w-full bg-red mb-2  items-center-safe font-interBold rtl:font-danaBold">
         <LogOut className="h-5 w-5"/>
-        Exit
+        {t('Exit')}
       </button>
       <div className="p-4 border-t border-border dark:border-muted">
         <div className="text-xs text-muted text-center">
