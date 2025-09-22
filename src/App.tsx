@@ -8,6 +8,7 @@ import Transfer from '@page/Transfer/Transfer';
 import Exchange from '@page/Exchange/Exchange';
 import Settings from '@page/Settings/Settings';
 import Login from '@page/Login/Login';
+import {Toaster} from 'sonner'
 
 
 const queryClient = new QueryClient()
@@ -15,6 +16,7 @@ const queryClient = new QueryClient()
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster position='top-center' richColors/>
       <BrowserRouter>
         <Routes>
           <Route path='/Login' element={<Login/>}/>
