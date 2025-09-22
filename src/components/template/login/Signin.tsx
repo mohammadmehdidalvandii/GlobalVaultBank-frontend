@@ -80,7 +80,7 @@ const Signin:React.FC = ()=>{
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}
                             />
-                            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted hover:text-primary"
+                            <button type="button" className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted hover:text-primary"
                             onClick={()=>setShowPassword(!showPassword)}
                             >
                             {showPassword ? <EyeOff className="w-4 h-4"/> : <Eye  className="w-4 h-4"/>}
