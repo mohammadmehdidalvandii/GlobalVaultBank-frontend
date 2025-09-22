@@ -23,7 +23,9 @@ export const login = async ({employee_code , password}:loginProps)=>{
 
 export const getToken = ()=>{
     const token = localStorage.getItem('token');
-    if(!token){
+    const expiry = localStorage.getItem('accessTokenExpiry')
+
+    if(!token || Date.now() >= parseInt(expiry || "0")){
         return null
     }
     return token
