@@ -20,3 +20,11 @@ export const login = async ({employee_code , password}:loginProps)=>{
     const data = await response.json();
     return data
 }
+
+export const getToken = ()=>{
+    const token = localStorage.getItem('token');
+    if(!token){
+        return null
+    }
+    return token
+}

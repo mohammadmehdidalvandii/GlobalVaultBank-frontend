@@ -1,10 +1,16 @@
 import Header from '@components/modules/Header/Header';
 import Sidebar from '@components/modules/Sidebar/Sidebar';
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
+import { getToken } from '@services/authServices';
 
 const MainLayout:React.FC = ()=>{
+    const token = getToken();
     const [sideBarOpen , setSideBarOpen] = useState<boolean>(true);
+
+    if( token === null){
+      return   <Navigate to='/Login' replace/>
+    }
   return (
     <div className='min-h-screen bg-bg dark:bg-primary-100'>
         <div className="flex">
