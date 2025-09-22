@@ -16,12 +16,13 @@ const Signin:React.FC = ()=>{
     const [showPassword , setShowPassword] = useState<boolean>(false);
     const [employeeCode , setEmployeeCode] =useState<string>('');
     const [password , setPassword] = useState<string>('')
-
+    const expiry = Date.now() + 15 * 60 * 1000; 
     const mutation = useMutation({
         mutationFn:login,
         onSuccess:(data)=>{
             showSuccess("Login Successfully")
             localStorage.setItem('token' , data.data.accessToken);
+            localStorage.setItem('accessTokenExpiry' ,expiry.toString())
             navigate('/' )
         },
         onError:(error)=>{
