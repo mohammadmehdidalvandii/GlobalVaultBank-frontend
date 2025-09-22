@@ -38,5 +38,6 @@ export const logout = async ()=>{
     })
     if(res.ok){
         localStorage.removeItem("token")
+        localStorage.removeItem('accessTokenExpiry')
     }
 }
