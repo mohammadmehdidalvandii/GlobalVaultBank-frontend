@@ -6,7 +6,6 @@ interface loginProps{
 }
 
 export const login = async ({employee_code , password}:loginProps)=>{
-    console.log("e , p" , employee_code , password)
     const response = await fetch(`${baseUrl}auth/login`,{
         method:"POST",
         headers:{"Content-Type":"application/json"},
