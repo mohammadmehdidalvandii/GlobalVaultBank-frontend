@@ -42,3 +42,33 @@ export const logout = async ()=>{
         localStorage.removeItem('accessTokenExpiry')
     }
 }
+
+// get new AccessToken 
+export const refreshToken = async ()=>{
+    const response = await fetch(`${baseUrl}auth/refresh-token`,{
+        method:"POST",
+        credentials:"include",
+    })
+    if(!response.ok){
+        // RefreshToken no ex-time
+        localStorage.removeItem('token')
+        localStorage.removeItem('accessTokenExpiry')
+        return null
+    }
+
+    const data = await response.json();
+
+    localStorage.setItem('token', data.data.accessToken);
+    localStorage.setItem('accessTokenExpiry', (Date.now() + 15 * 60 * 1000).toString());
+
+    return data.data.accessToken;
+};
+
+// check token and refresh
+export const getValidToken = async ()=>{
+    let token = getToken();
+    if(token) return token;
+
+    token = await refreshToken();
+    return token
+}
