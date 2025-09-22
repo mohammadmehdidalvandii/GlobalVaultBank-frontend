@@ -5,10 +5,13 @@ import { useTranslation } from "react-i18next"
 import { signinSchema } from "@validation/auth.validation";
 import {login} from '@services/authServices';
 import { useMutation } from "@tanstack/react-query";
+import { showError, showSuccess } from "@utils/Toasts";
+import { useNavigate } from "react-router-dom";
 
 
 
 const Signin:React.FC = ()=>{
+    const navigate = useNavigate()
     const {t} = useTranslation()
     const [showPassword , setShowPassword] = useState<boolean>(false);
     const [employeeCode , setEmployeeCode] =useState<string>('');
@@ -17,18 +20,23 @@ const Signin:React.FC = ()=>{
     const mutation = useMutation({
         mutationFn:login,
         onSuccess:(data)=>{
-            console.log("login is successfully" , data)
+            showSuccess("Login Successfully")
+            localStorage.setItem('token' , data.data.accessToken);
+            navigate('/' )
         },
         onError:(error)=>{
-            console.log("login error =>" ,error)
+        showError(`${error.message} `)
         }
 
     })
     const handlerLoginForm:React.FormEventHandler  = (e)=>{
         e.preventDefault();
+        if(!employeeCode.trim() || !password.trim()){
+            showError("Employee_code and Password is required")
+        }
         const result = signinSchema.safeParse({employeeCode , password});
         if(!result.success){
-            console.log("result error =>" , result.error.format);
+            console.log(result.error.format);
         }
         mutation.mutate({employee_code:employeeCode ,password});
     }
@@ -57,7 +65,7 @@ const Signin:React.FC = ()=>{
                         <label htmlFor="" className="label_style">{t('Employee Code')}</label>
                         <div className="relative mt-3">
                             <Pencil className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted w-4 h-4"/>
-                            <input   type="text" placeholder="12345678" className="input_style pl-10"  required
+                            <input   type="text" placeholder="12345678" className="input_style pl-10"  
                             value={employeeCode}
                             onChange={(e)=>setEmployeeCode(e.target.value)}
                             />
@@ -68,7 +76,7 @@ const Signin:React.FC = ()=>{
                         <label htmlFor="" className="label_style">{t('Password')}</label>
                         <div className="relative mt-3">
                             <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted w-4 h-4"/>
-                            <input   type={showPassword ? "text" :"password"} placeholder="12345678" className="input_style pl-10 pr-10"  required
+                            <input   type={showPassword ? "text" :"password"} placeholder="12345678" className="input_style pl-10 pr-10" 
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}
                             />
