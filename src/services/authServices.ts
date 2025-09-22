@@ -25,9 +25,10 @@ export const getToken = ()=>{
     const token = localStorage.getItem('token');
     const expiry = localStorage.getItem('accessTokenExpiry')
 
-    if(!token || Date.now() >= parseInt(expiry || "0")){
+    if(!token || !expiry){
         return null
     }
+    if( Date.now() >= parseInt(expiry || "0")) return null
     return token
 }
 
