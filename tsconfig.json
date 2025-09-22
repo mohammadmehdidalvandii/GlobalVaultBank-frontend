@@ -18,6 +18,7 @@
       "@utils/*":["utils/*"],
       "@store/*":["store/*"],
       "@types/*":["types/*"],
+      "@validation/*":["validation/*"],
     },
     /* Bundler mode */
     "moduleResolution": "bundler",

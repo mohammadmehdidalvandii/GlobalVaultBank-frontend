@@ -1,15 +1,16 @@
-const baseUrl = 'http://localhost:300/api/';
+const baseUrl = 'http://localhost:3000/api/';
 
 interface loginProps{
-    employeeCode:string,
+    employee_code:string,
     password:string,
 }
 
-export const login = async ({employeeCode , password}:loginProps)=>{
+export const login = async ({employee_code , password}:loginProps)=>{
+    console.log("e , p" , employee_code , password)
     const response = await fetch(`${baseUrl}auth/login`,{
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({employeeCode , password}),
+        body:JSON.stringify({employee_code , password}),
         credentials:'include',
     })
     if(response.status === 400){

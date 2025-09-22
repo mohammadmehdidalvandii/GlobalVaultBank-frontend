@@ -19,7 +19,7 @@ export default defineConfig({
       '@services':'/src/services/',
       '@utils':'/src/utils/',
       '@store':'/src/store/',
-      '@types':'/src/types/',
+      '@validation':'/src/validation/',
     }
   }
 })
