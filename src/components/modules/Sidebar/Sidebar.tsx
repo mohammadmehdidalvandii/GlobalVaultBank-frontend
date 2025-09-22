@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useMutation } from "@tanstack/react-query";
+import { logout } from "@services/authServices";
+import { showError, showSuccess } from "@utils/Toasts";
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
@@ -24,6 +27,24 @@ const navigation = [
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const {t} = useTranslation();
+
+  const mutation = useMutation({
+    mutationFn:logout,
+    onSuccess: ()=>{
+      showSuccess("Logout is Successfully");
+       window.location.replace('/Login')
+    },
+    onError:(error)=>{
+      showError(`${error.message}`)
+    }
+  });
+
+
+  const handlerLogout:React.MouseEventHandler = ()=>{
+    mutation.mutate()
+  }
+
+
   return (
     <div className="h-screen bg-white dark:bg-primary-100 border-r rtl:border-l border-border dark:border-muted flex flex-col shadow-card">
       <div className="p-6 border-b border-border dark:border-muted">
@@ -57,7 +78,10 @@ const Sidebar: React.FC = () => {
           })}
         </ul>
       </nav>
-      <button className="btn danger w-full bg-red mb-2  items-center-safe font-interBold rtl:font-danaBold">
+      <button className="btn danger w-full bg-red mb-2  items-center-safe font-interBold rtl:font-danaBold"
+      type="button"
+      onClick={handlerLogout}
+      >
         <LogOut className="h-5 w-5"/>
         {t('Exit')}
       </button>
