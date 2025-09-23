@@ -1,5 +1,5 @@
 import CustomerSearchModel from '@components/Models/CustomerSearchModel'
-import NewAccountModel from '@components/Models/NewAccountModel'
+import NewCustomerModel from '@components/Models/NewCustomerModel';
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -13,7 +13,7 @@ const HeaderDashboard:React.FC  = ()=>{
         </div>
         <div className="flex gap-3 mt-4 md:mt-0">
                 <CustomerSearchModel/>
-                <NewAccountModel/>
+                <NewCustomerModel/>
         </div>
     </div>
   )
