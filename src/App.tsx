@@ -9,11 +9,28 @@ import Exchange from '@page/Exchange/Exchange';
 import Settings from '@page/Settings/Settings';
 import Login from '@page/Login/Login';
 import {Toaster} from 'sonner'
+import { useEffect } from 'react';
+import { getValidToken } from '@services/authServices';
 
 
 const queryClient = new QueryClient()
 
 function App() {
+
+  useEffect(()=>{
+    const interval = setInterval(async ()=>{
+      const expiry = localStorage.getItem('accessTokenExpiry');
+      if(!expiry) return
+
+      const timeLeft = Number(expiry) - Date.now();
+      if(timeLeft < 60 * 1000){
+        await getValidToken()
+      }
+
+    }, 60 * 1000);
+    return ()=>clearInterval(interval)
+  },[])
+
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster position='top-center' richColors/>
