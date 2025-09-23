@@ -35,5 +35,17 @@
     "Investment Account":"Investment Account",
     "Corporate Account":"Corporate Account",
     "Cancel":"Cancel",
-    "Create Account":"Create Account"
+    "Create Account":"Create Account",
+    "New Customer":"New Customer",
+    "Create new Customer":"Create new Customer",
+    "First Name":"First Name",
+    "Last Name":"Last Name",
+    "Email":"Email",
+    "National ID":"National ID",
+    "DateOfBirth":"DateOfBirth",
+    "Street":"Street",
+    "city":"city",
+    "PostalCode":"PostalCode",
+    "Country":"Country",
+    "Create Customer":"Create Customer"
 }

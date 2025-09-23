@@ -35,5 +35,17 @@
     "Investment Account":"حساب سرمایه گذاری",
     "Corporate Account":"حساب شرکتی",
     "Cancel":"لفو",
-    "Create Account":"ایجاد حساب"
+    "Create Account":"ایجاد حساب",
+    "New Customer":"مشتری جدید",
+    "Create new Customer":"مشتری جدید ایجاد کنید",
+    "First Name":"نام",
+    "Last Name":"نام خانوادگی",
+    "Email":"ایمیل",
+    "National ID":"کد ملی",
+    "DateOfBirth":"تاریخ تولد",
+    "Street":"خیابان",
+    "city":"شهر",
+    "PostalCode":"کد پستی",
+    "Country":"کشور",
+    "Create Customer":"ایجاد مشتری"
 }

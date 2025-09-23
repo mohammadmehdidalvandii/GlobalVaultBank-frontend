@@ -35,5 +35,17 @@
     "Investment Account":"Cuenta de inversión",
     "Corporate Account":"Cuenta corporativa",
     "Cancel":"Cancelar",
-    "Create Account":"Crear una cuenta"
+    "Create Account":"Crear una cuenta",
+    "New Customer":"Nuevo cliente",
+    "Create new Customer":"Crear nuevo cliente",
+    "First Name":"Nombre de pila",
+    "Last Name":"Apellido",
+    "Email":"Correo electrónico",
+    "National ID":"DNI",
+    "DateOfBirth":"Fecha de nacimiento",
+    "Street":"Calle",
+    "city":"ciudad",
+    "PostalCode":"Código Postal",
+    "Country":"País",
+    "Create Customer":"Crear cliente"
 }
