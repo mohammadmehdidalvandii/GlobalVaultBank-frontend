@@ -28,7 +28,7 @@ export const getToken = ()=>{
     if(!token || !expiry){
         return null
     }
-    if( Date.now() >= parseInt(expiry || "0")) return null
+    if( Date.now() >= Number(expiry)) return null
     return token
 }
 
@@ -51,8 +51,7 @@ export const refreshToken = async ()=>{
     })
     if(!response.ok){
         // RefreshToken no ex-time
-        localStorage.removeItem('token')
-        localStorage.removeItem('accessTokenExpiry')
+        await logout();
         return null
     }
 
