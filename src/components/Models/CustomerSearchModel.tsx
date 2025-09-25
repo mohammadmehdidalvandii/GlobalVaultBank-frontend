@@ -8,7 +8,8 @@ import { showError } from "@utils/Toasts";
 
 type CustomerProps = {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
   accountCount: number;
@@ -21,8 +22,6 @@ const CustomerSearchModel: React.FC = () => {
   const {t} = useTranslation()
   const [open, setOpen] = useState<boolean>(false);
   const [searchItem, setSearchItem] = useState<string>("");
-  const [filteredCustomer, setFilteredCustomer] = useState();
-
 
   const {data =[] , isLoading , isError , error } = useQuery({
     queryKey:['customers'],
@@ -33,6 +32,15 @@ const CustomerSearchModel: React.FC = () => {
   if(isError) {
     showError(`${error.message}`)
   }
+
+  const filteredCustomers = data.filter((customer: CustomerProps) => {
+    const fullName = `${customer.firstName} ${customer.lastName}`.toLowerCase();
+    return (
+      fullName.includes(searchItem.toLowerCase()) ||
+      customer.email.toLowerCase().includes(searchItem.toLowerCase()) ||
+      customer.phone.includes(searchItem)
+    );
+  });
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -67,6 +75,8 @@ const CustomerSearchModel: React.FC = () => {
                   type="text"
                   placeholder="Enter customer details ..."
                   className="input_style pl-10 mt-2"
+                  value={searchItem}
+                  onChange={(e)=>setSearchItem(e.target.value)}
                 />
               </div>
             </div>
@@ -79,7 +89,7 @@ const CustomerSearchModel: React.FC = () => {
                 <p className="">No Customers found matching your search</p>
               </div>
             ) : (
-              data.map((customer:CustomerProps) => (
+              filteredCustomers.map((customer:CustomerProps) => (
                 <div
                   key={customer.id}
                   className="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow cursor-pointer"
@@ -88,11 +98,12 @@ const CustomerSearchModel: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-full  gradient_primary flex items-center justify-center text-white font-interRegular rtl:font-danaRegular">
-                          {customer.name}
+                          {customer.firstName.split('')[0]}
+                          {customer.lastName.split('')[0]}
                         </div>
                         <div>
                           <h3 className="font-danaRegular text-primary dark:text-white">
-                            {customer.name}
+                            {customer.firstName} - {customer.lastName}
                           </h3>
                           <div className="flex items-center gap-4 text-lg text-muted">
                             <div className="flex items-center gap-1">
