@@ -2,45 +2,38 @@ import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import {  CreditCard, Mail, Phone, Search, User, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
+import { getCustomer } from "@services/customerService";
+import { showError } from "@utils/Toasts";
 
-const mockCustomers = [
-  {
-    id: "1",
-    name: "John Smith",
-    email: "john.smith@email.com",
-    phone: "+1 (555) 123-4567",
-    accountCount: 3,
-    totalBalance: 45670.5,
-    status: "Active",
-    lastActivity: "2024-01-21",
-  },
-  {
-    id: "2",
-    name: "Sarah Johnson",
-    email: "sarah.j@email.com",
-    phone: "+1 (555) 987-6543",
-    accountCount: 2,
-    totalBalance: 28450.75,
-    status: "Active",
-    lastActivity: "2024-01-20",
-  },
-  {
-    id: "3",
-    name: "Michael Brown",
-    email: "m.brown@email.com",
-    phone: "+1 (555) 456-7890",
-    accountCount: 1,
-    totalBalance: 12300.0,
-    status: "Suspended",
-    lastActivity: "2024-01-15",
-  },
-];
+type CustomerProps = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  accountCount: number;
+  totalBalance: number;
+  status: string;
+  lastActivity: string;
+};
 
 const CustomerSearchModel: React.FC = () => {
   const {t} = useTranslation()
   const [open, setOpen] = useState<boolean>(false);
   const [searchItem, setSearchItem] = useState<string>("");
-  const [filteredCustomer, setFilteredCustomer] = useState(mockCustomers);
+  const [filteredCustomer, setFilteredCustomer] = useState();
+
+
+  const {data =[] , isLoading , isError , error } = useQuery({
+    queryKey:['customers'],
+    queryFn:getCustomer,
+    staleTime:1000 * 60 * 5,
+  })
+  if(isLoading) return <p>Loading...</p>;
+  if(isError) {
+    showError(`${error.message}`)
+  }
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
@@ -80,13 +73,13 @@ const CustomerSearchModel: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            {filteredCustomer.length === 0 ? (
+            {data.length === 0 ? (
               <div className="text-center py-8 text-muted">
                 <User className="h-12 w-12 mx-auto mb-2 opacity-50" />
                 <p className="">No Customers found matching your search</p>
               </div>
             ) : (
-              filteredCustomer.map((customer) => (
+              data.map((customer:CustomerProps) => (
                 <div
                   key={customer.id}
                   className="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow cursor-pointer"
@@ -95,10 +88,7 @@ const CustomerSearchModel: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-full  gradient_primary flex items-center justify-center text-white font-interRegular rtl:font-danaRegular">
-                          {customer.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}
+                          {customer.name}
                         </div>
                         <div>
                           <h3 className="font-danaRegular text-primary dark:text-white">
@@ -123,11 +113,11 @@ const CustomerSearchModel: React.FC = () => {
                       <div className="text-sm text-muted">
                         <div className="flex items-center gap-1 justify-end">
                           <CreditCard className="h-3 w-3" />
-                          {customer.accountCount} account
-                          {customer.accountCount !== 1 ? "s" : ""}
+                          {/* {customer.accountCount} account
+                          {customer.accountCount !== 1 ? "s" : ""} */}
                         </div>
                         <div className="font-interBold font-bold text-base text-primary">
-                          ${customer.totalBalance.toLocaleString()}
+                          {/* ${customer.totalBalance.toLocaleString() || 0} */}
                         </div>
                       </div>
                       </div>

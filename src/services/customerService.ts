@@ -39,4 +39,15 @@ export const createCustomer = async ({firstName, lastName ,email ,phone, nationa
     
     const data = await response.json();
     return data
+};
+
+export const getCustomer = async ()=>{
+    const response = await fetchWithAuth(`${baseUrl}customer`,{
+        method:'GET',
+    })
+    if(response.status === 500){
+        throw new Error('Server error')
+    }
+    const data = await response.json();
+    return data.data
 }
