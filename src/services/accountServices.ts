@@ -1,0 +1,32 @@
+const baseUrl = 'http://localhost:3000/api/';
+import { fetchWithAuth } from "./fetchWithAuth";
+
+interface createAccountProps {
+    customerId:string,
+    type:string,
+    balance:string,
+    interestRate:string,
+    currency:string,
+    status:string,
+}
+
+
+export const createAccount = async ({customerId ,  type , balance , interestRate , currency , status }:createAccountProps)=>{
+    const response = await fetchWithAuth(`${baseUrl}accounts/create`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            customerId,
+            type,
+            balance,
+            interestRate,
+            currency,
+            status
+        })
+    })
+    if(!response.ok){
+        throw new Error('Failed create account error')
+    }
+    const data = await response.json();
+    return data
+}
