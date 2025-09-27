@@ -11,7 +11,6 @@ type AccountDetailsModelProps = {
 };
 
 const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => {
-  console.log("account=>" , accounts)
   const {t} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [isEditing , setIsEditing] = useState<boolean>(false)

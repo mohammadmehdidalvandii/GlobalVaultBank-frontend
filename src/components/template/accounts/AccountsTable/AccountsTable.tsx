@@ -3,12 +3,13 @@ import AccountSettingsModel from '@components/Models/AccountSettingsModel'
 import { getAccount } from '@services/accountServices'
 import { useQuery } from '@tanstack/react-query'
 import { showError } from '@utils/Toasts'
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {AccountProps}  from "@types/account"
 
 const AccountsTable:React.FC = () => {
-    const {t}=useTranslation()
+    const {t}=useTranslation();
+    const [searchItem , setSearchItem] = useState<string>('');
 
       const {data=[] , isLoading , isError , error} = useQuery({
     queryKey:['accounts'],
@@ -21,11 +22,23 @@ const AccountsTable:React.FC = () => {
     showError(`${error.message}`)
   }
 
+  const filterAccounts = data.filter((account:AccountProps)=>{
+    return (
+        account.accountName.includes(searchItem.toLowerCase())||
+        account.accountNumber.includes(searchItem.toLowerCase())||
+        account.currency.includes(searchItem.toLowerCase())||
+        account.type.includes(searchItem.toLowerCase())
+    )
+  })
+
   return (
     <div className="space-y-4">
         <div className="relative">
             <search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-muted h-4 w-4'/>
-            <input type="text" className="input_style" placeholder={t('Search customer , account numbers , types, or currency')}/>
+            <input type="text" className="input_style" placeholder={t('Search customer , account numbers , types, or currency')}
+            value={searchItem}
+            onChange={(e)=>setSearchItem(e.target.value)}
+            />
         </div>
         {/* table */}
         <div className="rounded-md border border-border">
@@ -41,7 +54,7 @@ const AccountsTable:React.FC = () => {
                         <th className='tableHead text-right'>{t('Actions')}</th>
                     </thead>
                     <tbody className="tableBody">
-                        {data.map((account:AccountProps)=>(
+                        {filterAccounts.map((account:AccountProps)=>(
                         <tr className="tableRow" key={account.id}>
                             
                             <td className="tableCall">
