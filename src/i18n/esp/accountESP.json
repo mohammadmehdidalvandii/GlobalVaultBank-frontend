@@ -75,5 +75,9 @@
     "Manage Cards":"Administrar tarjetas",
     "Additional notes about the account":"Notas adicionales sobre la cuenta",
     "Save Change":"Guardar cambio",
-    "Cancel":"Cancelar"
+    "Cancel":"Cancelar",
+    "Select Status":"Seleccionar estado",
+    "interestRate":"tasa de interés",
+    "Customer Name":"Nombre del cliente",
+    "Select Customer Name":"Seleccione el nombre del cliente"
 }

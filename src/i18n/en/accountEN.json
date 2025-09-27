@@ -75,5 +75,9 @@
     "Manage Cards":"Manage Cards",
     "Additional notes about the account":"Additional notes about the account",
     "Save Change":"Save Change",
-    "Cancel":"Cancel"
+    "Cancel":"Cancel",
+    "Select Status":"Select Status",
+    "interestRate":"interestRate",
+    "Customer Name":"Customer Name",
+    "Select Customer Name":"Select Customer Name"
 }

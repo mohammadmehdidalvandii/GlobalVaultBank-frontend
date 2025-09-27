@@ -74,5 +74,9 @@
     "Manage Cards":"مدیرت کارت ها",
     "Additional notes about the account":"نکات تکمیلی در مورد حساب کاربری",
     "Save Change":"ذخیره تغییرات",
-    "Cancel":"لغو"
+    "Cancel":"لغو",
+    "Select Status":"وضعیت را انتخاب کنید",
+    "interestRate":"نرخ بهره",
+    "Customer Name":"نام مشتری",
+    "Select Customer Name":"نام مشتری را انتخاب کنید"
 }
