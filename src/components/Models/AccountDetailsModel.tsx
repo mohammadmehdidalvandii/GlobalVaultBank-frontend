@@ -4,8 +4,14 @@ import * as Tabs from '@radix-ui/react-tabs'
 import * as Select from '@radix-ui/react-select'
 import { ChevronDown, CreditCard, Edit, Eye, History, Lock, Settings, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { AccountProps } from "@types/account";
 
-const AccountDetailsModel: React.FC = () => {
+type AccountDetailsModelProps = {
+  accounts: AccountProps;
+};
+
+const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => {
+  console.log("account=>" , accounts)
   const {t} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [isEditing , setIsEditing] = useState<boolean>(false)
@@ -24,7 +30,7 @@ const AccountDetailsModel: React.FC = () => {
                 <Dialog.Title className="flex items-center gap-2">
                     <div className="flex items-center gap-2 text-2xl font-interBlack rtl:font-danaBlack text-primary dark:text-white">
                         <Eye className="h-5 w-5"/>
-                        {t('Account Details')} - your name
+                        {t('Account Details')} - {accounts.accountName}
                     </div>
                     <div className="badge badge_default">{t('Active')}</div>
                 </Dialog.Title>
@@ -45,24 +51,24 @@ const AccountDetailsModel: React.FC = () => {
                       <div className="cardContent space-y-3 mt-4">
                         <div className="flex justify-between">
                           <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Account Number')}</span>
-                          <span className="font-interRegular rtl:font-danaRegular">123456789</span>
+                          <span className="font-interRegular rtl:font-danaRegular">{accounts.accountNumber}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted">{t('Account Type')}</span>
-                          <span className="font-interRegular rtl:font-danaRegular">Checking</span>
+                          <span className="font-interRegular rtl:font-danaRegular">{accounts.type}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Currency')}</span>
-                          <span className="font-interRegular rtl:font-danaRegular">USD</span>
+                          <span className="font-interRegular rtl:font-danaRegular">{accounts.currency}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Interest Rate')}</span>
-                          <span className="font-interRegular rtl:font-danaRegular">0.1% APY</span>
+                          <span className="font-interRegular rtl:font-danaRegular">{accounts.currency} APY</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t("Status")}</span>
                           <span className="font-interRegular rtl:font-danaRegular">
-                            <p className="badge badge_default">{t('Active')}</p>
+                            <p className="badge badge_default">{t(accounts.status)}</p>
                           </span>
                         </div>
                       </div>
@@ -74,11 +80,11 @@ const AccountDetailsModel: React.FC = () => {
                       <div className="cardContent space-y-3 mt-4">
                         <div className="flex justify-between">
                           <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Current Balance')}</span>
-                          <span className="font-interRegular rtl:font-danaRegular">$25,425.0</span>
+                          <span className="font-interRegular rtl:font-danaRegular">${accounts.balance}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Available Balance')}</span>
-                          <span className="font-interRegular rtl:font-danaRegular">$25,3205</span>
+                          <span className="font-interRegular rtl:font-danaRegular">${accounts.balance }</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted font-interRegular rtl:font-danaRegular text-lg">{t('Pending Transactions')}</span>

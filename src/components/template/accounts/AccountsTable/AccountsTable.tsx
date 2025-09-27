@@ -1,10 +1,26 @@
 import AccountDetailsModel from '@components/Models/AccountDetailsModel'
 import AccountSettingsModel from '@components/Models/AccountSettingsModel'
+import { getAccount } from '@services/accountServices'
+import { useQuery } from '@tanstack/react-query'
+import { showError } from '@utils/Toasts'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import {AccountProps}  from "@types/account"
 
 const AccountsTable:React.FC = () => {
     const {t}=useTranslation()
+
+      const {data=[] , isLoading , isError , error} = useQuery({
+    queryKey:['accounts'],
+    queryFn:getAccount,
+    staleTime:1000 * 60 * 5,
+  });
+
+  if(isLoading) return <p>Loading...</p>
+  if(isError){
+    showError(`${error.message}`)
+  }
+
   return (
     <div className="space-y-4">
         <div className="relative">
@@ -25,27 +41,28 @@ const AccountsTable:React.FC = () => {
                         <th className='tableHead text-right'>{t('Actions')}</th>
                     </thead>
                     <tbody className="tableBody">
-                        <tr className="tableRow">
+                        {data.map((account:AccountProps)=>(
+                        <tr className="tableRow" key={account.id}>
                             
                             <td className="tableCall">
                                 <div>
-                                    <p className="font-interBold rtl:font-danaBold">John Smith - Checking</p>
-                                    <p className="text-muted">USD Account</p>
+                                    <p className="font-interBold rtl:font-danaBold">{account.accountName} - {account.type}</p>
+                                    <p className="text-muted">{account.currency} Account</p>
                                 </div>
                             </td>
                             <td className="tableCall">
                                 <div>
-                                 <div className="badge badge_default">Checking</div>
+                                 <div className="badge badge_default">{account.type}</div>
                                 </div>
                             </td>
                             <td className="tableCall">
-                                   **** **** **** 4212 
+                                  {account.accountNumber}
                             </td>
                             <td className="tableCall">
                                 <div className='font-interBold rtl:font-danaBold'>
-                                    $25,420.5
+                                    {account.balance}
                                     <br />
-                                    USD
+                                    {account.currency}
                                 </div>
                             </td>
                             <td className="tableCall">
@@ -55,15 +72,16 @@ const AccountsTable:React.FC = () => {
                                 </div>
                             </td>
                               <td className="tableCall">
-                                <span className="font-interBold rtl:font-danaBold text-success">0.1% APY</span>
+                                <span className="font-interBold rtl:font-danaBold text-success">{account.interestRate} APY</span>
                             </td>
                               <td className="tableCall">
                                 <div className='flex gap-2 justify-end'>
-                                    <AccountDetailsModel/>
-                                    <AccountSettingsModel/>
+                                    <AccountDetailsModel accounts={account}/>
+                                    <AccountSettingsModel accounts={account}/>
                                 </div>
                             </td>
                         </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

@@ -30,3 +30,14 @@ export const createAccount = async ({customerId ,  type , balance , interestRate
     const data = await response.json();
     return data
 }
+
+export const getAccount = async ()=>{
+    const response = await fetchWithAuth(`${baseUrl}accounts`,{
+        method:"GET",
+    })
+    if(!response.ok){
+        throw new Error('Failed get Accounts')
+    }
+    const data = await response.json();
+    return data.data
+}

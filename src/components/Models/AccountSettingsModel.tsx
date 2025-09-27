@@ -6,8 +6,15 @@ import * as Separator from '@radix-ui/react-separator';
 import * as Switch from '@radix-ui/react-switch'
 import { Bell, ChevronDown, Lock, Settings, Shield, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { AccountProps } from "@types/account";
 
-const AccountSettingsModel: React.FC = () => {
+
+type AccountSettingsModelProps = {
+  accounts: AccountProps;
+};
+
+
+const AccountSettingsModel: React.FC<AccountSettingsModelProps> = ({accounts}) => {
 const {t ,i18n} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [checked , setChecked] = useState<boolean>(false);
@@ -26,7 +33,7 @@ const {t ,i18n} = useTranslation();
         <div className="dialog_header">
             <Dialog.Title className="flex items-center gap-2 text-2xl font-interBlack rtl:font-danaBlack text-primary dark:text-white">
                 <Shield className="h-5 w-5"/>
-                {t('Account Settings')} - Your name
+                {t('Account Settings')} - {accounts.accountName}
             </Dialog.Title> 
             <Dialog.Description className="dialog_description block rtl:text-right">
                 {t('Manage account setting , limits , and security controls')}
@@ -50,11 +57,11 @@ const {t ,i18n} = useTranslation();
                         <div className="flex items-center justify-between">
                             <div>
                                 <label htmlFor="" className="label_style">{t('Account Status')}</label>
-                                <p className="text-muted">{t('Account Number')}: **** **** *** 4353</p>
+                                <p className="text-muted">{t('Account Number')}: {accounts.accountNumber}</p>
                             </div>
-                                      <Select.Root defaultValue={t('Active')}>
+                                      <Select.Root defaultValue={t(accounts.status)}>
                                     <Select.Trigger className='select_trigger mt-2 w-[200px]' >
-                                        <Select.Value placeholder={t('Account Status')}/>
+                                        <Select.Value placeholder={t(accounts.status)}/>
                                             <Select.Icon>
                                             <ChevronDown/>
                                             </Select.Icon>
@@ -87,9 +94,9 @@ const {t ,i18n} = useTranslation();
                            </div>
                             <div>
                                    <label htmlFor="">{t('Account Type')}</label>
-                                            <Select.Root defaultValue={t('Checking')}>
+                                            <Select.Root defaultValue={t(accounts.status)}>
                                     <Select.Trigger className='select_trigger mt-2 w-[320px] h-10' >
-                                        <Select.Value placeholder="Account Status"/>
+                                        <Select.Value placeholder={accounts.status}/>
                                             <Select.Icon>
                                             <ChevronDown/>
                                             </Select.Icon>
@@ -137,7 +144,7 @@ const {t ,i18n} = useTranslation();
                         <div className="flex justify-between items-center mb-3 mt-3">
                             <div>
                              <label htmlFor="" className="label_style">{t('Daily Limit')}</label>
-                            <input type="number" className="input_style mt-1 w-[320px]" value='5000'/>
+                            <input type="number" className="input_style mt-1 w-[320px]" value={accounts.dailyWithdrawalLimit}/>
                            </div>
                             <div>
                              <label htmlFor="" className="label_style">{t('Monthly Limit')}</label>
@@ -152,7 +159,7 @@ const {t ,i18n} = useTranslation();
                            </div>
                             <div>
                              <label htmlFor="" className="label_style">{t('per Transaction Limit')}</label>
-                            <input type="number" className="input_style mt-1 w-[320px]"  defaultValue="500"/>
+                            <input type="number" className="input_style mt-1 w-[320px]"  defaultValue={accounts.dailyTransactionLimit}/>
                            </div>
                         </div>
                     </div>
