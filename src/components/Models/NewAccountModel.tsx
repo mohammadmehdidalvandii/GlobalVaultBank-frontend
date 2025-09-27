@@ -7,6 +7,7 @@ import { getCustomer } from "@services/customerService";
 import { showError, showSuccess } from "@utils/Toasts";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createAccount } from "@services/accountServices";
+import { accountSchema } from "@validation/account.validation";
 
 type CustomerProps = {
   id: string;
@@ -66,6 +67,21 @@ const mutation = useMutation({
 const handlerCreateAccount:React.FormEventHandler  = (e)=>{
     e.preventDefault();
 
+    if(!customerId.trim()||!interestRate.trim()||!type.trim()||!balance.trim()||!currency.trim()||!currency.trim() ||!status.trim()){
+        showError("All felid required")
+    }
+
+    const result  = accountSchema.safeParse({
+        customerId,
+        interestRate,
+        type,
+        balance,
+        currency,
+        status
+    })
+    if(!result.success){
+        showError(`${result.error}`)
+    }
     mutation.mutate({
         customerId,
         interestRate,
