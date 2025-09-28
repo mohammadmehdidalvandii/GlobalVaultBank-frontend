@@ -22,7 +22,6 @@ const TransferForm:React.FC<AccountTransferForm> = ({data})=>{
     const [description, setDescription] = useState<string>("");
     const [exchangeRate , setExchangeRate] = useState<string>("");
 
-    console.log("transfer =>" , selectFromAccount ,selectToAccount ,currency , transferType ,feeAmount ,description ,exchangeRate)
 
     const resetForm = ()=>{
         setSelectFromAccount(null),
