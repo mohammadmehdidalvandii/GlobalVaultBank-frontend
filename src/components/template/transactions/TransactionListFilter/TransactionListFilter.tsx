@@ -16,7 +16,7 @@ const TransactionListFilter:React.FC = ()=>{
   staleTime:1000 * 60 * 5
 });
 
-console.log("data =>" ,data)
+
 if(isLoading) return <p>Loading...</p>
 if(isError && error){
   showError(`${error}`)
