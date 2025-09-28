@@ -93,31 +93,17 @@ const TransferForm:React.FC = ()=>{
                 </Select.Root>
             </div>
             <div className="space-y-2 mt-4">
-                <label htmlFor="" className='block text-primary-100 dark:text-white text-lg mb-3'>{t('Recipient Name')}</label>
-                <div className="relative">
-                    <DollarSign className='absolute left-3 top-3 h-4 w-4 text-muted'/>
-                    <input type="number" className="input_style pl-7" placeholder={t('Enter recipient name')}  />
-                </div>
-            </div>
-            <div className="space-y-2 mt-4">
-                <label htmlFor="" className='block text-primary-100 dark:text-white text-lg mb-3'>{t('Recipient Account/IBAN')}</label>
-                <div className="relative">
-                    <DollarSign className='absolute left-3 top-3 h-4 w-4 text-muted'/>
-                    <input type="number" className="input_style pl-7" placeholder={t('Enter account number or IBAN')} />
-                </div>
-            </div>
-            <div className="space-y-2 mt-4">
-                <label htmlFor="" className='block text-primary-100 dark:text-white text-lg mb-3'>{t('Bank Code/SWIFT')}</label>
-                <div className="relative">
-                    <DollarSign className='absolute left-3 top-3 h-4 w-4 text-muted'/>
-                    <input type="number" className="input_style pl-7" placeholder={t('Enter bank identifier')} />
-                </div>
-            </div>
             <div className="space-y-2 mt-4">
                 <label htmlFor="" className='block text-primary-100 dark:text-white text-lg mb-3'>{t('Amount')}</label>
                 <div className="relative">
                     <DollarSign className='absolute left-3 top-3 h-4 w-4 text-muted'/>
                     <input type="number" className="input_style pl-7" placeholder='0.00' />
+                </div>
+            </div>
+                <label htmlFor="" className='block text-primary-100 dark:text-white text-lg mb-3'>{t('Fee Amount')}</label>
+                <div className="relative">
+                    <DollarSign className='absolute left-3 top-3 h-4 w-4 text-muted'/>
+                    <input type="number" className="input_style pl-7" placeholder={t('Fee Amount')}  />
                 </div>
             </div>
             <div className="space-y-2 mt-4">
