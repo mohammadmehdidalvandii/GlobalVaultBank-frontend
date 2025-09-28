@@ -45,6 +45,7 @@ const AccountsTable:React.FC = () => {
             <div className="container_table">
                 <table className="table">
                     <thead className='tableHeader'>
+                        <tr>
                         <th className='tableHead'>{t('Customer & Account')}</th>
                         <th className='tableHead'>{t('Type')}</th>
                         <th className='tableHead'>{t('Account Number')}</th>
@@ -52,6 +53,7 @@ const AccountsTable:React.FC = () => {
                         <th className='tableHead'>{t('Change')}</th>
                         <th className='tableHead'>{t('Interest Rate')}</th>
                         <th className='tableHead text-right'>{t('Actions')}</th>
+                        </tr>
                     </thead>
                     <tbody className="tableBody">
                         {filterAccounts.map((account:AccountProps)=>(
