@@ -31,5 +31,8 @@
      "Immediate":"Inmediato",
     "Real-time status updates":"Actualizaciones de estado en tiempo real",
     "Transfer Now":"Transferir ahora",
-    "Fee Amount":"Monto de la tarifa"
+    "Fee Amount":"Monto de la tarifa",
+    "Currency Type":"Tipo de moneda",
+    "Select currency type":"Seleccionar tipo de moneda",
+    "Exchange Rate":"Tipo de cambio"
 }

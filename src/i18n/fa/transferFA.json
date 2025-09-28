@@ -31,5 +31,8 @@
 "Immediate":"فوری",
     "Real-time status updates":"به‌روزرسانی‌های وضعیت در لحظه",
     "Transfer Now":"اکنون انتقال دهید",
-    "Fee Amount":"مبلغ کارمزد"
+    "Fee Amount":"مبلغ کارمزد",
+    "Currency Type":"نوع ارز",
+    "Select currency type":"نوع ارز را انتخاب کنید",
+    "Exchange Rate":"نرخ ارز"
 }

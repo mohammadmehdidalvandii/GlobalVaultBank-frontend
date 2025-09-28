@@ -31,5 +31,8 @@
     "Immediate":"Immediate",
     "Real-time status updates":"Real-time status updates",
     "Transfer Now":"Transfer Now",
-    "Fee Amount":"Fee Amount"
+    "Fee Amount":"Fee Amount",
+    "Currency Type":"Currency Type",
+    "Select currency type":"Select currency type",
+    "Exchange Rate":"Exchange Rate"
 }
