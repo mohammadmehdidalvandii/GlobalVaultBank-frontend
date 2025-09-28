@@ -3,9 +3,24 @@ import * as Select from '@radix-ui/react-select';
 import React from 'react'
 import TransactionDetailsModel from '@components/Models/TransactionDetailsModel';
 import { useTranslation } from 'react-i18next';
+import { useQuery } from '@tanstack/react-query';
+import { getAllTransactions } from '@services/transactionsServivces';
+import { showError } from '@utils/Toasts';
+import { transactionProps } from '@types/transaction';
 
 const TransactionListFilter:React.FC = ()=>{
-    const {t} = useTranslation()
+    const {t} = useTranslation();
+    const {data =[] , isError , error , isLoading} = useQuery({
+  queryKey:['transactions'],
+  queryFn:getAllTransactions,
+  staleTime:1000 * 60 * 5
+});
+
+console.log("data =>" ,data)
+if(isLoading) return <p>Loading...</p>
+if(isError && error){
+  showError(`${error}`)
+}
   return (
     <>
     <div className="card p-2 mt-4">
@@ -84,34 +99,39 @@ const TransactionListFilter:React.FC = ()=>{
         </div>
         <div className="cardContent">
             <div className="space-y-4">
-                <TransactionDetailsModel 
-                trigger={
-                    <div className='flex items-center justify-between py-4 border-b border-muted last:border-0 hover:bg-muted/30
-                    transition-colors rounded-lg px-2 cursor-pointer mt-4
-                    '>
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full flex items-center justify-center">
-                                <ShoppingCart className='h-6 w-6 text-muted'/>
-                            </div>
-                            <div className="flex-1">
-                                <p className="font-interRegular rtl:font-danaRegular">Online Purchase - Amazon</p>
-                                <div className="flex items-center gap-4 text-muted">
-                                    <span>2024-01-21</span>
-                                    <span>2:30 px</span>
-                                    <span className='capitalize'>Shopping</span>
+                {data.length === 0 ? ( <span>There are no transactions.</span>):(
+                    data.map((transaction:transactionProps)=>(
+                        <TransactionDetailsModel 
+                        trigger={
+                            <div className='flex items-center justify-between py-4 border-b border-muted last:border-0 hover:bg-muted/30
+                            transition-colors rounded-lg px-2 cursor-pointer mt-4
+                            '>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full flex items-center justify-center">
+                                        <ShoppingCart className='h-6 w-6 text-muted'/>
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="font-interRegular rtl:font-danaRegular">{transaction.description}</p>
+                                        <div className="flex items-center gap-4 text-muted">
+                                            <span>{new Date(transaction.createdAt).toLocaleDateString()}</span>
+                                            <span>{new Date(transaction.createdAt).toLocaleTimeString()}</span>
+                                            <span className='capitalize'>Shopping</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="text-right flex flex-col items-end gap-1">
+                                    <p className="font-interBold rtl:font-danaRegular text-lg">${transaction.amount}</p>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-muted">{transaction.currency}</span>
+                                        <span className=" py-1 px-2 text-success">{transaction.status}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="text-right flex flex-col items-end gap-1">
-                            <p className="font-interBold rtl:font-danaRegular text-lg">$125.99</p>
-                            <div className="flex items-center gap-2">
-                                <span className="text-muted">USD</span>
-                                <span className=" py-1 px-2 text-success">Completed</span>
-                            </div>
-                        </div>
-                    </div>
-                }
-                />
+                        }
+                        transactions={transaction}
+                        />
+                    ))
+                )}
             </div>
         </div>
     </div>

@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Tabs from '@radix-ui/react-tabs';
-import { transactionModel } from '@types/TransactionModel.types';
 import { Eye, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { transactionProps } from '@types/transaction';
 
-const TransactionDetailsModel:React.FC<transactionModel> =  ({trigger}) => {
+interface transactionModelData {
+    trigger:React.ReactNode
+    transactions:transactionProps,
+}
+
+const TransactionDetailsModel:React.FC<transactionModelData> =  ({trigger ,  transactions}) => {
+    console.log("t->",transactions)
     const {t} = useTranslation()
     const [open , setOpen ] = useState<boolean>(false);
   return (
@@ -38,19 +44,19 @@ const TransactionDetailsModel:React.FC<transactionModel> =  ({trigger}) => {
                                 <div className="cardContent space-y-4 mt-4">
                                     <div className="flex justify-between">
                                         <span className="text-muted text-xl">{t('Transaction')} ID</span>
-                                        <span className="font-interRegular rtl:font-danaRegular">#1</span>
+                                        <span className="font-interRegular rtl:font-danaRegular">#{transactions.id}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-muted text-xl">{t('Description')}</span>
-                                        <span className="font-interRegular rtl:font-danaRegular">Online Purchase - Amazon</span>
+                                        <span className="font-interRegular rtl:font-danaRegular">{transactions.description}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-muted text-xl">{t('Amount')}</span>
-                                        <span className="font-interRegular rtl:font-danaRegular font-black">$125.99</span>
+                                        <span className="font-interRegular rtl:font-danaRegular font-black">${transactions.amount}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-muted text-xl">{t('Date & Time<')}</span>
-                                        <span className="font-interRegular rtl:font-danaRegular">2024-01-21 at 2:30 PM</span>
+                                        <span className="font-interRegular rtl:font-danaRegular">{new Date(transactions.createdAt).toLocaleDateString()} at {new Date(transactions.createdAt).toLocaleTimeString()}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-muted text-xl">{t('Category')}</span>
@@ -58,7 +64,7 @@ const TransactionDetailsModel:React.FC<transactionModel> =  ({trigger}) => {
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-muted text-xl">{t('Status')}</span>
-                                        <span className="font-interRegular rtl:font-danaRegular text-success">Completed</span>
+                                        <span className="font-interRegular rtl:font-danaRegular text-success">{transactions.status}</span>
                                     </div>
                                 </div>
                             </div>
