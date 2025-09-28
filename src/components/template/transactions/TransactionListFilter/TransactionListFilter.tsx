@@ -112,6 +112,7 @@ if(isError && error){
                 {data.length === 0 ? ( <span>There are no transactions.</span>):(
                     filterTransaction.map((transaction:transactionProps)=>(
                         <TransactionDetailsModel 
+                        key={transaction.id}
                         trigger={
                             <div className='flex items-center justify-between py-4 border-b border-muted last:border-0 hover:bg-muted/30
                             transition-colors rounded-lg px-2 cursor-pointer mt-4
