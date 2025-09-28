@@ -1,6 +1,6 @@
 import { ChevronDown, Search, ShoppingCart } from 'lucide-react';
 import * as Select from '@radix-ui/react-select';
-import React from 'react'
+import React, { useState } from 'react'
 import TransactionDetailsModel from '@components/Models/TransactionDetailsModel';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
@@ -10,12 +10,18 @@ import { transactionProps } from '@types/transaction';
 
 const TransactionListFilter:React.FC = ()=>{
     const {t} = useTranslation();
+    const [searchItem , setSearchItem] = useState<string>("");
     const {data =[] , isError , error , isLoading} = useQuery({
   queryKey:['transactions'],
   queryFn:getAllTransactions,
   staleTime:1000 * 60 * 5
 });
 
+const filterTransaction = data.filter((transaction:transactionProps)=>{
+    return (
+        transaction.description.includes(searchItem.toLowerCase())
+    )
+})
 
 if(isLoading) return <p>Loading...</p>
 if(isError && error){
@@ -32,10 +38,14 @@ if(isError && error){
                 <div className="flex-1">
                     <div className="relative">
                         <Search className='absolute  left-3 top-3 w-4 h-4 text-muted'/>
-                        <input type="text" className="input_style pl-10" placeholder={t('Search transactions...')}/>
+                        <input type="text" className="input_style pl-10" placeholder={t('Search transactions...')}
+                        value={searchItem}
+                        onChange={(e)=>setSearchItem(e.target.value)}
+                        />
                     </div>
                 </div>
-                    <Select.Root defaultValue={t('Category')}>
+                {/* search by select */}
+                    {/* <Select.Root defaultValue={t('Category')}>
                     <Select.Trigger className='select_trigger md:w-48'>
                         <Select.Value placeholder={t('Category')} className='text-primary dark:text-white'/>
                         <Select.Icon>
@@ -89,7 +99,7 @@ if(isError && error){
                             </Select.Viewport>
                         </Select.Content>
                     </Select.Portal>
-                </Select.Root>
+                </Select.Root> */}
             </div>
         </div>
     </div>
@@ -100,7 +110,7 @@ if(isError && error){
         <div className="cardContent">
             <div className="space-y-4">
                 {data.length === 0 ? ( <span>There are no transactions.</span>):(
-                    data.map((transaction:transactionProps)=>(
+                    filterTransaction.map((transaction:transactionProps)=>(
                         <TransactionDetailsModel 
                         trigger={
                             <div className='flex items-center justify-between py-4 border-b border-muted last:border-0 hover:bg-muted/30
