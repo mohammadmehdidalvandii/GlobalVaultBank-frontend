@@ -11,7 +11,7 @@ interface transactionModelData {
 }
 
 const TransactionDetailsModel:React.FC<transactionModelData> =  ({trigger ,  transactions}) => {
-    console.log("t->",transactions)
+ 
     const {t} = useTranslation()
     const [open , setOpen ] = useState<boolean>(false);
   return (
