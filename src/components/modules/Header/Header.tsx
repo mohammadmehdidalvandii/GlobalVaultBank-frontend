@@ -21,9 +21,10 @@ const Header:React.FC<headerProps> = ({handlerSidebar , icon}) => {
         <div className="flex item-center gap-3">
             <LangSelector/>
             <BtnTheme/>
-            <button className="btn">
+            {/* need develop */}
+            {/* <button className="btn">
                 <User/>
-            </button>
+            </button> */}
         </div>
     </header>
   )
