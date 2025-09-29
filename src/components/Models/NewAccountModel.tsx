@@ -57,6 +57,7 @@ const mutation = useMutation({
         showSuccess('Created Account Successfully')
         resetForm()
         setOpen(false)
+        window.location.reload()
     },
     onError:(error)=>{
         showError(`${error.message}`)

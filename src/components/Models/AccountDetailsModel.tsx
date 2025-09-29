@@ -27,6 +27,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
     mutationFn:updatedAccount,
     onSuccess:()=>{
       showSuccess('updated Field successfully')
+      window.location.reload()
     },
     onError:(error)=>{
       showError(`${error}`)
