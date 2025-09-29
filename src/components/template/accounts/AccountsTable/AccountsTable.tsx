@@ -32,7 +32,7 @@ const AccountsTable:React.FC = () => {
   })
 
   return (
-    <div className="space-y-4 bg-white dark:bg-primary-100 overflow-auto">
+    <div className="space-y-4">
         <div className="relative">
             <search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-muted h-4 w-4'/>
             <input type="text" className="input_style" placeholder={t('Search customer , account numbers , types, or currency')}
