@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState } from "react";
+import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from '@radix-ui/react-tabs'
 import * as Select from '@radix-ui/react-select'
@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { AccountProps } from "@types/account";
 import { useMutation } from "@tanstack/react-query";
 import { updatedAccount } from "@services/accountServices";
-import { showError, showSuccess } from "@utils/Toasts";
+import { showError, showInfo, showSuccess } from "@utils/Toasts";
 
 type AccountDetailsModelProps = {
   accounts: AccountProps;
@@ -253,7 +253,9 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                             <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Account Lock')}</p>
                             <p className="text-base text-muted">{t('Temporarily lock this account')}</p>
                           </div>
-                          <button className="btn primary w-[150px]">
+                          <button className="btn primary w-[150px]"
+                          onClick={()=>showInfo('Developing')}
+                          >
                             <Lock className="h-4 w-4 mr-2"/>
                             {t('Lock Account')}
                           </button>
@@ -263,19 +265,21 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                             <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Reset PIN')}</p>
                             <p className="text-base text-muted">{t('Generate new PIN for customer')}</p>
                           </div>
-                          <button className="btn primary w-fit p-1">
+                          <button className="btn primary w-fit p-1"
+                          onClick={()=>showInfo('Developing')}
+                          >
                             {t('Reset PIN')}
                           </button>
                         </div>
                         <div className="flex items-center justify-between p-3 border border-border dark:border-muted rounded-lg mb-3">
                           <div>
-                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Block Cards')} - {accounts.cardStatus}</p>
+                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Block Cards')} - {t(accounts.cardStatus)}</p>
                             <p className="text-base text-muted">{t('Block all cards linked to this account')}</p>
                           </div>
                           <button type="button" className={`btn ${accounts.cardStatus === "active" ? 'secondary' :'danger'} w-[150px]`}
                           onClick={(e)=>handlerApiStatusCard(accounts.id, accounts.cardStatus , e)}
                           >
-                            {accounts.cardStatus}
+                            {t(accounts.cardStatus)}
                           </button>
                         </div>
                     </div>

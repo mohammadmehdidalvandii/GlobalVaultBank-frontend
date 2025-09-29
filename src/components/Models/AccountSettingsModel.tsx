@@ -7,6 +7,7 @@ import * as Switch from '@radix-ui/react-switch'
 import { Bell, ChevronDown, Lock, Settings, Shield, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { AccountProps } from "@types/account";
+import { showInfo } from "@utils/Toasts";
 
 
 type AccountSettingsModelProps = {
@@ -23,7 +24,9 @@ const {t ,i18n} = useTranslation();
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button className="btn primary w-[50px]">
+        <button className="btn primary w-[50px]"
+        onClick={()=>showInfo('Developing')}
+        >
           <Settings className="h-4 w-4" />
         </button>
       </Dialog.Trigger>
@@ -249,7 +252,7 @@ const {t ,i18n} = useTranslation();
                 type="button"
                 onClick={()=>setOpen(false)}
                 >{t('Cancel')}</button>
-                <button className="btn secondary">{t('Save Change')}</button>
+                <button className="btn secondary" disabled>{t('Save Change')}</button>
             </div>
 
         <Dialog.Close asChild>
