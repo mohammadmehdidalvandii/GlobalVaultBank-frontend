@@ -48,7 +48,6 @@ export const getAccount = async ()=>{
 }
 
 export const updatedAccount = async ({id , update}:updatedAccountProps)=>{
-    console.log("updated  =>", update)
     const response = await fetchWithAuth(`${baseUrl}accounts/update/${id}`,{
         method:'PATCH',
         headers:{'Content-Type':'application/json'},

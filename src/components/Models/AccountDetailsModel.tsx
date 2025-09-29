@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from '@radix-ui/react-tabs'
 import * as Select from '@radix-ui/react-select'
@@ -38,6 +38,13 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
     e.preventDefault();
     
     mutation.mutate({id:accountId, update:changeFields})
+  }
+
+  const handlerApiStatusCard = (accountId:string, status:string , e:React.MouseEvent<HTMLButtonElement>)=>{
+    e.preventDefault();
+    const cardStatus = status === "blocked"?'active':'blocked';
+    mutation.mutate({id:accountId , update:{cardStatus:cardStatus} })
+    showSuccess("updated status card")
   }
 
 
@@ -262,11 +269,13 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                         </div>
                         <div className="flex items-center justify-between p-3 border border-border dark:border-muted rounded-lg mb-3">
                           <div>
-                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Block Cards')}</p>
+                            <p className="font-interRegular rtl:font-danaRegular text-primary dark:text-white">{t('Block Cards')} - {accounts.cardStatus}</p>
                             <p className="text-base text-muted">{t('Block all cards linked to this account')}</p>
                           </div>
-                          <button className="btn danger w-[150px]">
-                            {t('Block Cards')}
+                          <button type="button" className={`btn ${accounts.cardStatus === "active" ? 'secondary' :'danger'} w-[150px]`}
+                          onClick={(e)=>handlerApiStatusCard(accounts.id, accounts.cardStatus , e)}
+                          >
+                            {accounts.cardStatus}
                           </button>
                         </div>
                     </div>
