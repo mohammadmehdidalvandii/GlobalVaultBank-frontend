@@ -132,7 +132,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                         </h3>
                       </div>
                       <div className="cardContent space-y-3 mt-4">
-                        {accounts.transactions.length === 0 ?(<p>There are not Transactions </p>):(
+                        {accounts.transactions.length === 0 ?(<p className="text_alert">There are not Transactions </p>):(
                           accounts.transactions.map((transaction:AccountProps)=>(
                         <div className="flex items-center justify-between py-2 border-b border-border dark:border-muted last:border-0" key={transaction.id}>
                           <div className="flex items-center gap-3">

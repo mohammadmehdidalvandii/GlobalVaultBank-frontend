@@ -30,7 +30,7 @@ if(isError && error){
         <div className="p-6">
             <div className="space-y-4">
               {data.length === 0 ? (
-                <span>There are no transactions.</span>
+                <span className='text_alert'>There are no transactions.</span>
               ):(
                 data.map((transaction:transactionProps)=>(
               <div className="flex items-center justify-between py-3 border-b border-border dark:border-muted last:border-0" key={transaction.id}>

@@ -109,7 +109,7 @@ if(isError && error){
         </div>
         <div className="cardContent">
             <div className="space-y-4">
-                {data.length === 0 ? ( <span>There are no transactions.</span>):(
+                {data.length === 0 ? ( <span className='text_alert mt-2'>There are no transactions.</span>):(
                     filterTransaction.map((transaction:transactionProps)=>(
                         <TransactionDetailsModel 
                         key={transaction.id}

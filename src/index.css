@@ -267,6 +267,9 @@
     .cardFooter{
         @apply flex items-center p-6 pt-0
     }
+    .text_alert{
+        @apply font-interBold rtl:font-danaBold text-2xl text-danger font-black;
+    }
  }
 
 
