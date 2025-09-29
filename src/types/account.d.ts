@@ -13,4 +13,5 @@ export type AccountProps = {
   dailyTransactionLimit: number;
   cardStatus: string;
   isClosed: boolean;
+  transactions:Array
 };

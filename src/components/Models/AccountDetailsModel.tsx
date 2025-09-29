@@ -11,6 +11,7 @@ type AccountDetailsModelProps = {
 };
 
 const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => {
+
   const {t} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [isEditing , setIsEditing] = useState<boolean>(false)
@@ -106,34 +107,24 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                         </h3>
                       </div>
                       <div className="cardContent space-y-3 mt-4">
-                        <div className="flex items-center justify-between py-2 border-b border-border dark:border-muted last:border-0">
+                        {accounts.transactions.length === 0 ?(<p>There are not Transactions </p>):(
+                          accounts.transactions.map((transaction:AccountProps)=>(
+                        <div className="flex items-center justify-between py-2 border-b border-border dark:border-muted last:border-0" key={transaction.id}>
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
                               <CreditCard className="h-4 w-4 text-muted"/>
                             </div>
                             <div>
-                              <p className="font-interRegular rtl:font-danaRegular text-lg">Salary Deposit</p>
-                              <p className="text-sm text-muted">2024-01-20</p>
+                              <p className="font-interRegular rtl:font-danaRegular text-lg">{transaction.description}</p>
+                              <p className="text-sm text-muted">{new Date(transaction.updatedAt).toLocaleDateString()}</p>
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className="text-success font-interBold dark:font-danaBold">+ $3.500</p>
+                            <p className="text-success font-interBold dark:font-danaBold">+ ${transaction.amount}</p>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between py-2 border-b border-border dark:border-muted last:border-0">
-                          <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-                              <CreditCard className="h-4 w-4 text-muted"/>
-                            </div>
-                            <div>
-                              <p className="font-interRegular rtl:font-danaRegular text-lg">Salary Deposit</p>
-                              <p className="text-sm text-muted">2024-01-20</p>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-success font-interBold dark:font-danaBold">+ $3.500</p>
-                          </div>
-                        </div>
+                          ))
+                        )}
                       </div>
                   </div>
                 </Tabs.Content>
