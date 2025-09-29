@@ -5,16 +5,41 @@ import * as Select from '@radix-ui/react-select'
 import { ChevronDown, CreditCard, Edit, Eye, History, Lock, Settings, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { AccountProps } from "@types/account";
+import { useMutation } from "@tanstack/react-query";
+import { updatedAccount } from "@services/accountServices";
+import { showError, showSuccess } from "@utils/Toasts";
 
 type AccountDetailsModelProps = {
   accounts: AccountProps;
 };
 
+
+
 const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => {
 
   const {t} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
-  const [isEditing , setIsEditing] = useState<boolean>(false)
+  const [isEditing , setIsEditing] = useState<boolean>(false);
+  const [changeFields,setChangeFields] = useState<Record<string, string>>();
+
+
+  const mutation = useMutation({
+    mutationFn:updatedAccount,
+    onSuccess:()=>{
+      showSuccess('updated Field successfully')
+    },
+    onError:(error)=>{
+      showError(`${error}`)
+    },
+    })
+
+  const handlerChangeSettingAccount = (accountId:string , e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    
+    mutation.mutate({id:accountId, update:changeFields})
+  }
+
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
@@ -32,7 +57,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                         <Eye className="h-5 w-5"/>
                         {t('Account Details')} - {accounts.accountName}
                     </div>
-                    <div className="badge badge_default">{t('Active')}</div>
+                    <div className="badge badge_default">{t(accounts.status)}</div>
                 </Dialog.Title>
             </div>
             <Tabs.Root defaultValue="overview" className="w-full">
@@ -145,11 +170,13 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                       </div>
                       </div>
                       <div className="cardHeader">
-                        <form action="#">
+                        <form action="#" onSubmit={(e)=>handlerChangeSettingAccount(accounts.id ,e)}>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div className="space-y-2">
                                 <label htmlFor="" className="label_style text-lg">{t('Account Status')} *</label>
-                                <Select.Root  disabled={!isEditing}>
+                                <Select.Root defaultValue={accounts.status}  disabled={!isEditing}
+                                onValueChange={(value)=>setChangeFields((prev)=>({...prev , status:value}))}
+                                >
                                     <Select.Trigger className='select_trigger mt-2'>
                                         <Select.Value placeholder={t('Account Status')}/>
                                             <Select.Icon>
@@ -159,16 +186,16 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                                     <Select.Portal>
                                         <Select.Content className='select_content'>
                                             <Select.Viewport className='select_viewPort'>
-                                                <Select.Item value='Active' className='select_item p-2'>
+                                                <Select.Item value='active' className='select_item p-2'>
                                                     <Select.ItemText>{t('Active')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Suspended' className='select_item p-2'>
+                                                <Select.Item value='suspended' className='select_item p-2'>
                                                     <Select.ItemText>{t('Suspended')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Frozen' className='select_item p-2'>
+                                                <Select.Item value='frozen' className='select_item p-2'>
                                                     <Select.ItemText>{t('Frozen')}</Select.ItemText>
                                                 </Select.Item>
-                                                <Select.Item value='Closed' className='select_item p-2'>
+                                                <Select.Item value='closed' className='select_item p-2'>
                                                     <Select.ItemText>{t("Closed")}</Select.ItemText>
                                                 </Select.Item>
                                             </Select.Viewport>
@@ -178,19 +205,25 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="" className='label_style text-lg'>{t('Interest Rate')} (%)</label>
-                                <input type="number" className='input_style mt-2' step='0.1'/>
+                                <input type="number" className='input_style mt-2' step='0.1' defaultValue={accounts.interestRate}
+                                onChange={(e)=>setChangeFields((prev)=>({
+                                  ...prev,
+                                  interestRate:e.target.value
+                                }))}
+                                />
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="" className='label_style text-lg'>{t('Daily Transaction Limit')}</label>
-                                <input type="number" className='input_style mt-2' step='0.1'/>
-                            </div>
-                            <div className="space-y-2">
-                                <label htmlFor="" className='label_style text-lg'>{t('Monthly Transaction Limit')}</label>
-                                <input type="number" className='input_style mt-2' step='0.1'/>
+                                <input type="number" className='input_style mt-2' step='0.1' defaultValue={accounts.dailyTransactionLimit}
+                                onChange={(e)=>setChangeFields((prev)=>({
+                                  ...prev,
+                                  dailyTransactionLimit:e.target.value
+                                }))}
+                                />
                             </div>
                         </div>
                             {isEditing && (
-                              <button className="btn secondary text w-full mt-5 ">
+                              <button type="submit" className="btn secondary text w-full mt-5 ">
                                 {t('Save Change')}
                               </button>
                             ) }

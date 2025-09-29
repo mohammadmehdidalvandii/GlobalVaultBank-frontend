@@ -10,6 +10,11 @@ interface createAccountProps {
     status:string,
 }
 
+interface updatedAccountProps{
+    id:string,
+    update:string
+}
+
 
 export const createAccount = async ({customerId ,  type , balance , interestRate , currency , status }:createAccountProps)=>{
     const response = await fetchWithAuth(`${baseUrl}accounts/create`,{
@@ -40,4 +45,18 @@ export const getAccount = async ()=>{
     }
     const data = await response.json();
     return data.data
+}
+
+export const updatedAccount = async ({id , update}:updatedAccountProps)=>{
+    console.log("updated  =>", update)
+    const response = await fetchWithAuth(`${baseUrl}accounts/update/${id}`,{
+        method:'PATCH',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(update)
+    });
+    if(!response.ok){
+        throw new Error('Updated account failed')
+    }
+    const data = await response.json();
+    return data
 }
