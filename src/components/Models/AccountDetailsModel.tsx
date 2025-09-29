@@ -145,6 +145,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                       </div>
                       </div>
                       <div className="cardHeader">
+                        <form action="#">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div className="space-y-2">
                                 <label htmlFor="" className="label_style text-lg">{t('Account Status')} *</label>
@@ -193,6 +194,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                                 {t('Save Change')}
                               </button>
                             ) }
+                        </form>
                       </div>
                   </div>
                 </Tabs.Content>
