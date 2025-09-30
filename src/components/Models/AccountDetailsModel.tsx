@@ -11,6 +11,7 @@ import { showError, showInfo, showSuccess } from "@utils/Toasts";
 
 type AccountDetailsModelProps = {
   accounts: AccountProps;
+  update?: Record<string, string>;
 };
 
 

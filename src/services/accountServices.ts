@@ -12,7 +12,7 @@ interface createAccountProps {
 
 interface updatedAccountProps{
     id:string,
-    update:string
+   update?: Record<string, string>;
 }
 
 
