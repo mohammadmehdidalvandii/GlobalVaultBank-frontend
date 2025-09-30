@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { showError } from '@utils/Toasts'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import {AccountProps}  from "@types/account"
+import {AccountProps}  from "../../../../types/account"
 
 const AccountsTable:React.FC = () => {
     const {t}=useTranslation();

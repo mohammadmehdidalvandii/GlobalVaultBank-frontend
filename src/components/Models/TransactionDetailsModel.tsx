@@ -3,7 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import * as Tabs from '@radix-ui/react-tabs';
 import { Eye, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { transactionProps } from '@types/transaction';
+import { transactionProps } from '../../types/transaction';
 
 interface transactionModelData {
     trigger:React.ReactNode

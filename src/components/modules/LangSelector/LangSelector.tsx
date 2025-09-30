@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import * as Select from "@radix-ui/react-select";
-import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import {useTranslation} from 'react-i18next'
 
 const LangSelector: React.FC = () => {

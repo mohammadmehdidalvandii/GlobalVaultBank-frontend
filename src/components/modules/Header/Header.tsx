@@ -1,6 +1,6 @@
 import React from 'react';
-import { X ,  Menu, User} from 'lucide-react'
-import { headerProps } from '@types/header.types';
+import { X ,  Menu} from 'lucide-react'
+import { headerProps } from '../../../types/header';
 import BtnTheme from '../BtnTheme/BtnTheme';
 import LangSelector from '../LangSelector/LangSelector';
 import {useTranslation} from 'react-i18next'

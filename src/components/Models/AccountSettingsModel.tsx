@@ -6,7 +6,7 @@ import * as Separator from '@radix-ui/react-separator';
 import * as Switch from '@radix-ui/react-switch'
 import { Bell, ChevronDown, Lock, Settings, Shield, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { AccountProps } from "@types/account";
+import { AccountProps } from "../../types/account";
 import { showInfo } from "@utils/Toasts";
 
 

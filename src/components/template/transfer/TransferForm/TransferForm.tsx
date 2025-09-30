@@ -2,7 +2,7 @@ import { ChevronDown, DollarSign, Send } from 'lucide-react';
 import React, { useState } from 'react';
 import * as Select from '@radix-ui/react-select';
 import { useTranslation } from 'react-i18next';
-import { AccountProps } from '@types/account';
+import { AccountProps } from '../../../../types/account';
 import { useMutation } from '@tanstack/react-query';
 import { createTransfer } from '@services/transferServices';
 import { showError, showSuccess } from '@utils/Toasts';

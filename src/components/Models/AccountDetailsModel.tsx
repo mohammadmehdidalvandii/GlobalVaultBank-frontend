@@ -4,7 +4,7 @@ import * as Tabs from '@radix-ui/react-tabs'
 import * as Select from '@radix-ui/react-select'
 import { ChevronDown, CreditCard, Edit, Eye, History, Lock, Settings, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { AccountProps } from "@types/account";
+import { AccountProps } from "../../types/account";
 import { useMutation } from "@tanstack/react-query";
 import { updatedAccount } from "@services/accountServices";
 import { showError, showInfo, showSuccess } from "@utils/Toasts";

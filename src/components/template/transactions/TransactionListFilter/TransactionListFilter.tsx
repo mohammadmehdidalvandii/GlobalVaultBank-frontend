@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { getAllTransactions } from '@services/transactionsServivces';
 import { showError } from '@utils/Toasts';
-import { transactionProps } from '@types/transaction';
+import { transactionProps } from '../../../../types/transaction';
 
 const TransactionListFilter:React.FC = ()=>{
     const {t} = useTranslation();
