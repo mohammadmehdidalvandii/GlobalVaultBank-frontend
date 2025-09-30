@@ -10,6 +10,7 @@ import Settings from '@page/Settings/Settings';
 import Login from '@page/Login/Login';
 import {Toaster} from 'sonner'
 import { useEffect } from 'react';
+import {HelmetProvider } from 'react-helmet-async'
 import { getValidToken } from '@services/authServices';
 
 
@@ -32,6 +33,7 @@ function App() {
   },[])
 
   return (
+    <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <Toaster position='top-center' richColors/>
       <BrowserRouter>
@@ -48,6 +50,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
+    </HelmetProvider>
   )
 }
 
