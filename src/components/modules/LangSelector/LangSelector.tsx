@@ -21,7 +21,7 @@ const LangSelector: React.FC = () => {
 
   return (
     <Select.Root defaultValue="en" onValueChange={handlerLanguageChange}>
-      <Select.Trigger  className="select_trigger dark:text-white ">
+      <Select.Trigger  className="select_trigger dark:text-white " aria-label="change language">
         <Select.Value />
         <Select.Icon asChild>
           <ChevronDown className="w-4 h-4" />

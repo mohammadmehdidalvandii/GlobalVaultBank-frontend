@@ -25,6 +25,7 @@ const {t ,i18n} = useTranslation();
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button className="btn primary w-[50px]"
+        aria-label="settings model"
         onClick={()=>showInfo(t('Developing'))}
         >
           <Settings className="h-4 w-4" />

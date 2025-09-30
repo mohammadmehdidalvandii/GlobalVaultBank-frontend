@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 const HeaderDashboard:React.FC  = ()=>{
   const {t} = useTranslation();
   return (
-    <div className='flex items-center justify-between flex-wrap '>
+    <div className='flex items-center justify-between flex-wrap  bg-white dark:bg-primary p-4'>
         <div>
             <h1 className="title">{t('Employee Dashboard')}</h1>
             <p className="paraph">{t("Bank employee portal - Manage customers and accounts")}</p>

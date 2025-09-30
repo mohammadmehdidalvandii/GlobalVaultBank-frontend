@@ -21,6 +21,7 @@ const BtnTheme:React.FC = ()=>{
 
   return (
     <button type='button' className="btn"
+    aria-label='button change theme'
     onClick={handlerTheme}
     >
         {theme === 'light' ? <Moon/> :<Sun/>} 

@@ -13,17 +13,18 @@ const Setting: React.FC = () => {
         {/* Employee profile */}
       <div className="card p-2">
         <div className="cardHeader">
-          <h3 className="cardTitle flex items-center gap-2">
+          <h2 className="cardTitle flex items-center gap-2">
             <User className="h-5 w-5" />
             {t('Employee Profile')}
-          </h3>
+          </h2>
         </div>
         <div className="cardContent space-y-4 mt-5">
           <div>
-            <label htmlFor="" className="label_style">
+            <label htmlFor="Employee" className="label_style">
               {t('Employee')} ID
             </label>
             <input
+            id="Employee"
               type="text"
               className="input_style"
               defaultValue="EMP-2024-001"
@@ -31,21 +32,22 @@ const Setting: React.FC = () => {
             />
           </div>
           <div>
-            <label htmlFor="" className="label_style">
+            <label htmlFor="fullName"  className="label_style">
               {t('Full Name')}
             </label>
             <input
+            id="fullName"
               type="text"
               className="input_style"
               defaultValue="Sarah Johnson"
             />
           </div>
           <div>
-            <label htmlFor="" className="label_style">
+            <label htmlFor="Department"  className="label_style">
               {t('Department')}
             </label>
             <Select.Root defaultValue="" disabled>
-              <Select.Trigger className="select_trigger mt-2">
+              <Select.Trigger className="select_trigger mt-2" aria-label="customer service">
                 <Select.Value placeholder="customer-service" />
                 <Select.Icon>
                   <ChevronDown />
@@ -78,10 +80,11 @@ const Setting: React.FC = () => {
             </Select.Root>
           </div>
           <div>
-            <label htmlFor="" className="label_style">
+            <label htmlFor="Position" className="label_style">
               {t('Position')}
             </label>
             <input
+              id="Position"
               type="text"
               className="input_style"
               defaultValue="Senior Customer Relations Officer "
@@ -96,15 +99,15 @@ const Setting: React.FC = () => {
       {/* System access Security */}
       <div className="card p-2">
         <div className="cardHeader">
-          <h3 className="cardTitle flex items-center gap-2">
+          <h2 className="cardTitle flex items-center gap-2">
             <Shield className="h-5 w-5" />
             {t('System Access & Security')}
-          </h3>
+          </h2>
         </div>
         <div className="cardContent mt-5">
           <div className="flex items-center justify-between mt-6">
             <div>
-              <label htmlFor="#" className="label_style">
+              <label  className="label_style">
                 {t('Access level')}
               </label>
               <p className="text-muted">
@@ -117,24 +120,24 @@ const Setting: React.FC = () => {
           </div>
           <div className="flex items-center justify-between mt-6">
             <div>
-              <label htmlFor="#" className="label_style">
+              <label  className="label_style">
                 {t('Multi-Factor Authentication')}
               </label>
               <p className="text-muted">{t('Required for banking operations')}</p>
             </div>
-            <Switch.Root className="switchRoot">
+            <Switch.Root className="switchRoot" aria-label="Authentication">
               <Switch.Thumb className="switchThumb" />
             </Switch.Root>
           </div>
           <div className="flex items-center justify-between mt-6">
             <div>
-              <label htmlFor="#" className="label_style">
+              <label  className="label_style">
                 {t('Session Timeout')}
               </label>
               <p className="text-muted">{t('Auto-logout after inactivity')}</p>
             </div>
             <Select.Root defaultValue="">
-              <Select.Trigger className="select_trigger mt-2 w-[200px]">
+              <Select.Trigger className="select_trigger mt-2 w-[200px]" aria-label="customer service">
                 <Select.Value placeholder="customer-service" />
                 <Select.Icon>
                   <ChevronDown />
@@ -159,7 +162,7 @@ const Setting: React.FC = () => {
           </div>
             <Separator.Root className="separator h-[1px] w-full mt-2" />
           <div className="flex  justify-between flex-col gap-2 mt-6">
-            <label htmlFor="" className="label_style">{t('Change password')}</label>
+            <label  className="label_style">{t('Change password')}</label>
             <input type="password" className="input_style"  placeholder={t('Current password')}/>
             <input type="password" className="input_style"  placeholder={t('New password')}/>
           </div>
@@ -171,54 +174,54 @@ const Setting: React.FC = () => {
       {/* system Notifications */}
       <div className="card p-2">
         <div className="cardHeader">
-            <h3 className="cardTitle flex items-center gap-2">
+            <h2 className="cardTitle flex items-center gap-2">
                 <Bell className="h-5 w-5"/>
                 {t('System Notifications')}
-            </h3>
+            </h2>
         </div>
         <div className="cardContent mt-5">
             <div className="flex items-center justify-between mt-3">
                 <div>
-                <label htmlFor="" className="label_style">{t("Fraud Alerts")}</label>
+                <label  className="label_style">{t("Fraud Alerts")}</label>
                 <p className="text-muted">{t('High-priority security notifications')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="Fraud Alerts">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
             <div className="flex items-center justify-between mt-3">
                 <div>
-                <label htmlFor="" className="label_style">{t('Transaction Alerts')}</label>
+                <label  className="label_style">{t('Transaction Alerts')}</label>
                 <p className="text-muted">{t('Large transaction notifications')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="Transaction Alerts">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
             <div className="flex items-center justify-between mt-3">
                 <div>
-                <label htmlFor="" className="label_style">{t('System Maintenance')}</label>
+                <label  className="label_style">{t('System Maintenance')}</label>
                 <p className="text-muted">{t('Scheduled maintenance notifications')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="System Maintenance">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
             <div className="flex items-center justify-between mt-3">
                 <div>
-                <label htmlFor="" className="label_style">{t('Policy Updates')}</label>
+                <label  className="label_style">{t('Policy Updates')}</label>
                 <p className="text-muted">{t('Banking policy changes')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="Policy Updates">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
             <div className=" mt-3">
                 <div>
-                <label htmlFor="" className="label_style">{t('Alert Threshold')}</label>
+                <label  className="label_style">{t('Alert Threshold')}</label>
                 </div>
                             <Select.Root defaultValue="" >
-              <Select.Trigger className="select_trigger mt-2">
+              <Select.Trigger className="select_trigger mt-2" aria-label="Alert Threshold">
                 <Select.Value placeholder="customer-service" />
                 <Select.Icon>
                   <ChevronDown />
@@ -249,16 +252,16 @@ const Setting: React.FC = () => {
       {/* Work Schedule & shifts */}
       <div className="card p-2">
         <div className="cardHeader">
-            <h3 className="cardTitle flex items-center gap-2">
+            <h2 className="cardTitle flex items-center gap-2">
                 <Clock className="h-5 w-5"/>
                 {t('Work Schedule & Preferences')}
-            </h3>
+            </h2>
         </div>
         <div className="cardContent">
             <div className="mt-5"> 
-                <label htmlFor="#" className="label_style">{t('Current Shift')}</label>
+                <label  className="label_style">{t('Current Shift')}</label>
                 <Select.Root defaultValue="" >
-              <Select.Trigger className="select_trigger mt-2">
+              <Select.Trigger className="select_trigger mt-2" aria-label="Current Shift">
                 <Select.Value placeholder="customer-service" />
                 <Select.Icon>
                   <ChevronDown />
@@ -286,17 +289,17 @@ const Setting: React.FC = () => {
             </div>
             <div className="flex items-center justify-between mt-5">
                 <div>
-                    <label htmlFor="#" className="label_style">{t('Break Reminders')}</label>
+                    <label  className="label_style">{t('Break Reminders')}</label>
                     <p className="text-muted">{t('Automatic break notifications')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="Break Reminders">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
                         <div className="mt-5"> 
-                <label htmlFor="#" className="label_style">{t('Time Zone')}</label>
+                <label  className="label_style">{t('Time Zone')}</label>
                 <Select.Root defaultValue="" >
-              <Select.Trigger className="select_trigger mt-2">
+              <Select.Trigger className="select_trigger mt-2" aria-label="Time Zon">
                 <Select.Value placeholder="utc-5" />
                 <Select.Icon>
                   <ChevronDown />
@@ -330,45 +333,45 @@ const Setting: React.FC = () => {
       {/* System Permission */}
       <div className="card p-2">
         <div className="cardHeader">
-            <h3 className="cardTitle flex items-center gap-2">
+            <h2 className="cardTitle flex items-center gap-2">
                 <User className="h-5 w-5"/>
                 {t('System Permissions')}
-            </h3>
+            </h2>
         </div>
         <div className="cardContent">
             <div className="flex items-center justify-between mt-4">
                 <div>
-                    <label htmlFor="#" className="label_style">{t('Customer Account Access')}</label>
+                    <label  className="label_style">{t('Customer Account Access')}</label>
                     <p className="text-muted mt-0">{t('View and modify customer accounts')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="Customer Account Access">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
             <div className="flex items-center justify-between mt-4">
                 <div>
-                    <label htmlFor="#" className="label_style">{t('Transaction Processing')}</label>
+                    <label  className="label_style">{t('Transaction Processing')}</label>
                     <p className="text-muted mt-0">{t('Process deposits and withdrawals')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="Transaction Processing">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
             <div className="flex items-center justify-between mt-4">
                 <div>
-                    <label htmlFor="#" className="label_style">{t('Loan Application Review')}</label>
+                    <label  className="label_style">{t('Loan Application Review')}</label>
                     <p className="text-muted mt-0">{t('Review and approve loan applications')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="Loan Application Review">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
             <div className="flex items-center justify-between mt-4">
                 <div>
-                    <label htmlFor="#" className="label_style">{t('Compliance Reports')}</label>
+                    <label  className="label_style">{t('Compliance Reports')}</label>
                     <p className="text-muted mt-0">{t('Generate regulatory reports')}</p>
                 </div>
-                <Switch.Root className="switchRoot">
+                <Switch.Root className="switchRoot" aria-label="Compliance Reports">
                     <Switch.Thumb className="switchThumb"/>
                 </Switch.Root>
             </div>
@@ -385,29 +388,29 @@ const Setting: React.FC = () => {
       {/* System Integration */}
       <div className="card p-2">
         <div className="cardHeader">
-            <h3 className="cardTitle flex items-center gap-2">
+            <h2 className="cardTitle flex items-center gap-2">
                 <Settings2 className="h-5 w-5"/>
                 {t('System Integration')}
-            </h3>
+            </h2>
         </div>
         <div className="cardContent">
             <div className="flex items-center justify-between mt-5">
                 <div>
-                    <label htmlFor="#" className="label_style">{t('Core Banking System')}</label>
+                    <label className="label_style">{t('Core Banking System')}</label>
                     <p className="text-muted">{t('Connected to MainFrame v12.5')}</p>
                 </div>
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             </div>
             <div className="flex items-center justify-between mt-5">
                 <div>
-                    <label htmlFor="#" className="label_style">{t('Compliance Module')}</label>
+                    <label  className="label_style">{t('Compliance Module')}</label>
                     <p className="text-muted">{t('Real-time monitoring active')}</p>
                 </div>
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             </div>
             <div className="flex items-center justify-between mt-5">
                 <div>
-                    <label htmlFor="#" className="label_style">{t('Customer CRM')}</label>
+                    <label  className="label_style">{t('Customer CRM')}</label>
                     <p className="text-muted">{t('Salesforce integration')}</p>
                 </div>
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>

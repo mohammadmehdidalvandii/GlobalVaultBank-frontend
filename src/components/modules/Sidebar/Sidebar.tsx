@@ -78,7 +78,7 @@ const Sidebar: React.FC = () => {
           })}
         </ul>
       </nav>
-      <button className="btn danger w-full bg-red mb-2  items-center-safe font-interBold rtl:font-danaBold"
+      <button className="btn danger w-full bg-red-600 mb-2  items-center-safe font-interBold rtl:font-danaBold"
       type="button"
       onClick={handlerLogout}
       >

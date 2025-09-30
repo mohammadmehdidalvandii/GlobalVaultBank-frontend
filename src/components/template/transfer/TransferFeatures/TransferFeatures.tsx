@@ -7,7 +7,7 @@ const TransferFeatures:React.FC = ()=>{
   return (
     <div className="card p-2 mt-4">
         <div className="cardHeader">
-            <h3 className="cardTitle">{t('Transfer Feature')}</h3>
+            <h2 className="cardTitle">{t('Transfer Feature')}</h2>
         </div>
         <div className="cardContent mt-4">
             <div className="flex items-center gap-3 mb-2">

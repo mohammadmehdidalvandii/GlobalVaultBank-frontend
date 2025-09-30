@@ -30,7 +30,7 @@ if(isError && error){
     <>
     <div className="card p-2 mt-4">
         <div className="cardHeader">
-            <h3 className="cardTitle">{t('Filter Transactions')}</h3>
+            <h1 className="cardTitle">{t('Filter Transactions')}</h1>
         </div>
         <div className="cardContent">
             <div className="flex flex-col md:flex-row gap-4 mt-4">
@@ -48,7 +48,7 @@ if(isError && error){
     </div>
     <div className="card p-2 mt-4">
         <div className="cardHeader">
-            <h3 className="cardTitle">{t('Recent Transactions')}</h3>
+            <h2 className="cardTitle">{t('Recent Transactions')}</h2>
         </div>
         <div className="cardContent">
             <div className="space-y-4">

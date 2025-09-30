@@ -12,6 +12,7 @@ const Header:React.FC<headerProps> = ({handlerSidebar , icon}) => {
     <header className='bg-white dark:bg-primary-100 w-full border-b border-border dark:border-muted h-16 flex items-center justify-between px-6 shadow-card'>
         <div className="flex flex-items gap-4">
             <button type='button' className="btn"
+            aria-label='button close sidebar'
             onClick={handlerSidebar}
             >
                 {icon ? <X/> :<Menu/>}

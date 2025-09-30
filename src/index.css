@@ -220,7 +220,7 @@
         @apply border-b dark:border-muted transition-colors hover:bg-primary/10
     }
     .tableHead{
-        @apply h-12 px-4 text-left align-bottom font-interRegular rtl:font-danaRegular text-muted    
+        @apply h-12 px-4 text-left align-bottom font-interRegular rtl:font-danaRegular text-muted dark:text-white
     }
     [dir="rtl"] .tableHead{
         @apply text-right

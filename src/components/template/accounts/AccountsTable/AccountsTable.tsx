@@ -41,7 +41,7 @@ const AccountsTable:React.FC = () => {
             />
         </div>
         {/* table */}
-        <div className="rounded-md border border-border">
+        <div className="rounded-md border border-border bg-white dark:bg-primary">
             <div className="container_table">
                 <table className="table">
                     <thead className='tableHeader'>

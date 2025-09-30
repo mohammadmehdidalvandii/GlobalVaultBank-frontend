@@ -7,7 +7,7 @@ const TransferSummary:React.FC = ()=>{
   return (
     <div className="card p-2 mt-4">
         <div className="cardHeader">
-            <h3 className="cardTitle">{t('Transfer Summary')}</h3>
+            <h2 className="cardTitle">{t('Transfer Summary')}</h2>
         </div>
         <div className="cardContent mt-4">
             <div className={`flex justify-between ${i18n.language === 'fa' ? 'mb-4':""}`}>

@@ -11,17 +11,17 @@ const ExchangeConversion:React.FC =  () => {
         <div className="lg:col-span-2">
             <div className="card p-2">
                 <div className="cardHeader">
-                    <h3 className="cardTitle flex items-center gap-2">
+                    <h1 className="cardTitle flex items-center gap-2">
                         <ArrowUpDown className='h-5 w-5'/>
                         {t('Currency Exchange')}
-                    </h3>
+                    </h1>
                 </div>
                 <div className="cardContent">
                     <div className="mt-4">
                         <label htmlFor="">{t('From')}</label>
                         <div className="flex gap-4">
                                     <Select.Root defaultValue=''>
-                            <Select.Trigger className='select_trigger'>
+                            <Select.Trigger className='select_trigger' aria-label='exchange '>
                                 <Select.Value placeholder="From Currency"/>
                                 <Select.Icon>
                                     <ChevronDown/>
@@ -56,15 +56,16 @@ const ExchangeConversion:React.FC =  () => {
                         </div>
                     </div>
                     <div className="flex justify-center mt-8">
-                        <button type='button' className="btn primary rounded-full w-10 text-3xl"><RefreshCcw className='h-4 w-4'
+                        <button type='button' className="btn primary rounded-full w-10 text-3xl"
+                        aria-label='change '
                         onClick={()=>showInfo(t('Developing'))}
-                        /></button>
+                        ><RefreshCcw className='h-4 w-4'/></button>
                     </div>
                     <div className="mt-4">
                         <label htmlFor="">{t('TO')}</label>
                         <div className="flex gap-4">
                                     <Select.Root defaultValue=''>
-                            <Select.Trigger className='select_trigger'>
+                            <Select.Trigger className='select_trigger' aria-label='exchange'>
                                 <Select.Value placeholder="From Currency"/>
                                 <Select.Icon>
                                     <ChevronDown/>
@@ -116,7 +117,7 @@ const ExchangeConversion:React.FC =  () => {
         <div className='space-y-4'>
              <div className="card p-2">
                 <div className="cardHeader">
-                    <h3 className="cardTitle">{t('Transaction Summary')}</h3>
+                    <h2 className="cardTitle">{t('Transaction Summary')}</h2>
                 </div>
                 <div className="cardContent">
                     <div className="flex justify-between mt-4">
@@ -184,7 +185,7 @@ const ExchangeConversion:React.FC =  () => {
              </div>
              <div className="card p-2 mt-4">
                 <div className="cardHeader">
-                    <h3 className="cardTitle">{t('Market Information')}</h3>
+                    <h2 className="cardTitle">{t('Market Information')}</h2>
                 </div>
                 <div className="cardContent mt-4">
                     <div className="flex justify-between mb-2">

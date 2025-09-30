@@ -24,7 +24,7 @@ if(isError && error){
   return (
     <div className="rounded-lg border border-border bg-white dark:bg-primary-100 text-primary dark:text-white shadow-sm ">
         <div className="flex flex-row items-center justify-between space-y-1 5 p-6">
-            <h3 className="text-2xl font-interBold rtl:font-danaBold leading-none tracking-tight dark:text-white">{t('Recent Transactions')}</h3>
+            <h1 className="text-2xl font-interBold rtl:font-danaBold leading-none tracking-tight dark:text-white">{t('Recent Transactions')}</h1>
             <Link to='/Transactions' className='btn primary w-[100px] font-interRegular rtl:font-danaRegular'>{t('View All')}</Link>
         </div>
         <div className="p-6">

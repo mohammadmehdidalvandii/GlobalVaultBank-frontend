@@ -66,10 +66,10 @@ const TransferForm:React.FC<AccountTransferForm> = ({data})=>{
  return (
     <div className="card p-2 mt-4">
       <div className="cardHeader">
-        <h3 className="cardTitle flex items-center gap-2">
+        <h1 className="cardTitle flex items-center gap-2">
           <Send className="h-5 w-5" />
           {t('New Transfer')}
-        </h3>
+        </h1>
       </div>
 
       <div className="cardContent mt-4 space-y-6">
@@ -78,7 +78,7 @@ const TransferForm:React.FC<AccountTransferForm> = ({data})=>{
         <div className="space-y-2">
           <label className="text-primary-100 dark:text-white text-lg">{t('Transfer Type')}</label>
           <Select.Root value={transferType} onValueChange={setTransferType}>
-            <Select.Trigger className="select_trigger mt-2">
+            <Select.Trigger className="select_trigger mt-2" aria-label='transfer type'>
               <Select.Value placeholder="Select transfer type" />
               <Select.Icon>
                 <ChevronDown />
@@ -106,7 +106,7 @@ const TransferForm:React.FC<AccountTransferForm> = ({data})=>{
         <div className="space-y-2">
           <label className="text-primary-100 dark:text-white text-lg">{t('From Account')}</label>
           <Select.Root onValueChange={(val) => setSelectFromAccount(JSON.parse(val))}>
-            <Select.Trigger className="select_trigger mt-2">
+            <Select.Trigger className="select_trigger mt-2" aria-label='account name'>
               <Select.Value placeholder="Select source account" />
               <Select.Icon>
                 <ChevronDown />
@@ -136,7 +136,7 @@ const TransferForm:React.FC<AccountTransferForm> = ({data})=>{
         <div className="space-y-2">
           <label className="text-primary-100 dark:text-white text-lg">{t('To Account')}</label>
           <Select.Root onValueChange={(val) => setSelectToAccount(JSON.parse(val))}>
-            <Select.Trigger className="select_trigger mt-2">
+            <Select.Trigger className="select_trigger mt-2" aria-label='account name'>
               <Select.Value placeholder="Select destination account" />
               <Select.Icon>
                 <ChevronDown />
@@ -166,7 +166,7 @@ const TransferForm:React.FC<AccountTransferForm> = ({data})=>{
         <div className="space-y-2">
           <label className="text-primary-100 dark:text-white text-lg">{t('Currency Type')}</label>
           <Select.Root value={currency} onValueChange={setCurrency}>
-            <Select.Trigger className="select_trigger mt-2">
+            <Select.Trigger className="select_trigger mt-2" aria-label='currency name'>
               <Select.Value placeholder="Select currency type" />
               <Select.Icon>
                 <ChevronDown />
