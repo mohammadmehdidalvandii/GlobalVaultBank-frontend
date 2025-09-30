@@ -11,7 +11,7 @@ const Header:React.FC<headerProps> = ({handlerSidebar , icon}) => {
   return (
     <header className='bg-white dark:bg-primary-100 w-full border-b border-border dark:border-muted h-16 flex items-center justify-between px-6 shadow-card'>
         <div className="flex flex-items gap-4">
-            <button className="btn"
+            <button type='button' className="btn"
             onClick={handlerSidebar}
             >
                 {icon ? <X/> :<Menu/>}

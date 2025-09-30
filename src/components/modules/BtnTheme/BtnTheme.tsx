@@ -20,7 +20,7 @@ const BtnTheme:React.FC = ()=>{
     }
 
   return (
-    <button className="btn"
+    <button type='button' className="btn"
     onClick={handlerTheme}
     >
         {theme === 'light' ? <Moon/> :<Sun/>} 
