@@ -6,6 +6,7 @@ import {Toaster} from 'sonner'
 import { getValidToken } from '@services/authServices';
 import MainLayout from '@layouts/MainLayout/MainLayout';
 import Loader from '@components/modules/Loader/Loader';
+import NotFound from '@page/NotFound/NotFound';
 // import Lazy
 const Dashboard = lazy(()=>import('@page/Dashboard/Dashboard'));
 const Accounts = lazy(()=>import('@page/Accounts/Accounts'))
@@ -41,6 +42,7 @@ function App() {
       <BrowserRouter>
       <Suspense fallback={<Loader/>}>
         <Routes>
+          <Route path='*' element={<NotFound/>}/>
           <Route path='/Login' element={<Login/>}/>
           <Route path='/' element={<MainLayout/>}>
             <Route index element={<Dashboard/>}/>
