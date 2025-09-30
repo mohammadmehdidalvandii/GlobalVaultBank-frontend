@@ -54,7 +54,7 @@ const {data =[] , isLoading , isError , error } = useQuery({
 const mutation = useMutation({
     mutationFn:createAccount,
     onSuccess:()=>{
-        showSuccess('Created Account Successfully')
+        showSuccess(t('Created Account Successfully'))
         resetForm()
         setOpen(false)
         window.location.reload()
@@ -92,7 +92,7 @@ const handlerCreateAccount:React.FormEventHandler  = (e)=>{
         status
     })
 }
-  if(isLoading) return <p>Loading...</p>;
+  if(isLoading) return <p className="text_loading">Loading...</p>;
   if(isError) {
     showError(`${error.message}`)
   }

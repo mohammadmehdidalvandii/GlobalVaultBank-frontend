@@ -21,6 +21,10 @@ import exchangeFA from './fa/exchangeFA.json'
 import settingsEN from './en/settingsEN.json'
 import settingsESP from './esp/settingsESP.json'
 import settingsFA from './fa/settingsFA.json'
+import toastEN from'./en/ToastEN.json'
+import toastESP from'./esp/toastESP.json'
+import toastFA  from'./fa/toastFA.json'
+
 
 
 const resources:Resource = {
@@ -32,7 +36,8 @@ const resources:Resource = {
           ...transactionEN,
           ...transferEN,
           ...exchangeEN,
-          ...settingsEN
+          ...settingsEN,
+          ...toastEN
         }
     },
     esp:{
@@ -43,7 +48,8 @@ const resources:Resource = {
         ...transactionESP,
         ...transferESP,
         ...exchangeESP,
-        ...settingsESP
+        ...settingsESP,
+        ...toastESP,
         }
     },
     fa:{
@@ -54,7 +60,8 @@ const resources:Resource = {
             ...transactionFA,
             ...transferFA,
             ...exchangeFA,
-            ...settingsFA
+            ...settingsFA,
+            ...toastFA
         }
     }
 }

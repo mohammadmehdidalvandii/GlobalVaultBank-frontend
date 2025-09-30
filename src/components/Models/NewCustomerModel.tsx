@@ -27,7 +27,7 @@ const NewCustomerModel:React.FC = ()=>{
     const mutation = useMutation({
         mutationFn:createCustomer,
         onSuccess:()=>{
-            showSuccess('created customer successfully')
+            showSuccess(t('created customer successfully'))
             window.location.reload()
         },
         onError:(error)=>{

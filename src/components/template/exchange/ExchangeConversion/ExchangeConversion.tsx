@@ -2,6 +2,7 @@ import { ArrowUpDown, ChevronDown, RefreshCcw, TrendingUp } from 'lucide-react';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
 import { useTranslation } from 'react-i18next';
+import { showInfo } from '@utils/Toasts';
 
 const ExchangeConversion:React.FC =  () => {
     const {t} = useTranslation()
@@ -55,7 +56,9 @@ const ExchangeConversion:React.FC =  () => {
                         </div>
                     </div>
                     <div className="flex justify-center mt-8">
-                        <button className="btn primary rounded-full w-10 text-3xl"><RefreshCcw className='h-4 w-4'/></button>
+                        <button type='button' className="btn primary rounded-full w-10 text-3xl"><RefreshCcw className='h-4 w-4'
+                        onClick={()=>showInfo(t('Developing'))}
+                        /></button>
                     </div>
                     <div className="mt-4">
                         <label htmlFor="">{t('TO')}</label>

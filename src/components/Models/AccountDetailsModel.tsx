@@ -26,7 +26,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
   const mutation = useMutation({
     mutationFn:updatedAccount,
     onSuccess:()=>{
-      showSuccess('updated Field successfully')
+      showSuccess(t('updated Field successfully'))
       window.location.reload()
     },
     onError:(error)=>{
@@ -44,7 +44,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
     e.preventDefault();
     const cardStatus = status === "blocked"?'active':'blocked';
     mutation.mutate({id:accountId , update:{cardStatus:cardStatus} })
-    showSuccess("updated status card")
+    showSuccess(t('updated status card'))
   }
 
 
@@ -254,7 +254,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                             <p className="text-base text-muted">{t('Temporarily lock this account')}</p>
                           </div>
                           <button className="btn primary w-[150px]"
-                          onClick={()=>showInfo('Developing')}
+                          onClick={()=>showInfo(t('Developing'))}
                           >
                             <Lock className="h-4 w-4 mr-2"/>
                             {t('Lock Account')}
@@ -266,7 +266,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                             <p className="text-base text-muted">{t('Generate new PIN for customer')}</p>
                           </div>
                           <button className="btn primary w-fit p-1"
-                          onClick={()=>showInfo('Developing')}
+                          onClick={()=>showInfo(t('Developing'))}
                           >
                             {t('Reset PIN')}
                           </button>

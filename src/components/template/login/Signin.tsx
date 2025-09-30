@@ -20,7 +20,7 @@ const Signin:React.FC = ()=>{
     const mutation = useMutation({
         mutationFn:login,
         onSuccess:(data)=>{
-            showSuccess("Login Successfully")
+            showSuccess(t('Login Successfully'))
             localStorage.setItem('token' , data.data.accessToken);
             localStorage.setItem('accessTokenExpiry' ,expiry.toString())
             navigate('/' )
@@ -33,7 +33,7 @@ const Signin:React.FC = ()=>{
     const handlerLoginForm:React.FormEventHandler  = (e)=>{
         e.preventDefault();
         if(!employeeCode.trim() || !password.trim()){
-            showError("Employee_code and Password is required")
+            showError(t('Employee_code and Password is required'))
         }
         const result = signinSchema.safeParse({employeeCode , password});
         if(!result.success){

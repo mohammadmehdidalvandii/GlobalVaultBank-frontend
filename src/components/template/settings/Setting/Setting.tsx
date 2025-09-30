@@ -4,6 +4,7 @@ import * as Switch from "@radix-ui/react-switch";
 import * as Separator from "@radix-ui/react-separator";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { showInfo } from "@utils/Toasts";
 
 const Setting: React.FC = () => {
   const {t} = useTranslation()
@@ -87,7 +88,9 @@ const Setting: React.FC = () => {
               disabled
             />
           </div>
-          <button className="btn secondary w-full h-12">{t('Update Profile')}</button>
+          <button type="button" className="btn secondary w-full h-12"
+          onClick={()=>showInfo(t('Developing'))}
+          >{t('Update Profile')}</button>
         </div>
       </div>
       {/* System access Security */}
@@ -108,7 +111,9 @@ const Setting: React.FC = () => {
                 {t("Level 3 - Customer Service Representative")}
               </p>
             </div>
-            <button className="btn primary w-[170px]">{t('View Permissions')}</button>
+            <button type="button" className="btn primary w-[170px]"
+            onClick={()=>showInfo(t('Developing'))}
+            >{t('View Permissions')}</button>
           </div>
           <div className="flex items-center justify-between mt-6">
             <div>
@@ -158,7 +163,9 @@ const Setting: React.FC = () => {
             <input type="password" className="input_style"  placeholder={t('Current password')}/>
             <input type="password" className="input_style"  placeholder={t('New password')}/>
           </div>
-            <button className="btn secondary w-full mt-4 h-12">{t('Update Security')}</button>
+            <button type="button" className="btn secondary w-full mt-4 h-12"
+            onClick={()=>showInfo(t('Developing'))}
+            >{t('Update Security')}</button>
         </div>
       </div>
       {/* system Notifications */}
@@ -367,7 +374,10 @@ const Setting: React.FC = () => {
             </div>
             <Separator.Root className="separator h-[1px] w-full mt-2" />
             <button className="btn primary w-full h-12 mt-4">
-                <AlertTriangle className="h-4 w-4 mr-2"/>
+                <AlertTriangle className="h-4 w-4 mr-2"
+                type="button"
+                onClick={()=>showInfo(t('Developing'))}
+                />
                 {t('Request Additional Access')}
             </button>
         </div>
@@ -403,7 +413,10 @@ const Setting: React.FC = () => {
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
             </div>
             <Separator.Root className="separator h-[1px] w-full mt-2" />
-            <button className="btn primary w-full h-12 mt-5">
+            <button className="btn primary w-full h-12 mt-5"
+            type="button"
+            onClick={()=>showInfo(t('Developing'))}
+            >
                 <Lock className='h-4 w-4 mr-2'/>
                 {t('System Diagnostic')}
             </button>

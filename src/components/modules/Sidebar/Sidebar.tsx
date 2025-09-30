@@ -31,7 +31,7 @@ const Sidebar: React.FC = () => {
   const mutation = useMutation({
     mutationFn:logout,
     onSuccess: ()=>{
-      showSuccess("Logout is Successfully");
+      showSuccess(t("Logout is Successfully"));
        window.location.replace('/Login')
     },
     onError:(error)=>{
