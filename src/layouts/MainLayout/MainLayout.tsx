@@ -3,8 +3,10 @@ import Sidebar from '@components/modules/Sidebar/Sidebar';
 import React, { useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { getToken } from '@services/authServices';
+import { useTranslation } from 'react-i18next';
 
 const MainLayout:React.FC = ()=>{
+  const {i18n} = useTranslation()
     const token = getToken();
     const [sideBarOpen , setSideBarOpen] = useState<boolean>(true);
 
@@ -19,7 +21,7 @@ const MainLayout:React.FC = ()=>{
                 <Sidebar/>
             </div>
             {/* main content */}
-            <div className={`flex-1 flex flex-col  ${sideBarOpen ? 'ml-64':"ml-0"}`}>
+            <div className={`flex-1 flex flex-col  ${sideBarOpen ? i18n.language === 'fa' ? 'mr-64':'ml-64':"ml-0 mr-0"}`}>
                 <Header handlerSidebar={()=>setSideBarOpen(!sideBarOpen)} icon={sideBarOpen ? true :false}/>
             {/* page content  */}
             <main className="flex-1 p-6">
