@@ -15,11 +15,11 @@ const MainLayout:React.FC = ()=>{
     <div className='min-h-screen bg-bg dark:bg-primary-100'>
         <div className="flex">
             {/* Sidebar */}
-            <div className={`transition-all duration-300 ${sideBarOpen ? 'w-64' : 'w-0 overflow-hidden'} `}>
+            <div className={`transition-all duration-300 ${sideBarOpen ? 'w-64 fixed' : 'w-0 overflow-hidden'} `}>
                 <Sidebar/>
             </div>
             {/* main content */}
-            <div className="flex-1 flex flex-col">
+            <div className={`flex-1 flex flex-col  ${sideBarOpen ? 'ml-64':"ml-0"}`}>
                 <Header handlerSidebar={()=>setSideBarOpen(!sideBarOpen)} icon={sideBarOpen ? true :false}/>
             {/* page content  */}
             <main className="flex-1 p-6">
