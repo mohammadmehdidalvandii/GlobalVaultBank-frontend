@@ -37,5 +37,6 @@
     "Approve":"Approve",
     "Reject":"Reject",
     "Flag for Review":"Flag for Review",
-    "Generate Report":"Generate Report"
+    "Generate Report":"Generate Report",
+    "There are no transactions.":"There are no transactions."
 }

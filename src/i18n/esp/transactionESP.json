@@ -37,5 +37,6 @@
     "Approve":"Aprobar",
     "Reject":"Rechazar",
     "Flag for Review":"Marcar para revisión",
-    "Generate Report":"Generar informe"
+    "Generate Report":"Generar informe",
+    "There are no transactions.":"No hay transacciones."
 }

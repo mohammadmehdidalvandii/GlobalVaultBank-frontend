@@ -1,5 +1,4 @@
-import { ChevronDown, Search, ShoppingCart } from 'lucide-react';
-import * as Select from '@radix-ui/react-select';
+import { Search, ShoppingCart } from 'lucide-react';
 import React, { useState } from 'react'
 import TransactionDetailsModel from '@components/Models/TransactionDetailsModel';
 import { useTranslation } from 'react-i18next';
@@ -44,62 +43,6 @@ if(isError && error){
                         />
                     </div>
                 </div>
-                {/* search by select */}
-                    {/* <Select.Root defaultValue={t('Category')}>
-                    <Select.Trigger className='select_trigger md:w-48'>
-                        <Select.Value placeholder={t('Category')} className='text-primary dark:text-white'/>
-                        <Select.Icon>
-                            <ChevronDown/>
-                        </Select.Icon>
-                    </Select.Trigger>
-                    <Select.Portal>
-                        <Select.Content className='select_content'>
-                            <Select.Viewport className='select_viewPort'>
-                                <Select.Item value={t('Category')} className='select_item text-primary dark:text-white'>
-                                    <Select.ItemText>{t('Category')}</Select.ItemText>
-                                </Select.Item>
-                                <Select.Item value={t('Active')} className='select_item text-primary dark:text-white'>
-                                    <Select.ItemText>{t('Active')}</Select.ItemText>
-                                </Select.Item>
-                                <Select.Item value={t('Suspended')} className='select_item text-primary dark:text-white'>
-                                    <Select.ItemText>{t('Suspended')}</Select.ItemText>
-                                </Select.Item>
-                                <Select.Item value={t('Frozen')} className='select_item text-primary dark:text-white'>
-                                    <Select.ItemText>{t('Frozen')}</Select.ItemText>
-                                </Select.Item>
-                                <Select.Item value={t('Closed')} className='select_item text-primary dark:text-white'>
-                                    <Select.ItemText>{t('Closed')}</Select.ItemText>
-                                </Select.Item>
-                            </Select.Viewport>
-                        </Select.Content>
-                    </Select.Portal>
-                </Select.Root>
-                <Select.Root defaultValue={t('All')}>
-                    <Select.Trigger className='select_trigger md:w-48'>
-                        <Select.Value placeholder={t('Currency')}/>
-                        <Select.Icon>
-                            <ChevronDown/>
-                        </Select.Icon>
-                    </Select.Trigger>
-                    <Select.Portal>
-                        <Select.Content className='select_content'>
-                            <Select.Viewport className='select_viewPort'>
-                                <Select.Item value={t('All')} className='select_item'>
-                                    <Select.ItemText>{t('All')}</Select.ItemText>
-                                </Select.Item>
-                                <Select.Item value='USD' className='select_item'>
-                                    <Select.ItemText>USD</Select.ItemText>
-                                </Select.Item>
-                                <Select.Item value='EUR' className='select_item'>
-                                    <Select.ItemText>EUR</Select.ItemText>
-                                </Select.Item>
-                                <Select.Item value='GBP' className='select_item'>
-                                    <Select.ItemText>GBP</Select.ItemText>
-                                </Select.Item>
-                            </Select.Viewport>
-                        </Select.Content>
-                    </Select.Portal>
-                </Select.Root> */}
             </div>
         </div>
     </div>
@@ -109,7 +52,7 @@ if(isError && error){
         </div>
         <div className="cardContent">
             <div className="space-y-4">
-                {data.length === 0 ? ( <span className='text_alert mt-2'>There are no transactions.</span>):(
+                {data.length === 0 ? ( <span className='text_alert mt-2'>{t('There are no transactions.')}</span>):(
                     filterTransaction.map((transaction:transactionProps)=>(
                         <TransactionDetailsModel 
                         key={transaction.id}
