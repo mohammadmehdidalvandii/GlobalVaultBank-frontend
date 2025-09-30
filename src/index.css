@@ -270,6 +270,9 @@
     .text_alert{
         @apply font-interBold rtl:font-danaBold text-2xl text-danger font-black;
     }
+    .text_loading {
+        @apply font-interBlack font-danaBlack text-2xl text-success
+    }
  }
 
 

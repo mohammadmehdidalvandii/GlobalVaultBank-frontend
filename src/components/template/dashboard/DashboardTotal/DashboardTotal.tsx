@@ -42,7 +42,7 @@ const DashboardTotal:React.FC =  ()=>{
     staleTime : 1000 * 60 * 5
   })
 
-  if (accountsLoading || customersLoading || dailyReportLoading) return <p>Loading...</p>;
+  if (accountsLoading || customersLoading || dailyReportLoading) return <p className='text_loading'>Loading...</p>;
 
   
   if (accountsError) showError(`${(accountsErrorMessage as Error).message}`);

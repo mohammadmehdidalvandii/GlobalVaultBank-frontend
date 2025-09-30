@@ -23,7 +23,7 @@ const filterTransaction = data.filter((transaction:transactionProps)=>{
     )
 })
 
-if(isLoading) return <p>Loading...</p>
+if(isLoading) return <p className='text_loading'>Loading...</p>
 if(isError && error){
   showError(`${error}`)
 }
