@@ -26,7 +26,7 @@ const AccountsTable:React.FC = () => {
     return (
         account.accountName.includes(searchItem.toLowerCase())||
         account.accountNumber.includes(searchItem.toLowerCase())||
-        account.currency.includes(searchItem.toLowerCase())||
+        account.currency.includes(searchItem.toUpperCase())||
         account.type.includes(searchItem.toLowerCase())
     )
   })
