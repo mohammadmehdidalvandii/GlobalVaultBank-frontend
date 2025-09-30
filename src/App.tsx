@@ -1,17 +1,19 @@
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from '@layouts/MainLayout/MainLayout';
-import Dashboard from '@page/Dashboard/Dashboard';
-import Accounts from '@page/Accounts/Accounts';
-import Transactions from '@page/Transactions/Transactions';
-import Transfer from '@page/Transfer/Transfer';
-import Exchange from '@page/Exchange/Exchange';
-import Settings from '@page/Settings/Settings';
-import Login from '@page/Login/Login';
-import {Toaster} from 'sonner'
-import { useEffect } from 'react';
+import { useEffect , Suspense , lazy } from 'react';
 import {HelmetProvider } from 'react-helmet-async'
+import {Toaster} from 'sonner'
 import { getValidToken } from '@services/authServices';
+import MainLayout from '@layouts/MainLayout/MainLayout';
+import Loader from '@components/modules/Loader/Loader';
+// import Lazy
+const Dashboard = lazy(()=>import('@page/Dashboard/Dashboard'));
+const Accounts = lazy(()=>import('@page/Accounts/Accounts'))
+const Transactions = lazy(()=>import('@page/Transactions/Transactions'))
+const Transfer = lazy(()=>import('@page/Transfer/Transfer'))
+const Exchange = lazy(()=>import('@page/Exchange/Exchange'))
+const Settings = lazy(()=>import('@page/Settings/Settings'))
+const Login = lazy(()=>import('@page/Login/Login'))
 
 
 const queryClient = new QueryClient()
@@ -37,6 +39,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Toaster position='top-center' richColors/>
       <BrowserRouter>
+      <Suspense fallback={<Loader/>}>
         <Routes>
           <Route path='/Login' element={<Login/>}/>
           <Route path='/' element={<MainLayout/>}>
@@ -48,6 +51,7 @@ function App() {
             <Route path='Settings' element={<Settings/>} />
           </Route>
         </Routes>
+      </Suspense>
       </BrowserRouter>
     </QueryClientProvider>
     </HelmetProvider>
