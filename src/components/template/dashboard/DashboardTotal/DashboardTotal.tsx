@@ -1,5 +1,6 @@
 import { getAccount } from '@services/accountServices';
 import { getCustomer } from '@services/customerService';
+import { getDailyReport } from '@services/dailyReportServices';
 import { useQuery } from '@tanstack/react-query';
 import { showError } from '@utils/Toasts';
 import React from 'react';
@@ -30,11 +31,23 @@ const DashboardTotal:React.FC =  ()=>{
     staleTime: 1000 * 60 * 5,
   });
 
-  if (accountsLoading || customersLoading) return <p>Loading...</p>;
+  const {
+    data: dailyReport= [],
+    isLoading: dailyReportLoading,
+    isError: dailyReportError,
+    error: dailyReportErrorMessage,
+  } = useQuery({
+    queryKey:['dailyReports'],
+    queryFn:getDailyReport,
+    staleTime : 1000 * 60 * 5
+  })
+
+  if (accountsLoading || customersLoading || dailyReportLoading) return <p>Loading...</p>;
 
   
   if (accountsError) showError(`${(accountsErrorMessage as Error).message}`);
   if (customersError) showError(`${(customersErrorMessage as Error).message}`);
+  if (dailyReportError) showError(`${(dailyReportErrorMessage as Error).message}`);
 
 
   return (
@@ -42,7 +55,7 @@ const DashboardTotal:React.FC =  ()=>{
         <div className="flex flex-col items-center p-6 ">
             <div className="text-center">
                 <p className="text-base mb-2 ">{t('Total Portfolio Under Management (USD)')}</p>
-                <p className="text-4xl font-danaBold font-bold mb-4">$62,036.325</p>
+                <p className="text-4xl font-danaBold font-bold mb-4">${dailyReport[0]?.totalVolume}</p>
             </div>
             <div className="flex justify-center gap-4">
                 <div className="text-center">
@@ -54,8 +67,8 @@ const DashboardTotal:React.FC =  ()=>{
                     <p className="text-base font-danaBold font-bold">{t('Total Accounts')}</p>
                 </div>
                 <div className="text-center">
-                    <p className="text-2xl font-danaBold font-bold">32</p>
-                    <p className="text-base font-danaBold font-bold">{t('Pending Reviews')}</p>
+                    <p className="text-2xl font-danaBold font-bold">{dailyReport[0]?.totalTransactions}</p>
+                    <p className="text-base font-danaBold font-bold">{t('Total Transactions')}</p>
                 </div>
             </div>
         </div>
