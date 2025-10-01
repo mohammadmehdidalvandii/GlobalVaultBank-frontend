@@ -1,11 +1,12 @@
 import { Search, ShoppingCart } from 'lucide-react';
-import React, { useState } from 'react'
-import TransactionDetailsModel from '@components/Models/TransactionDetailsModel';
+import React, { useMemo, useState , lazy , Suspense , useEffect} from 'react'
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { getAllTransactions } from '@services/transactionsServivces';
 import { showError } from '@utils/Toasts';
 import { transactionProps } from '../../../../types/transaction';
+
+const TransactionDetailsModel = lazy(()=>import('@components/Models/TransactionDetailsModel'))
 
 const TransactionListFilter:React.FC = ()=>{
     const {t} = useTranslation();
@@ -16,16 +17,19 @@ const TransactionListFilter:React.FC = ()=>{
   staleTime:1000 * 60 * 5
 });
 
-const filterTransaction = data.filter((transaction:transactionProps)=>{
-    return (
-        transaction.description.includes(searchItem.toLowerCase())
-    )
-})
+useEffect(() => {
+  if (isError && error) {
+    showError(`${error}`);
+  }
+}, [isError, error]);
+
+const filterTransaction = useMemo(() => {
+  return data.filter((transaction: transactionProps) =>
+    transaction.description.toLowerCase().includes(searchItem.toLowerCase())
+  );
+}, [data, searchItem]);
 
 if(isLoading) return <p className='text_loading'>Loading...</p>
-if(isError && error){
-  showError(`${error}`)
-}
   return (
     <>
     <div className="card p-2 mt-4">
@@ -54,7 +58,8 @@ if(isError && error){
             <div className="space-y-4">
                 {data.length === 0 ? ( <span className='text_alert mt-2'>{t('There are no transactions.')}</span>):(
                     filterTransaction.map((transaction:transactionProps)=>(
-                        <TransactionDetailsModel 
+                        <Suspense fallback={<p className='text_loading'>Loading...</p>}>
+                                 <TransactionDetailsModel 
                         key={transaction.id}
                         trigger={
                             <div className='flex items-center justify-between py-4 border-b border-muted last:border-0 hover:bg-muted/30
@@ -84,6 +89,7 @@ if(isError && error){
                         }
                         transactions={transaction}
                         />
+                        </Suspense>
                     ))
                 )}
             </div>

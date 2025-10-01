@@ -1,6 +1,6 @@
-import CustomerSearchModel from '@components/Models/CustomerSearchModel'
-import NewCustomerModel from '@components/Models/NewCustomerModel';
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
+const CustomerSearchModel = lazy(()=>import('@components/Models/CustomerSearchModel'))
+const NewCustomerModel = lazy(()=>import('@components/Models/NewCustomerModel'))
 import { useTranslation } from 'react-i18next'
 
 const HeaderDashboard:React.FC  = ()=>{
@@ -12,8 +12,12 @@ const HeaderDashboard:React.FC  = ()=>{
             <p className="paraph">{t("Bank employee portal - Manage customers and accounts")}</p>
         </div>
         <div className="flex gap-3 mt-4 md:mt-0">
+          <Suspense fallback={<p className='text_loading'>Loading...</p>}>
                 <CustomerSearchModel/>
+          </Suspense>
+          <Suspense fallback={<p className='text_loading'>Loading...</p>}>
                 <NewCustomerModel/>
+          </Suspense>
         </div>
     </div>
   )

@@ -1,6 +1,7 @@
-import NewAccountModel from '@components/Models/NewAccountModel'
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+
+const NewAccountModel = lazy(()=>import('@components/Models/NewAccountModel'))
 
 const AccountsHeader:React.FC = ()=>{
   const {t} = useTranslation();
@@ -10,7 +11,9 @@ const AccountsHeader:React.FC = ()=>{
             <h1 className="title">{t('Customer Accounts')}</h1>
             <p className="paraph">{t('Manage customer account and monitor balances')}</p>
         </div>
-        <NewAccountModel/>
+        <Suspense fallback={<button className="btn secondary">Loading...</button>}>
+         <NewAccountModel/>
+        </Suspense>
     </div>
   )
 }

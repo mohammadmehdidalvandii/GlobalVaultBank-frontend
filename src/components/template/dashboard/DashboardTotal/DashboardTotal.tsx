@@ -68,7 +68,7 @@ const DashboardTotal:React.FC =  ()=>{
                 </div>
                 <div className="text-center">
                     <p className="text-2xl font-danaBold font-bold">{dailyReport[0]?.totalTransactions}</p>
-                    <p className="text-base font-danaBold font-bold">{t('Total Transactions')}</p>
+                    <p className="text-base font-danaBold font-bold">{t('Total Transfer')}</p>
                 </div>
             </div>
         </div>

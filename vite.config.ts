@@ -21,5 +21,20 @@ export default defineConfig({
       '@store':'/src/store/',
       '@validation':'/src/validation/',
     }
+  },
+    build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['@radix-ui/react-select', '@radix-ui/react-dialog', 'lucide-react'],
+          'zod-vendor': ['zod'],
+          'i18n-vendor': ['i18next', 'react-i18next']
+        }
+      }
+    }
   }
 })
+
+
+

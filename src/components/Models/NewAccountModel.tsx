@@ -5,9 +5,8 @@ import { ChevronDown, Plus } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { getCustomer } from "@services/customerService";
 import { showError, showSuccess } from "@utils/Toasts";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { createAccount } from "@services/accountServices";
-import { accountSchema } from "@validation/account.validation";
 
 type CustomerProps = {
   id: string;
@@ -23,6 +22,7 @@ type CustomerProps = {
 
 
 const NewAccountModel: React.FC = () => {
+  const queryClient = useQueryClient()
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [customerId , setCustomerId] = useState<string>('');
@@ -46,6 +46,7 @@ const {data =[] , isLoading , isError , error } = useQuery({
     queryKey:['customers'],
     queryFn:getCustomer,
     staleTime:1000 * 60 * 5,
+    enabled:open
   })
 
 
@@ -57,7 +58,7 @@ const mutation = useMutation({
         showSuccess(t('Created Account Successfully'))
         resetForm()
         setOpen(false)
-        window.location.reload()
+        queryClient.invalidateQueries()
     },
     onError:(error)=>{
         showError(`${error.message}`)
@@ -65,12 +66,14 @@ const mutation = useMutation({
 })
 
 
-const handlerCreateAccount:React.FormEventHandler  = (e)=>{
+const handlerCreateAccount:React.FormEventHandler  = async (e)=>{
     e.preventDefault();
 
     if(!customerId.trim()||!interestRate.trim()||!type.trim()||!balance.trim()||!currency.trim()||!currency.trim() ||!status.trim()){
         showError("All felid required")
     }
+
+    const {accountSchema} = await import('@validation/account.validation')
 
     const result  = accountSchema.safeParse({
         customerId,

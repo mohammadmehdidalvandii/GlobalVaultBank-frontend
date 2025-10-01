@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState , lazy , Suspense} from 'react';
 import * as Dialog  from '@radix-ui/react-dialog';
 import { Plus } from 'lucide-react';
-import DatePicker  from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import { useTranslation } from 'react-i18next';
 import { useMutation } from '@tanstack/react-query';
 import { createCustomer } from '@services/customerService';
 import { showError, showSuccess } from '@utils/Toasts';
-import { customerSchema } from '@validation/customer.validation';
+// import { customerSchema } from '@validation/customer.validation';
 
+const DatePicker = lazy(()=>import('react-datepicker'))
 
 const NewCustomerModel:React.FC = ()=>{
     const {t} = useTranslation()
@@ -36,8 +36,9 @@ const NewCustomerModel:React.FC = ()=>{
         }
     })
 
-    const handlerFormCustomer:React.FormEventHandler = (e)=>{
+    const handlerFormCustomer:React.FormEventHandler = async (e)=>{
         e.preventDefault();
+        const {customerSchema} = await import('@validation/customer.validation')
 
         const result = customerSchema.safeParse({
             firstName,
@@ -126,6 +127,7 @@ const NewCustomerModel:React.FC = ()=>{
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="#" className="label_style dark:text-white">{t('DateOfBirth')}</label>
+                            <Suspense fallback={<input disabled placeholder="Loading..." />}>
                             <DatePicker
                             dateFormat='YYYY/MM/DD'
                             minDate={new Date(1940,0 ,1)}
@@ -139,6 +141,7 @@ const NewCustomerModel:React.FC = ()=>{
                             placeholderText='Selected Birthday'
                             className='input_style w-[150%]'
                             />
+                            </Suspense>
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="#" className="label_style dark:text-white">{t('Street')}</label>

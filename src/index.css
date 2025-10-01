@@ -10,26 +10,32 @@
 /* Font family */
 @font-face {
     font-family: 'danaBlack';
+    font-display: swap;
     src: url('/fonts/Dana-Black.woff') format('woff');
 }
 @font-face {
     font-family: 'danaBold';
+    font-display: swap;
     src: url('/fonts/Dana-Bold.woff') format('woff');
 }
 @font-face {
     font-family: 'danaRegular';
+    font-display: swap;
     src: url('/fonts/Dana-Regular.woff') format('woff');
 }
 @font-face {
     font-family: 'interBlack';
+    font-display: swap;
     src: url('/fonts/Inter_28pt-Black.ttf') format('ttf');
 }
 @font-face {
     font-family: 'interBold';
+    font-display: swap;
     src: url('/fonts/Inter_28pt-Bold.ttf') format('ttf');
 }
 @font-face {
     font-family: 'interRegular';
+    font-display: swap;
     src: url('/fonts/Inter_28pt-Regular.ttf') format('ttf');
 }
 

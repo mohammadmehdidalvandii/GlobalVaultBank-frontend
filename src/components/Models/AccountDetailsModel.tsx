@@ -5,7 +5,7 @@ import * as Select from '@radix-ui/react-select'
 import { ChevronDown, CreditCard, Edit, Eye, History, Lock, Settings, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { AccountProps } from "../../types/account";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updatedAccount } from "@services/accountServices";
 import { showError, showInfo, showSuccess } from "@utils/Toasts";
 
@@ -17,18 +17,19 @@ type AccountDetailsModelProps = {
 
 
 const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => {
-
+const queryClient = useQueryClient();
   const {t} = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
   const [isEditing , setIsEditing] = useState<boolean>(false);
   const [changeFields,setChangeFields] = useState<Record<string, string>>();
+  const [activeTab , setActiveTab]= useState<string>('overview')
 
 
   const mutation = useMutation({
     mutationFn:updatedAccount,
     onSuccess:()=>{
       showSuccess(t('updated Field successfully'))
-      window.location.reload()
+      queryClient.invalidateQueries({ queryKey: ["accounts"] })
     },
     onError:(error)=>{
       showError(`${error}`)
@@ -69,7 +70,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                     <div className="badge badge_default">{t(accounts.status)}</div>
                 </Dialog.Title>
             </div>
-            <Tabs.Root defaultValue="overview" className="w-full">
+            <Tabs.Root defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
                 <Tabs.List className="tabList w-full flex items-center h-12 justify-evenly bg-gray-light dark:bg-gray-dark rounded-md">
                     <Tabs.Trigger value="overview" className="tabTrigger cursor-pointer">{t('Overview')}</Tabs.Trigger>
                     <Tabs.Trigger value="transactions" className="tabTrigger cursor-pointer">{t('Transaction')}</Tabs.Trigger>
@@ -77,7 +78,8 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                     <Tabs.Trigger value="security" className="tabTrigger cursor-pointer">{t('Security')}</Tabs.Trigger>
                 </Tabs.List>
                 <Tabs.Content value="overview" className="tabContent">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 {activeTab === 'overview' && (
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="card p-2">
                       <div className="cardHeader">
                         <h3 className="cartTitle text-2xl text-primary dark:text-white">{t('Account Information')}</h3>
@@ -131,9 +133,11 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                       </div>
                     </div>
                   </div>
+                 )}
                 </Tabs.Content>
                 <Tabs.Content value="transactions" className="tabContent">
-                  <div className="card p-2">
+                 {activeTab === 'transactions' && (
+                                    <div className="card p-2">
                       <div className="cardHeader">
                         <h3 className="cardTitle flex  items-center gap-2">
                           <History className="h-5 w-5"/>
@@ -161,9 +165,11 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                         )}
                       </div>
                   </div>
+                 )}
                 </Tabs.Content>
                 <Tabs.Content value="settings" className="tabContent">
-                  <div className="card p-2 mt-4">
+                 {activeTab === 'settings' && (
+                                    <div className="card p-2 mt-4">
                     <div className="cardHeader">
                       <div className="flex items-center justify-between">
                           <h3 className="cardTitle flex items-center gap-2">
@@ -239,9 +245,11 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                         </form>
                       </div>
                   </div>
+                 )}
                 </Tabs.Content>
                 <Tabs.Content value="security" className="tabContent">
-                  <div className="card p-2">
+                 {activeTab === 'security' && (
+                                    <div className="card p-2">
                     <div className="cardHeader">
                         <h3 className="cardTitle flex items-center gap-2">
                           <Lock className="h-5 w-5" />
@@ -285,6 +293,7 @@ const AccountDetailsModel: React.FC<AccountDetailsModelProps> = ({accounts}) => 
                         </div>
                     </div>
                   </div>
+                 )}
                 </Tabs.Content>
             </Tabs.Root>
             <Dialog.Close asChild>

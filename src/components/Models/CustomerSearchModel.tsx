@@ -27,6 +27,7 @@ const CustomerSearchModel: React.FC = () => {
     queryKey:['customers'],
     queryFn:getCustomer,
     staleTime:1000 * 60 * 5,
+    enabled:open
   })
   if(isLoading) return <p>Loading...</p>;
   if(isError) {

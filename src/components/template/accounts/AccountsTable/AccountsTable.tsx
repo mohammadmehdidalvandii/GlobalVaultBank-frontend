@@ -1,11 +1,12 @@
-import AccountDetailsModel from '@components/Models/AccountDetailsModel'
-import AccountSettingsModel from '@components/Models/AccountSettingsModel'
 import { getAccount } from '@services/accountServices'
 import { useQuery } from '@tanstack/react-query'
 import { showError } from '@utils/Toasts'
-import React, { useState } from 'react'
+import React, { useState, lazy, Suspense, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import {AccountProps}  from "../../../../types/account"
+
+const AccountDetailsModel = lazy(()=>import('@components/Models/AccountDetailsModel'))
+const AccountSettingsModel = lazy(()=>import('@components/Models/AccountSettingsModel'))
 
 const AccountsTable:React.FC = () => {
     const {t}=useTranslation();
@@ -17,19 +18,25 @@ const AccountsTable:React.FC = () => {
     staleTime:1000 * 60 * 5,
   });
 
+
+  const filteredAccounts = useMemo(() => {
+  const term = searchItem.toLowerCase();
+  return data.filter((account:AccountProps) =>
+    account.accountName.toLowerCase().includes(term) ||
+    account.accountNumber.toLowerCase().includes(term) ||
+    account.currency.toLowerCase().includes(term) ||
+    account.type.toLowerCase().includes(term)
+  )
+}, [data, searchItem]);
+
+
+
   if(isLoading) return <p className='text_loading'>Loading...</p>
   if(isError){
     showError(`${error.message}`)
   }
 
-  const filterAccounts = data.filter((account:AccountProps)=>{
-    return (
-        account.accountName.includes(searchItem.toLowerCase())||
-        account.accountNumber.includes(searchItem.toLowerCase())||
-        account.currency.includes(searchItem.toUpperCase())||
-        account.type.includes(searchItem.toLowerCase())
-    )
-  })
+
 
   return (
     <div className="space-y-4">
@@ -56,7 +63,7 @@ const AccountsTable:React.FC = () => {
                         </tr>
                     </thead>
                     <tbody className="tableBody">
-                        {filterAccounts.map((account:AccountProps)=>(
+                        {filteredAccounts.map((account:AccountProps)=>(
                         <tr className="tableRow" key={account.id}>
                             
                             <td className="tableCall">
@@ -91,8 +98,10 @@ const AccountsTable:React.FC = () => {
                             </td>
                               <td className="tableCall">
                                 <div className='flex gap-2 justify-end'>
+                                <Suspense fallback={<div className="skeleton h-10 w-10 rounded" />}>
                                     <AccountDetailsModel accounts={account}/>
                                     <AccountSettingsModel accounts={account}/>
+                                </Suspense>
                                 </div>
                             </td>
                         </tr>
