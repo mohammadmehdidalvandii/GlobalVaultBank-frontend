@@ -14,8 +14,8 @@ const Signin:React.FC = ()=>{
     const navigate = useNavigate()
     const {t} = useTranslation()
     const [showPassword , setShowPassword] = useState<boolean>(false);
-    const [employeeCode , setEmployeeCode] =useState<string>('');
-    const [password , setPassword] = useState<string>('')
+    const [employeeCode , setEmployeeCode] =useState<string>('1224355');
+    const [password , setPassword] = useState<string>('Admin7979@')
     const expiry = Date.now() + 15 * 60 * 1000; 
     const mutation = useMutation({
         mutationFn:login,

@@ -1,11 +1,11 @@
 {
-    "Global Vault":"Bóveda global",
-    "Dashboard":"Panel",
-    "Accounts":"Cuentas",
-    "Transactions":"Actas",
-    "Transfer":"Transferir",
-    "Exchange":"Intercambio",
-    "Settings":"Ajustes",
-    "Global Vault Bank":"Banco de bóveda global",
-    "Exit":"Salida"
+  "Global Vault":"Bóveda Global",
+  "Dashboard": "Tablero",
+  "Accounts": "Cuentas",
+  "Transactions":"Transacciones",
+  "Transfer":"Transferir",
+  "Exchange":"Intercambiar",
+  "Settings":"Configuraciones",
+  "Global Vault Bank":"Banco Bóveda Global",
+  "Exit":"Salir"
 }
