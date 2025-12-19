@@ -1,4 +1,4 @@
-const baseUrl = 'https://globalbankapi.chbk.app/api/';
+const baseUrl = 'https://globalbankapi.chbk.dev/api/';
 import { fetchWithAuth } from "./fetchWithAuth";
 
 interface createCustomerProps{
