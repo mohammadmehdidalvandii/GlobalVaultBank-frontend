@@ -1,4 +1,4 @@
-import { getValidToken } from "./authServices"
+import { getValidToken } from "./authServices.ts"
 
 export const fetchWithAuth = async (url:string, options:RequestInit  = {})=>{
     const token = getValidToken();

@@ -1,6 +1,6 @@
-import { fetchWithAuth } from "./fetchWithAuth";
+import { fetchWithAuth } from "./fetchWithAuth.ts";
 
-const baseUrl = 'https://globalbankapi.chbk.dev/api/';
+const baseUrl = 'https://globalbankapi.chbkn.run/api/';
 
 
 

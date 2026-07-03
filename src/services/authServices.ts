@@ -1,4 +1,4 @@
-const baseUrl = 'https://globalbankapi.chbk.dev/api/';
+const baseUrl = 'https://globalbankapi.chbkn.run/api/';
 
 interface loginProps{
     employee_code:string,

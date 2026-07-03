@@ -1,5 +1,5 @@
-const baseUrl = 'https://globalbankapi.chbk.dev/api/';
-import { fetchWithAuth } from "./fetchWithAuth";
+const baseUrl = 'https://globalbankapi.chbkn.run/api/';
+import { fetchWithAuth } from "./fetchWithAuth.ts";
 
 interface createCustomerProps{
   firstName: string;
