@@ -1,6 +1,6 @@
 import { fetchWithAuth } from "./fetchWithAuth.ts";
 
-const baseUrl = 'https://globalbankapi.chbkn.run/api/';
+const baseUrl = 'https://globalbankapi.chbkn.dev/api/';
 
 interface createTransferProps {
 fromAccountId?:string,

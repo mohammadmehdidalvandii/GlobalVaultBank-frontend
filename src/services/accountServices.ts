@@ -1,4 +1,4 @@
-const baseUrl = 'https://globalbankapi.chbkn.run/api/';
+const baseUrl = 'https://globalbankapi.chbkn.dev/api/';
 import { fetchWithAuth } from "./fetchWithAuth.ts";
 
 interface createAccountProps {
